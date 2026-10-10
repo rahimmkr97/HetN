@@ -1,20 +1,45 @@
 {
   "name": "H&N Packaging",
-  "short_name": "H&N Packaging",
-  "description": "Impression flexographique sur plastique, complexage et refendage. Sachets, manchons PVC et étiquettes.",
+  "short_name": "H&N",
+  "description": "H&N Packaging, Chaiba (Tipaza) : impression flexographique jusqu'à 8 couleurs sur films plastiques, complexage sans solvant, refente, sachets, sleeves PVC et étiquettes. Devis gratuit.",
   "lang": "fr",
   "dir": "ltr",
-  "id": "./",
-  "start_url": "./",
+  "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "orientation": "any",
-  "background_color": "#F5F6F2",
+  "orientation": "portrait",
+  "background_color": "#FFFFFF",
   "theme_color": "#141F45",
-  "categories": ["business"],
   "icons": [
-    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    {
+      "src": "assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Demander un devis",
+      "url": "./index.html#devis"
+    },
+    {
+      "name": "Request a quote",
+      "url": "./en.html#devis"
+    },
+    {
+      "name": "اطلب عرض سعر",
+      "url": "./ar.html#devis"
+    }
   ]
 }

@@ -2,28 +2,25 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="H&amp;N Packaging — impression flexographique sur plastique, complexage et refendage. Sachets, manchons PVC et étiquettes.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>H&amp;N Packaging — Accueil</title>
+<meta name="description" content="H&N Packaging, Chaiba (Tipaza) : impression flexographique jusqu'à 8 couleurs sur films plastiques, complexage sans solvant, refente, sachets, sleeves PVC et étiquettes. Devis gratuit.">
 <meta name="theme-color" content="#141F45">
-<link rel="manifest" href="./manifest.webmanifest">
-<link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32.png">
-<link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
-<meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="assets/icons/favicon-48.png">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="H&amp;N Packaging">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<title>H&amp;N Packaging — Accueil</title>
-<script src="./vendor/react.js"></script>
-<script src="./vendor/react-dom.js"></script>
-<script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
+<meta property="og:title" content="H&amp;N Packaging — Accueil">
+<meta property="og:description" content="H&N Packaging, Chaiba (Tipaza) : impression flexographique jusqu'à 8 couleurs sur films plastiques, complexage sans solvant, refente, sachets, sleeves PVC et étiquettes. Devis gratuit.">
+<meta property="og:image" content="assets/img/gamme.jpg">
+<link rel="alternate" hreflang="fr" href="index.html">
+<link rel="alternate" hreflang="en" href="en.html">
+<link rel="alternate" hreflang="ar" href="ar.html">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
 <style>
 body{margin:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:110px}
 a{color:#141F45}a:hover{color:#2A4185}
 @keyframes hnRise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
 @keyframes hnLine{from{transform:scaleX(0)}to{transform:scaleX(1)}}
@@ -34,15 +31,37 @@ a{color:#141F45}a:hover{color:#2A4185}
 .zoom{animation:hnZoom 18s ease-in-out infinite alternate}
 @media (prefers-reduced-motion:reduce){.zoom{animation:none}}
 h2::after{content:"";display:block;width:72px;height:5px;border-radius:3px;background:#F5B869;margin-top:16px}
+.faq summary{list-style:none}.faq summary::-webkit-details-marker{display:none}.faq .faq-ico{transition:transform .2s ease}.faq[open] .faq-ico{transform:rotate(45deg)}
+@keyframes hnSlide{0%{opacity:1}16.67%{opacity:1}20%{opacity:0}96.67%{opacity:0}100%{opacity:1}}
+.slide{opacity:0;animation:hnSlide 30s linear infinite,hnZoom 18s ease-in-out infinite alternate}
+@media (prefers-reduced-motion:reduce){.slide{animation:none;opacity:0}.slide.first{opacity:1}}
+.pcard .pimg img{transition:transform .5s ease}.pcard:hover .pimg img{transform:scale(1.08)}
+.pbtn{opacity:0;transform:translateY(10px);transition:opacity .25s ease,transform .25s ease}
+.pcard:hover .pbtn,.pbtn:focus-visible{opacity:1;transform:none}
+@media (hover:none){.pbtn{opacity:1;transform:none}}
+.pline{pointer-events:none}
+@keyframes hnDraw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes hnLight{from{background:#DDE3F3}to{background:#F5B869}}
+@supports (animation-timeline:view()){.pfill{animation:hnDraw linear both;animation-timeline:view();animation-range:entry 80% cover 50%}.pnum{animation:hnLight linear both;animation-timeline:view();animation-range:entry 85% cover 50%}}
+@media (max-width:1080px){.pline{display:none}}
+@media (prefers-reduced-motion:reduce){.pfill,.pnum{animation:none}}
+.burger{display:none}
+@media (max-width:860px){.navlinks{display:none!important}.burger{display:inline-flex}}
+@keyframes hnIntroOut{to{transform:translateY(-100%)}}
+@keyframes hnLogoIn{0%{opacity:0;transform:scale(.82)}60%{opacity:1;transform:scale(1.03)}100%{opacity:1;transform:scale(1)}}
+.intro{animation:hnIntroOut .75s 1.4s cubic-bezier(.7,0,.3,1) forwards}
+.intro img{animation:hnLogoIn .9s .1s ease-out both}
+.intro .bar{transform-origin:left;animation:hnLine 1s .35s ease-out both}
+@media (prefers-reduced-motion:reduce){.intro{display:none}}
 .rise{animation:hnRise .8s cubic-bezier(.2,.7,.2,1) both}
-.line{transform-origin:left;animation:hnLine .9s .7s cubic-bezier(.2,.7,.2,1) both}
+.line{transform-origin:left;animation:hnLine .9s 2.2s cubic-bezier(.2,.7,.2,1) both}
 .pulse{animation:hnPulse 1.8s ease-in-out infinite}
 .float{animation:hnFloat 7s ease-in-out infinite}
 .marquee{animation:hnMarquee 28s linear infinite}
 .marquee:hover{animation-play-state:paused}
 .lift svg{transition:transform .35s cubic-bezier(.3,1.6,.5,1)}
 .lift:hover svg{transform:rotate(-8deg) scale(1.12)}
-.lift{transition:transform .25s ease,box-shadow .25s ease}
+.lift{transition:transform .25s ease,box-shadow .25s ease;box-shadow:0 1px 2px rgba(20,31,69,.06),0 10px 28px rgba(20,31,69,.07)}
 .lift:hover{transform:translateY(-6px);box-shadow:0 18px 36px rgba(20,31,69,.14)}
 a[style*="999px"],button{transition:transform .2s ease,box-shadow .2s ease}
 a[style*="999px"]:hover,button:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(20,31,69,.2)}
@@ -50,50 +69,59 @@ a[style*="999px"]:hover,button:hover{transform:translateY(-2px);box-shadow:0 10p
 @media (prefers-reduced-motion:reduce){.rise,.line,.pulse,.float,.marquee,.reveal{animation:none}.lift:hover{transform:none}}
 input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible{outline:3px solid #E8912D;outline-offset:2px}
 </style>
-</helmet>
+<style>[hidden]{display:none!important}</style>
+</head>
+<body>
 <div style="font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #141F45; background: #F5F6F2; font-size: 17px; line-height: 1.55">
 
 <div style="background: #141F45; color: #FFFFFF; font-size: 15px">
 <div style="max-width: 1200px; margin: 0 auto; padding: 10px 24px; display: flex; align-items: center; gap: 10px">
 <span aria-hidden="true" class="pulse" style="width: 8px; height: 8px; border-radius: 50%; background: #E8912D; flex: none"></span>
-<span>[ANNONCE — salon, nouveauté ou information à mettre en avant]</span>
+<span>Better Packaging, Brighter Tomorrow · Impression, complexage, refente et sachets à Chaiba, Tipaza</span>
 </div>
 </div>
 
-<header>
+<header style="position: sticky; top: 0; z-index: 40; background: rgba(245,246,242,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid #E1E4DC">
 <div style="max-width: 1200px; margin: 0 auto; padding: 18px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 32px">
 <a href="#top" style="display: flex; align-items: center; text-decoration: none; min-height: 44px">
-<img src="./assets/b4a1e87e64587d78ba08e4312dd730da.png" alt="H&amp;N Packaging" style="height: 64px; width: auto; display: block; mix-blend-mode: multiply">
+<img src="assets/img/logo.png" alt="H&amp;N Packaging" style="height: 64px; width: auto; display: block; mix-blend-mode: multiply">
 </a>
-<nav aria-label="Navigation principale" style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 28px; font-weight: 500; font-size: 16px">
+<nav class="navlinks" aria-label="Navigation principale" style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 28px; font-weight: 500; font-size: 16px">
 <a href="#produits" style="text-decoration: none; padding: 11px 0">Produits</a>
 <a href="#gamme" style="text-decoration: none; padding: 11px 0">Savoir-faire</a>
 <a href="#solutions" style="text-decoration: none; padding: 11px 0">Solutions</a>
 <a href="#processus" style="text-decoration: none; padding: 11px 0">Processus</a>
-<a href="En.dc.html" aria-label="English version" style="text-decoration: none; padding: 9px 14px; border-radius: 999px; border: 1.5px solid #141F45; font-weight: 600; font-size: 15px">EN</a>
+<a href="en.html" aria-label="English version" style="text-decoration: none; padding: 9px 14px; border-radius: 999px; border: 1.5px solid #141F45; font-weight: 600; font-size: 15px">EN</a>
+<a href="ar.html" aria-label="النسخة العربية" style="text-decoration: none; padding: 9px 14px; border-radius: 999px; border: 1.5px solid #141F45; font-weight: 600; font-size: 15px">عربي</a>
 <a href="#devis" style="text-decoration: none; padding: 11px 22px; border-radius: 999px; background: #F5B869; color: #141F45; font-weight: 600">Demander un devis</a>
 </nav>
+<button type="button" class="burger" aria-label="Menu" data-open-menu style="width: 48px; height: 48px; align-items: center; justify-content: center; border: 1.5px solid #141F45; border-radius: 12px; background: #FFFFFF; color: #141F45; cursor: pointer"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
 </div>
 </header>
 
 <section id="top" style="position: relative; overflow: hidden; background: #141F45; color: #FFFFFF">
-<img class="zoom" src="./assets/6f62d7f282afc02e7723fa9844b663af.jpg" alt="Gamme d'emballages souples H&amp;N Packaging : sachets, films en bobine et emballages imprimés" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center right">
+<img class="slide first" src="assets/img/gamme.jpg" alt="Gamme d'emballages souples H&amp;N Packaging : sachets, films en bobine et emballages imprimés" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center right; animation-delay: 0s, 0s">
+<img class="slide" src="assets/img/films-imprimes.jpg" alt="" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; animation-delay: -25s, 0s">
+<img class="slide" src="assets/img/films-complexes.jpg" alt="" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; animation-delay: -20s, 0s">
+<img class="slide" src="assets/img/sleeves-pvc.jpg" alt="" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; animation-delay: -15s, 0s">
+<img class="slide" src="assets/img/sachets.jpg" alt="" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; animation-delay: -10s, 0s">
+<img class="slide" src="assets/img/etiquettes.jpg" alt="" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; animation-delay: -5s, 0s">
 <div aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(20,31,69,0.94) 0%, rgba(20,31,69,0.82) 38%, rgba(20,31,69,0.25) 72%, rgba(20,31,69,0.05) 100%)"></div>
 <div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 96px 24px 112px; min-height: 640px; box-sizing: border-box; display: flex; align-items: center">
 <div style="max-width: 620px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
-<span class="rise" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px; background: #FFFFFF; color: #141F45; font-size: 15px; font-weight: 500">
-<span aria-hidden="true" style="width: 8px; height: 8px; border-radius: 50%; background: {{accent}}"></span>
+<span class="rise" style="animation-delay: 1.5s; align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px; background: #FFFFFF; color: #141F45; font-size: 15px; font-weight: 500">
+<span aria-hidden="true" style="width: 8px; height: 8px; border-radius: 50%; background: #2A4185"></span>
 100 % fabriqué en Algérie
 </span>
 <h1 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: clamp(44px, 5.6vw, 82px); line-height: 0.98; letter-spacing: -0.03em">
-<span class="rise" style="display: block; animation-delay: 0.1s">Solutions</span>
-<span class="rise" style="display: block; animation-delay: 0.22s">globales de</span>
-<span class="rise" style="display: block; animation-delay: 0.34s; color: #F5B869">Packaging</span>
-<span class="rise" style="display: block; animation-delay: 0.46s; color: #F5B869">Flexible</span>
+<span class="rise" style="display: block; animation-delay: 1.60s">Solutions</span>
+<span class="rise" style="display: block; animation-delay: 1.72s">globales de</span>
+<span class="rise" style="display: block; animation-delay: 1.84s; color: #F5B869">Packaging</span>
+<span class="rise" style="display: block; animation-delay: 1.96s; color: #F5B869">Flexible</span>
 </h1>
 <span aria-hidden="true" class="line" style="display: block; width: 140px; height: 6px; border-radius: 3px; background: #E8912D"></span>
-<p class="rise" style="margin: 0; max-width: 640px; font-size: 22px; line-height: 1.45; color: #FFFFFF; animation-delay: 0.6s">Innovation, durabilité et qualité pour s'adapter à vos besoins.</p>
-<div class="rise" style="display: flex; flex-wrap: wrap; gap: 14px; animation-delay: 0.72s">
+<p class="rise" style="margin: 0; max-width: 640px; font-size: 22px; line-height: 1.45; color: #FFFFFF; animation-delay: 2.10s">Innovation, durabilité et qualité pour s'adapter à vos besoins.</p>
+<div class="rise" style="display: flex; flex-wrap: wrap; gap: 14px; animation-delay: 2.22s">
 <a href="#devis" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 28px; border-radius: 999px; background: #F5B869; color: #141F45; font-weight: 600; text-decoration: none">Demander un devis</a>
 <a href="#produits" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 28px; border-radius: 999px; border: 1.5px solid #FFFFFF; color: #FFFFFF; font-weight: 600; text-decoration: none">Découvrir nos produits</a>
 </div>
@@ -104,6 +132,7 @@ input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible{out
 <section id="solutions" style="background: #FFFFFF">
 <div style="max-width: 1200px; margin: 0 auto; padding: 88px 24px 28px">
 <div style="display: flex; flex-direction: column; gap: 14px; max-width: 680px">
+<span style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #A85A12"><span aria-hidden="true" style="width: 28px; height: 2px; background: #A85A12"></span>Marchés</span>
 <h2 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: clamp(28px, 3.4vw, 42px); line-height: 1.1; letter-spacing: -0.02em">Une solution pour chaque marché</h2>
 <p style="margin: 0; color: #3D4763">Chaque produit a ses exigences de conservation, de machinabilité et de présentation. Nous adaptons le film, la structure et l'impression à votre secteur.</p>
 </div>
@@ -221,40 +250,41 @@ input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible{out
 <section id="produits" style="background: #141F45; color: #FFFFFF; border-radius: 36px; margin: 48px max(16px, calc((100% - 1296px) / 2)) 0">
 <div style="max-width: 1200px; margin: 0 auto; padding: 88px 24px">
 <div style="display: flex; flex-direction: column; gap: 14px; max-width: 680px; margin-bottom: 40px">
+<span style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #F5B869"><span aria-hidden="true" style="width: 28px; height: 2px; background: #F5B869"></span>Produits</span>
 <h2 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: clamp(28px, 3.4vw, 42px); line-height: 1.1; letter-spacing: -0.02em">Nos produits</h2>
 <p style="margin: 0; color: #CBD2E4">En bobine ou en sachet, imprimés à vos couleurs ou neutres, fabriqués à vos dimensions.</p>
 </div>
 <div style="display: flex; flex-wrap: wrap; gap: 20px">
-<article class="lift reveal" style="flex: 1 1 320px; min-width: 0; background: #FFFFFF; color: #141F45; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
-<img src="./assets/9d45d3ffcb584278497339a52d3fca26.jpg" alt="Bobines de film imprimé H&amp;N Packaging" style="display: block; width: 100%; height: 190px; object-fit: cover">
+<article class="lift reveal pcard" style="flex: 1 1 320px; min-width: 0; background: #FFFFFF; color: #141F45; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
+<div class="pimg" style="position: relative; overflow: hidden"><img src="assets/img/films-imprimes.jpg" alt="Bobines de film imprimé H&amp;N Packaging" style="display: block; width: 100%; height: 190px; object-fit: cover"><a class="pbtn" href="#devis" data-pick="film" style="position: absolute; inset-inline-start: 16px; bottom: 16px; display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 999px; background: #F5B869; color: #141F45; font-weight: 600; text-decoration: none; box-shadow: 0 8px 20px rgba(20,31,69,0.3)">Demander un devis</a></div>
 <div style="padding: 24px; display: flex; flex-direction: column; gap: 8px">
 <h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 21px">Films imprimés en bobine</h3>
 <p style="margin: 0; color: #3D4763; font-size: 16px">Pour vos lignes de conditionnement automatiques : flow-pack, ensacheuses verticales et horizontales.</p>
 </div>
 </article>
-<article class="lift reveal" style="flex: 1 1 320px; min-width: 0; background: #FFFFFF; color: #141F45; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
-<img src="./assets/29e50fe909078f192a761605468d6171.jpg" alt="Bobine de film complexé H&amp;N Packaging" style="display: block; width: 100%; height: 190px; object-fit: cover">
+<article class="lift reveal pcard" style="flex: 1 1 320px; min-width: 0; background: #FFFFFF; color: #141F45; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
+<div class="pimg" style="position: relative; overflow: hidden"><img src="assets/img/films-complexes.jpg" alt="Bobine de film complexé H&amp;N Packaging" style="display: block; width: 100%; height: 190px; object-fit: cover"><a class="pbtn" href="#devis" data-pick="complexe" style="position: absolute; inset-inline-start: 16px; bottom: 16px; display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 999px; background: #F5B869; color: #141F45; font-weight: 600; text-decoration: none; box-shadow: 0 8px 20px rgba(20,31,69,0.3)">Demander un devis</a></div>
 <div style="padding: 24px; display: flex; flex-direction: column; gap: 8px">
 <h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 21px">Films complexés</h3>
 <p style="margin: 0; color: #3D4763; font-size: 16px">Structures à deux ou trois couches pour les produits qui demandent une barrière renforcée.</p>
 </div>
 </article>
-<article class="lift reveal" style="flex: 1 1 320px; min-width: 0; background: #FFFFFF; color: #141F45; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
-<img src="./assets/b53eb79fd2d52b019609017d37765363.jpg" alt="Sleeves PVC imprimés H&amp;N Packaging sur bouteilles et en bobine" style="display: block; width: 100%; height: 190px; object-fit: cover">
+<article class="lift reveal pcard" style="flex: 1 1 320px; min-width: 0; background: #FFFFFF; color: #141F45; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
+<div class="pimg" style="position: relative; overflow: hidden"><img src="assets/img/sleeves-pvc.jpg" alt="Sleeves PVC imprimés H&amp;N Packaging sur bouteilles et en bobine" style="display: block; width: 100%; height: 190px; object-fit: cover"><a class="pbtn" href="#devis" data-pick="sleeve" style="position: absolute; inset-inline-start: 16px; bottom: 16px; display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 999px; background: #F5B869; color: #141F45; font-weight: 600; text-decoration: none; box-shadow: 0 8px 20px rgba(20,31,69,0.3)">Demander un devis</a></div>
 <div style="padding: 24px; display: flex; flex-direction: column; gap: 8px">
 <h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 21px">Sleeves PVC</h3>
 <p style="margin: 0; color: #3D4763; font-size: 16px">Manchons thermorétractables imprimés qui épousent la forme de vos bouteilles et flacons.</p>
 </div>
 </article>
-<article class="lift reveal" style="flex: 1 1 320px; min-width: 0; background: #FFFFFF; color: #141F45; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
-<img src="./assets/04b3600dbe48f64c0233c13817262929.jpg" alt="Gamme de sachets et sacs imprimés H&amp;N Packaging" style="display: block; width: 100%; height: 190px; object-fit: cover">
+<article class="lift reveal pcard" style="flex: 1 1 320px; min-width: 0; background: #FFFFFF; color: #141F45; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
+<div class="pimg" style="position: relative; overflow: hidden"><img src="assets/img/sachets.jpg" alt="Gamme de sachets et sacs imprimés H&amp;N Packaging" style="display: block; width: 100%; height: 190px; object-fit: cover"><a class="pbtn" href="#devis" data-pick="sachet" style="position: absolute; inset-inline-start: 16px; bottom: 16px; display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 999px; background: #F5B869; color: #141F45; font-weight: 600; text-decoration: none; box-shadow: 0 8px 20px rgba(20,31,69,0.3)">Demander un devis</a></div>
 <div style="padding: 24px; display: flex; flex-direction: column; gap: 8px">
 <h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 21px">Sachets</h3>
 <p style="margin: 0; color: #3D4763; font-size: 16px">Sachets préformés prêts à remplir.</p>
 </div>
 </article>
-<article class="lift reveal" style="flex: 1 1 320px; min-width: 0; background: #FFFFFF; color: #141F45; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
-<img src="./assets/bdd2185582c275f76a5ebd9322d4f1d8.jpg" alt="Étiquettes imprimées H&amp;N Packaging en bobine et à l'unité" style="display: block; width: 100%; height: 190px; object-fit: cover">
+<article class="lift reveal pcard" style="flex: 1 1 320px; min-width: 0; background: #FFFFFF; color: #141F45; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
+<div class="pimg" style="position: relative; overflow: hidden"><img src="assets/img/etiquettes.jpg" alt="Étiquettes imprimées H&amp;N Packaging en bobine et à l'unité" style="display: block; width: 100%; height: 190px; object-fit: cover"><a class="pbtn" href="#devis" data-pick="etiquette" style="position: absolute; inset-inline-start: 16px; bottom: 16px; display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 999px; background: #F5B869; color: #141F45; font-weight: 600; text-decoration: none; box-shadow: 0 8px 20px rgba(20,31,69,0.3)">Demander un devis</a></div>
 <div style="padding: 24px; display: flex; flex-direction: column; gap: 8px">
 <h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 21px">Étiquettes</h3>
 <p style="margin: 0; color: #3D4763; font-size: 16px">Étiquettes imprimées en bobine pour bouteilles, pots et flacons.</p>
@@ -267,24 +297,25 @@ input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible{out
 <section id="gamme">
 <div style="max-width: 1200px; margin: 0 auto; padding: 88px 24px">
 <div style="display: flex; flex-direction: column; gap: 14px; max-width: 680px; margin-bottom: 40px">
+<span style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #A85A12"><span aria-hidden="true" style="width: 28px; height: 2px; background: #A85A12"></span>Savoir-faire</span>
 <h2 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: clamp(28px, 3.4vw, 42px); line-height: 1.1; letter-spacing: -0.02em">Quatre métiers sous un même toit</h2>
 <p style="margin: 0; color: #3D4763">L'impression, le complexage, la refente et la fabrication de sachets sont réalisés dans le même atelier : un seul interlocuteur, de votre fichier à la bobine ou au sachet prêt à remplir.</p>
 </div>
 <div style="display: flex; flex-wrap: wrap; gap: 20px">
 <article class="lift reveal" style="flex: 1 1 250px; min-width: 0; background: #FFFFFF; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
-<img src="./assets/c35a1ec27d3f81c2b0d60e4af94a0718.jpg" alt="Presse d'impression flexographique H&amp;N Packaging" style="display: block; width: 100%; height: 240px; object-fit: contain; background: #FFFFFF; padding: 12px; box-sizing: border-box">
+<img src="assets/img/impression.jpg" alt="Presse d'impression flexographique H&amp;N Packaging" style="display: block; width: 100%; height: 240px; object-fit: contain; background: #FFFFFF; padding: 12px; box-sizing: border-box">
 <div style="padding: 28px; display: flex; flex-direction: column; gap: 12px">
 <h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 23px">Impression flexographique</h3>
 <p style="margin: 0; color: #3D4763; font-size: 16px">Aplats denses, textes nets et couleurs fidèles à votre charte, tirage après tirage.</p>
 <ul style="margin: 4px 0 0; padding: 0 0 0 20px; display: flex; flex-direction: column; gap: 6px; font-size: 16px; color: #3D4763">
 <li>Jusqu'à 8 couleurs</li>
-<li>Laize maximale 1180 mm</li>
+<li>Laize maximale 1160 mm</li>
 <li>Bon à tirer validé avant tirage</li>
 </ul>
 </div>
 </article>
 <article class="lift reveal" style="flex: 1 1 250px; min-width: 0; background: #FFFFFF; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
-<img src="./assets/e47a9550d4c9f21cbe784675ac90db92.jpg" alt="Complexage de films H&amp;N Packaging" style="display: block; width: 100%; height: 240px; object-fit: contain; background: #FFFFFF; padding: 12px; box-sizing: border-box">
+<img src="assets/img/complexage.jpg" alt="Complexage de films H&amp;N Packaging" style="display: block; width: 100%; height: 240px; object-fit: contain; background: #FFFFFF; padding: 12px; box-sizing: border-box">
 <div style="padding: 28px; display: flex; flex-direction: column; gap: 12px">
 <h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 23px">Complexage</h3>
 <p style="margin: 0; color: #3D4763; font-size: 16px">Plusieurs films assemblés pour la barrière, la rigidité et la soudabilité qu'exige votre produit.</p>
@@ -296,7 +327,7 @@ input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible{out
 </div>
 </article>
 <article class="lift reveal" style="flex: 1 1 250px; min-width: 0; background: #FFFFFF; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
-<img src="./assets/44448e66f96159d384c5b1ff86c36dad.jpg" alt="Refente de bobines H&amp;N Packaging" style="display: block; width: 100%; height: 240px; object-fit: contain; background: #FFFFFF; padding: 12px; box-sizing: border-box">
+<img src="assets/img/refente.jpg" alt="Refente de bobines H&amp;N Packaging" style="display: block; width: 100%; height: 240px; object-fit: contain; background: #FFFFFF; padding: 12px; box-sizing: border-box">
 <div style="padding: 28px; display: flex; flex-direction: column; gap: 12px">
 <h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 23px">Refente</h3>
 <p style="margin: 0; color: #3D4763; font-size: 16px">Bobines découpées à la laize exacte de vos machines, avec un enroulement régulier.</p>
@@ -308,7 +339,7 @@ input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible{out
 </div>
 </article>
 <article class="lift reveal" style="flex: 1 1 250px; min-width: 0; background: #FFFFFF; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
-<img src="./assets/20ba58ad44e3893cc33a2c7e7320977a.jpg" alt="Fabrication de sachets H&amp;N Packaging" style="display: block; width: 100%; height: 240px; object-fit: contain; background: #FFFFFF; padding: 12px; box-sizing: border-box">
+<img src="assets/img/sachets-machine.jpg" alt="Fabrication de sachets H&amp;N Packaging" style="display: block; width: 100%; height: 240px; object-fit: contain; background: #FFFFFF; padding: 12px; box-sizing: border-box">
 <div style="padding: 28px; display: flex; flex-direction: column; gap: 12px">
 <h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 23px">Fabrication de sachets</h3>
 <p style="margin: 0; color: #3D4763; font-size: 16px">Vos films transformés en sachets prêts à remplir, imprimés ou neutres, à vos dimensions.</p>
@@ -324,25 +355,27 @@ input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible{out
 
 <section id="processus" style="padding: 56px 16px 0">
 <div style="max-width: 1296px; box-sizing: border-box; margin: 0 auto; padding: 64px clamp(20px, 4vw, 48px); background: #FFFFFF; border: 2px solid #2A4185; border-radius: 36px">
+<span style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #A85A12"><span aria-hidden="true" style="width: 28px; height: 2px; background: #A85A12"></span>Processus</span>
 <h2 style="margin: 0 0 40px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: clamp(28px, 3.4vw, 42px); line-height: 1.1; letter-spacing: -0.02em">De votre demande à la livraison</h2>
-<ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 32px 24px">
+<ol style="position: relative; margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 32px 24px">
+<li aria-hidden="true" class="pline" style="position: absolute; top: 21px; inset-inline-start: 22px; inset-inline-end: calc(25% - 40px); height: 3px; border-radius: 2px; background: #DDE3F3"><span class="pfill" style="display: block; height: 100%; border-radius: 2px; background: #F5B869; transform-origin: left"></span></li>
 <li class="reveal" style="flex: 1 1 230px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
-<span aria-hidden="true" style="width: 44px; height: 44px; border-radius: 50%; background: #F5B869; color: #141F45; display: inline-flex; align-items: center; justify-content: center; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 18px">1</span>
+<span aria-hidden="true" class="pnum" style="position: relative; z-index: 1; width: 44px; height: 44px; border-radius: 50%; background: #F5B869; color: #141F45; display: inline-flex; align-items: center; justify-content: center; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 18px">1</span>
 <h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 21px">Votre demande</h3>
 <p style="margin: 0; color: #3D4763; font-size: 16px">Vous décrivez le produit, le format souhaité et la quantité. Un formulaire suffit.</p>
 </li>
 <li class="reveal" style="flex: 1 1 230px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
-<span aria-hidden="true" style="width: 44px; height: 44px; border-radius: 50%; background: #F5B869; color: #141F45; display: inline-flex; align-items: center; justify-content: center; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 18px">2</span>
+<span aria-hidden="true" class="pnum" style="position: relative; z-index: 1; width: 44px; height: 44px; border-radius: 50%; background: #F5B869; color: #141F45; display: inline-flex; align-items: center; justify-content: center; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 18px">2</span>
 <h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 21px">Le devis</h3>
 <p style="margin: 0; color: #3D4763; font-size: 16px">Un conseiller vous répond sous [DÉLAI] avec un prix, une matière et un délai. C'est gratuit.</p>
 </li>
 <li class="reveal" style="flex: 1 1 230px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
-<span aria-hidden="true" style="width: 44px; height: 44px; border-radius: 50%; background: #F5B869; color: #141F45; display: inline-flex; align-items: center; justify-content: center; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 18px">3</span>
+<span aria-hidden="true" class="pnum" style="position: relative; z-index: 1; width: 44px; height: 44px; border-radius: 50%; background: #F5B869; color: #141F45; display: inline-flex; align-items: center; justify-content: center; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 18px">3</span>
 <h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 21px">La maquette</h3>
 <p style="margin: 0; color: #3D4763; font-size: 16px">Vous envoyez votre maquette, ou notre équipe la crée pour vous. Vous validez le bon à tirer avant l'impression.</p>
 </li>
 <li class="reveal" style="flex: 1 1 230px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
-<span aria-hidden="true" style="width: 44px; height: 44px; border-radius: 50%; background: #F5B869; color: #141F45; display: inline-flex; align-items: center; justify-content: center; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 18px">4</span>
+<span aria-hidden="true" class="pnum" style="position: relative; z-index: 1; width: 44px; height: 44px; border-radius: 50%; background: #F5B869; color: #141F45; display: inline-flex; align-items: center; justify-content: center; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 18px">4</span>
 <h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 21px">La production</h3>
 <p style="margin: 0; color: #3D4763; font-size: 16px">Impression, complexage, refente ou mise en sachets, contrôle, puis livraison.</p>
 </li>
@@ -370,8 +403,65 @@ input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible{out
 </div>
 </section>
 
+<section id="durabilite">
+<div style="max-width: 1200px; margin: 0 auto; padding: 24px 24px 88px">
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 680px; margin-bottom: 40px">
+<span style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #A85A12"><span aria-hidden="true" style="width: 28px; height: 2px; background: #A85A12"></span>Engagement</span>
+<h2 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: clamp(28px, 3.4vw, 42px); line-height: 1.1; letter-spacing: -0.02em">Un emballage plus responsable</h2>
+<p style="margin: 0; color: #3D4763">Bien emballer, c'est protéger votre produit avec juste ce qu'il faut de matière.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 20px">
+<div class="lift reveal" style="flex: 1 1 300px; min-width: 0; background: #FFFFFF; border-radius: 14px; border-top: 5px solid #F5B869; padding: 32px; display: flex; flex-direction: column; gap: 12px">
+<svg width="40" height="40" viewBox="0 0 32 32" fill="none" stroke="#2A4185" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 25C7 13 15 7 26 6c0 12-7 19-19 19z" fill="#DDE3F3"></path><path d="M7 25 18 14"></path></svg>
+<h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 22px">Complexage sans solvant</h3>
+<p style="margin: 0; color: #3D4763; font-size: 16px">Nos films sont assemblés sans solvant : moins d'émissions dans l'atelier et pas de solvant dans votre emballage.</p>
+</div>
+<div class="lift reveal" style="flex: 1 1 300px; min-width: 0; background: #FFFFFF; border-radius: 14px; border-top: 5px solid #F5B869; padding: 32px; display: flex; flex-direction: column; gap: 12px">
+<svg width="40" height="40" viewBox="0 0 32 32" fill="none" stroke="#2A4185" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h22M5 20h22"></path><path d="M16 4v6M16 22v6"></path><path d="M12 8l4 4 4-4M12 24l4-4 4 4"></path></svg>
+<h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 22px">Juste la bonne épaisseur</h3>
+<p style="margin: 0; color: #3D4763; font-size: 16px">Nous vous conseillons la structure la plus fine qui protège correctement votre produit, pour consommer moins de matière.</p>
+</div>
+<div class="lift reveal" style="flex: 1 1 300px; min-width: 0; background: #FFFFFF; border-radius: 14px; border-top: 5px solid #F5B869; padding: 32px; display: flex; flex-direction: column; gap: 12px">
+<svg width="40" height="40" viewBox="0 0 32 32" fill="none" stroke="#2A4185" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 28s9-8.5 9-15a9 9 0 0 0-18 0c0 6.5 9 15 9 15z" fill="#DDE3F3"></path><circle cx="16" cy="13" r="3.5"></circle></svg>
+<h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 22px">Produit près de chez vous</h3>
+<p style="margin: 0; color: #3D4763; font-size: 16px">Une fabrication locale à Tipaza, c'est moins de transport entre notre usine et vos lignes.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="faq" style="background: #FFFFFF">
+<div style="max-width: 900px; margin: 0 auto; padding: 88px 24px">
+<div style="margin-bottom: 32px"><span style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #A85A12"><span aria-hidden="true" style="width: 28px; height: 2px; background: #A85A12"></span>FAQ</span>
+<h2 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: clamp(28px, 3.4vw, 42px); line-height: 1.1; letter-spacing: -0.02em">Questions fréquentes</h2></div>
+<div style="border-top: 1px solid #D5D9D0">
+<details class="faq" style="border-bottom: 1px solid #D5D9D0">
+<summary style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 44px; padding: 18px 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 19px">Pouvez-vous créer la maquette de notre emballage ?<span aria-hidden="true" class="faq-ico" style="flex: none; width: 32px; height: 32px; border-radius: 50%; background: #F5B869; color: #141F45; display: inline-flex; align-items: center; justify-content: center; font-size: 22px; line-height: 1">+</span></summary>
+<p style="margin: 0 0 20px; color: #3D4763">Oui. Notre équipe peut concevoir votre maquette ou adapter vos fichiers à l'impression flexographique. Vous validez le bon à tirer avant tout tirage.</p>
+</details>
+<details class="faq" style="border-bottom: 1px solid #D5D9D0">
+<summary style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 44px; padding: 18px 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 19px">Combien de couleurs pouvez-vous imprimer ?<span aria-hidden="true" class="faq-ico" style="flex: none; width: 32px; height: 32px; border-radius: 50%; background: #F5B869; color: #141F45; display: inline-flex; align-items: center; justify-content: center; font-size: 22px; line-height: 1">+</span></summary>
+<p style="margin: 0 0 20px; color: #3D4763">Jusqu'à 8 couleurs, sur une laize maximale de 1160 mm.</p>
+</details>
+<details class="faq" style="border-bottom: 1px solid #D5D9D0">
+<summary style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 44px; padding: 18px 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 19px">Quels fichiers faut-il nous envoyer ?<span aria-hidden="true" class="faq-ico" style="flex: none; width: 32px; height: 32px; border-radius: 50%; background: #F5B869; color: #141F45; display: inline-flex; align-items: center; justify-content: center; font-size: 22px; line-height: 1">+</span></summary>
+<p style="margin: 0 0 20px; color: #3D4763">De préférence un fichier vectoriel (PDF, AI ou EPS) avec les textes vectorisés. Si vous n'avez qu'une photo ou un ancien emballage, nous pouvons partir de là.</p>
+</details>
+<details class="faq" style="border-bottom: 1px solid #D5D9D0">
+<summary style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 44px; padding: 18px 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 19px">Quelle est la quantité minimale de commande ?<span aria-hidden="true" class="faq-ico" style="flex: none; width: 32px; height: 32px; border-radius: 50%; background: #F5B869; color: #141F45; display: inline-flex; align-items: center; justify-content: center; font-size: 22px; line-height: 1">+</span></summary>
+<p style="margin: 0 0 20px; color: #3D4763">Elle dépend du produit, de la structure et du nombre de couleurs. Décrivez-nous votre besoin et nous vous ferons une proposition adaptée.</p>
+</details>
+<details class="faq" style="border-bottom: 1px solid #D5D9D0">
+<summary style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 44px; padding: 18px 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 19px">Quel est le délai de fabrication ?<span aria-hidden="true" class="faq-ico" style="flex: none; width: 32px; height: 32px; border-radius: 50%; background: #F5B869; color: #141F45; display: inline-flex; align-items: center; justify-content: center; font-size: 22px; line-height: 1">+</span></summary>
+<p style="margin: 0 0 20px; color: #3D4763">Il dépend de la quantité et de la complexité de l'emballage. Nous vous l'indiquons avec le devis.</p>
+</details>
+</div>
+</div>
+</section>
+
 <section id="devis" style="border-top: 1px solid #D5D9D0; max-width: 1200px; margin: 0 auto; padding: 88px 24px; display: flex; flex-wrap: wrap; gap: 56px">
 <div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<span style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #A85A12"><span aria-hidden="true" style="width: 28px; height: 2px; background: #A85A12"></span>Devis gratuit</span>
 <h2 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: clamp(28px, 3.4vw, 42px); line-height: 1.1; letter-spacing: -0.02em">Parlons de votre emballage</h2>
 <p style="margin: 0; color: #3D4763">Indiquez le produit, le format et la quantité. Un de nos conseillers vous répond et prépare votre devis gratuitement.</p>
 <div style="display: flex; flex-direction: column; gap: 6px; margin-top: 12px">
@@ -379,11 +469,14 @@ input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible{out
 <a href="tel:+213561703451" style="font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 24px; padding: 8px 0; text-decoration: none">+213 561 70 34 51</a>
 <a href="tel:+213540050536" style="font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 24px; padding: 8px 0; text-decoration: none">+213 540 05 05 36</a>
 <a href="mailto:haitham.naime@gmail.com" style="font-weight: 500; padding: 10px 0">haitham.naime@gmail.com</a>
+<a href="https://wa.me/213561703451?text=Bonjour%20H%26N%20Packaging%2C%20je%20souhaite%20un%20devis." target="_blank" rel="noopener" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; min-height: 48px; margin-top: 6px; padding: 0 20px; border-radius: 999px; background: #128C4A; color: #FFFFFF; font-weight: 600; text-decoration: none"><svg width="22" height="22" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4a12 12 0 0 0-10.4 18L4 28l6.2-1.6A12 12 0 1 0 16 4z"></path><path d="M12 12c0 4.5 3.5 8 8 8l1.5-2.5-3-1.5-1.5 1.5c-1.5-.5-2.5-1.5-3-3l1.5-1.5-1.5-3z"></path></svg>Écrire sur WhatsApp</a>
+<span style="color: #3D4763; margin-top: 10px">Cité Chaig, route de Fouka, commune de Chaiba, W. Tipaza</span>
+<a href="https://maps.app.goo.gl/NBDXT7T5S2sNAC857" target="_blank" rel="noopener" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; padding: 10px 0"><svg width="20" height="20" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 28s9-8.5 9-15a9 9 0 0 0-18 0c0 6.5 9 15 9 15z"></path><circle cx="16" cy="13" r="3.5"></circle></svg>Voir sur Google Maps</a>
 </div>
 </div>
 <div style="flex: 1 1 480px; min-width: 0; background: #FFFFFF; color: #141F45; border-radius: 14px; padding: 32px">
-<sc-if value="{{showForm}}" hint-placeholder-val="{{true}}">
-<form onSubmit="{{submit}}" style="display: flex; flex-direction: column; gap: 20px">
+<div id="quote-form-wrap">
+<form id="quote-form" data-wa-title="Nouvelle demande de devis (site web)" style="display: flex; flex-direction: column; gap: 20px">
 <div style="display: flex; flex-wrap: wrap; gap: 20px">
 <div style="flex: 1 1 200px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
 <label for="f-nom" style="font-weight: 600; font-size: 15px">Nom et prénom</label>
@@ -408,11 +501,13 @@ input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible{out
 <div style="flex: 1 1 200px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
 <label for="f-besoin" style="font-weight: 600; font-size: 15px">Votre besoin</label>
 <select id="f-besoin" name="besoin" style="height: 48px; padding: 0 10px; border: 1.5px solid #8A93A6; border-radius: 8px; font: inherit; background: #FFFFFF; box-sizing: border-box; width: 100%">
-<option>Film imprimé en bobine</option>
-<option>Film complexé imprimé</option>
-<option>Sachets imprimés ou neutres</option>
-<option>Refente à façon</option>
-<option>Autre demande</option>
+<option value="film">Film imprimé en bobine</option>
+<option value="complexe">Film complexé imprimé</option>
+<option value="sleeve">Sleeves PVC</option>
+<option value="sachet">Sachets imprimés ou neutres</option>
+<option value="etiquette">Étiquettes</option>
+<option value="refente">Refente à façon</option>
+<option value="autre">Autre demande</option>
 </select>
 </div>
 <div style="flex: 1 1 200px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
@@ -426,14 +521,14 @@ input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible{out
 </div>
 <button type="submit" style="min-height: 52px; padding: 0 28px; border: 0; border-radius: 999px; background: #F5B869; color: #141F45; font: inherit; font-weight: 600; cursor: pointer; align-self: flex-start">Demander un devis</button>
 </form>
-</sc-if>
-<sc-if value="{{sent}}" hint-placeholder-val="{{false}}">
+</div>
+<div id="quote-sent" hidden>
 <div role="status" style="display: flex; flex-direction: column; gap: 16px; padding: 24px 0">
 <h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 26px">Demande bien reçue.</h3>
-<p style="margin: 0; color: #3D4763">Merci. Un conseiller vous recontacte rapidement pour préparer votre devis.</p>
-<button type="button" onClick="{{reset}}" style="min-height: 48px; padding: 0 22px; border: 1.5px solid #141F45; border-radius: 999px; background: #FFFFFF; color: #141F45; font: inherit; font-weight: 600; cursor: pointer; align-self: flex-start">Envoyer une autre demande</button>
+<p style="margin: 0; color: #3D4763">Merci. Votre demande s'est ouverte dans WhatsApp : envoyez le message et un conseiller vous recontacte rapidement.</p>
+<button type="button" id="quote-reset" style="min-height: 48px; padding: 0 22px; border: 1.5px solid #141F45; border-radius: 999px; background: #FFFFFF; color: #141F45; font: inherit; font-weight: 600; cursor: pointer; align-self: flex-start">Envoyer une autre demande</button>
 </div>
-</sc-if>
+</div>
 </div>
 </section>
 
@@ -441,8 +536,9 @@ input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible{out
 <div style="max-width: 1200px; margin: 0 auto; padding: 56px 24px 32px; display: flex; flex-direction: column; gap: 40px">
 <div style="display: flex; flex-wrap: wrap; gap: 40px 56px; justify-content: space-between">
 <div style="flex: 1 1 280px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
-<img src="./assets/b4a1e87e64587d78ba08e4312dd730da.png" alt="H&amp;N Packaging" style="height: 72px; width: auto; align-self: flex-start; display: block; background: #FFFFFF; padding: 12px; border-radius: 12px">
+<img src="assets/img/logo.png" alt="H&amp;N Packaging" style="height: 72px; width: auto; align-self: flex-start; display: block; background: #FFFFFF; padding: 12px; border-radius: 12px">
 <span style="max-width: 320px">Impression flexographique sur films plastiques, complexage, refente et fabrication de sachets.</span>
+<span style="font-family: 'Archivo', sans-serif; font-weight: 700; color: #F5B869">Better Packaging, Brighter Tomorrow</span>
 </div>
 <nav aria-label="Pied de page" style="flex: 0 1 200px; display: flex; flex-direction: column; font-size: 16px">
 <a href="#produits" style="padding: 10px 0; color: #FFFFFF">Produits</a>
@@ -455,36 +551,41 @@ input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible{out
 <span>Cité Chaig, route de Fouka, commune de Chaiba, W. Tipaza</span>
 <span>+213 561 70 34 51</span>
 <span>haitham.naime@gmail.com</span>
+<a href="https://maps.app.goo.gl/NBDXT7T5S2sNAC857" target="_blank" rel="noopener" style="color: #FFFFFF; display: inline-flex; align-items: center; gap: 8px; padding: 10px 0"><svg width="20" height="20" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 28s9-8.5 9-15a9 9 0 0 0-18 0c0 6.5 9 15 9 15z"></path><circle cx="16" cy="13" r="3.5"></circle></svg>Voir sur Google Maps</a>
 </div>
 </div>
 <div style="border-top: 1px solid #6F82BC; padding-top: 24px; font-size: 14px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px">
+<button type="button" id="install-app" hidden style="min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1.5px solid #F5B869; background: transparent; color: #FFFFFF; font: inherit; font-weight: 600; cursor: pointer">Installer l'application</button>
 <span>© 2026 H&amp;N Packaging. Tous droits réservés.</span>
 </div>
 </div>
 </footer>
 
+<a href="https://wa.me/213561703451?text=Bonjour%20H%26N%20Packaging%2C%20je%20souhaite%20un%20devis." target="_blank" rel="noopener" aria-label="Nous écrire sur WhatsApp" style="position: fixed; right: 20px; bottom: 20px; z-index: 50; display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 20px; border-radius: 999px; background: #128C4A; color: #FFFFFF; font-weight: 600; text-decoration: none; box-shadow: 0 10px 24px rgba(0,0,0,0.25)"><svg width="22" height="22" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4a12 12 0 0 0-10.4 18L4 28l6.2-1.6A12 12 0 1 0 16 4z"></path><path d="M12 12c0 4.5 3.5 8 8 8l1.5-2.5-3-1.5-1.5 1.5c-1.5-.5-2.5-1.5-3-3l1.5-1.5-1.5-3z"></path></svg><span>WhatsApp</span></a>
+<div id="mobile-menu" hidden>
+<div role="dialog" aria-modal="true" aria-label="Menu" style="position: fixed; inset: 0; z-index: 90; background: #141F45; color: #FFFFFF; overflow-y: auto; padding: 20px 24px 40px; box-sizing: border-box; display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 16px">
+<span style="display: inline-flex; background: #FFFFFF; padding: 8px; border-radius: 12px"><img src="assets/img/logo.png" alt="H&amp;N Packaging" style="height: 48px; width: auto; display: block"></span>
+<button type="button" aria-label="Fermer le menu" data-close-menu style="width: 48px; height: 48px; display: inline-flex; align-items: center; justify-content: center; border: 1.5px solid #FFFFFF; border-radius: 12px; background: transparent; color: #FFFFFF; cursor: pointer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
 </div>
-</x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#2A4185","options":["#2A4185","#1F6B4A","#B8431A","#141F45"]},"$preview":{"width":1440,"height":5200}}'>
-class Component extends DCLogic {
-renderVals() {
-const sent = !!(this.state && this.state.sent);
-return {
-accent: this.props.accent ?? '#2A4185',
-sent: sent,
-showForm: !sent,
-submit: (e) => { e.preventDefault(); this.setState({ sent: true }); },
-reset: () => this.setState({ sent: false })
-};
-}
-}
-</script>
-<script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function () {
-    navigator.serviceWorker.register('./sw.js').catch(function (e) { console.warn('SW:', e); });
-  });
-}
-</script>
+<nav aria-label="Menu" style="display: flex; flex-direction: column">
+<a href="#produits" data-close-menu style="color: #FFFFFF; text-decoration: none; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 30px; padding: 14px 0; border-bottom: 1px solid #33456F">Produits</a>
+<a href="#gamme" data-close-menu style="color: #FFFFFF; text-decoration: none; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 30px; padding: 14px 0; border-bottom: 1px solid #33456F">Savoir-faire</a>
+<a href="#solutions" data-close-menu style="color: #FFFFFF; text-decoration: none; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 30px; padding: 14px 0; border-bottom: 1px solid #33456F">Solutions</a>
+<a href="#processus" data-close-menu style="color: #FFFFFF; text-decoration: none; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 30px; padding: 14px 0; border-bottom: 1px solid #33456F">Processus</a>
+</nav>
+<a href="#devis" data-close-menu style="align-self: flex-start; display: inline-flex; align-items: center; min-height: 52px; padding: 0 28px; border-radius: 999px; background: #F5B869; color: #141F45; font-weight: 600; text-decoration: none">Demander un devis</a>
+<div style="display: flex; gap: 10px">
+<a href="en.html" aria-label="English version" style="text-decoration: none; color: #FFFFFF; padding: 9px 16px; border-radius: 999px; border: 1.5px solid #FFFFFF; font-weight: 600">EN</a>
+<a href="ar.html" aria-label="النسخة العربية" style="text-decoration: none; color: #FFFFFF; padding: 9px 16px; border-radius: 999px; border: 1.5px solid #FFFFFF; font-weight: 600">عربي</a>
+</div>
+</div>
+</div>
+<div aria-hidden="true" class="intro" style="position: fixed; inset: 0; z-index: 100; pointer-events: none; background: #FFFFFF; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px">
+<img src="assets/img/logo.png" alt="" style="width: min(260px, 60vw); height: auto; display: block">
+<span class="bar" style="display: block; width: 120px; height: 5px; border-radius: 3px; background: #F5B869"></span>
+</div>
+</div>
+<script src="app.js" defer></script>
 </body>
 </html>

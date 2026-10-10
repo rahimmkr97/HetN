@@ -1,0 +1,23 @@
+H&N Packaging — site web installable (PWA)
+==========================================
+
+Contenu
+- index.html (français), en.html (anglais), ar.html (arabe)
+- app.js : menu mobile, formulaire de devis (envoi via WhatsApp), bouton d'installation
+- sw.js : fonctionnement hors ligne
+- manifest.webmanifest + assets/icons : nom, couleurs et icônes de l'application
+- assets/img : logo et photos
+
+Mettre en ligne (HTTPS obligatoire pour l'installation)
+1. GitHub Pages : créez un dépôt, déposez TOUT le contenu de ce dossier à la racine,
+   puis Settings > Pages > Deploy from branch (main / root).
+2. Ou Netlify : glissez-déposez ce dossier sur app.netlify.com/drop.
+3. Ou votre hébergeur : copiez le dossier dans le répertoire public du domaine.
+
+Installer l'application
+- Android / ordinateur (Chrome, Edge) : bouton « Installer l'application » en bas de page,
+  ou menu du navigateur > Installer.
+- iPhone (Safari) : bouton Partager > « Sur l'écran d'accueil ».
+
+Après une modification du site
+- Ouvrez sw.js et changez VERSION (ex. 'hn-v2') pour que les visiteurs reçoivent la nouvelle version.

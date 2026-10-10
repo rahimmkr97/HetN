@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>H&amp;N Packaging — Home</title>
+<meta name="description" content="H&N Packaging, Chaiba (Tipaza, Algeria): flexographic printing up to 8 colours on plastic films, solvent-free lamination, slitting, bags, PVC sleeves and labels. Free quote.">
+<meta name="theme-color" content="#141F45">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="assets/icons/favicon-48.png">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="H&amp;N Packaging">
+<meta property="og:title" content="H&amp;N Packaging — Home">
+<meta property="og:description" content="H&N Packaging, Chaiba (Tipaza, Algeria): flexographic printing up to 8 colours on plastic films, solvent-free lamination, slitting, bags, PVC sleeves and labels. Free quote.">
+<meta property="og:image" content="assets/img/gamme.jpg">
+<link rel="alternate" hreflang="fr" href="index.html">
+<link rel="alternate" hreflang="en" href="en.html">
+<link rel="alternate" hreflang="ar" href="ar.html">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+<style>
+body{margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:110px}
+a{color:#141F45}a:hover{color:#2A4185}
+@keyframes hnRise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes hnLine{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes hnMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes hnPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.7);opacity:.45}}
+@keyframes hnFloat{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-18px) rotate(4deg)}}
+@keyframes hnZoom{from{transform:scale(1)}to{transform:scale(1.08)}}
+.zoom{animation:hnZoom 18s ease-in-out infinite alternate}
+@media (prefers-reduced-motion:reduce){.zoom{animation:none}}
+h2::after{content:"";display:block;width:72px;height:5px;border-radius:3px;background:#F5B869;margin-top:16px}
+.faq summary{list-style:none}.faq summary::-webkit-details-marker{display:none}.faq .faq-ico{transition:transform .2s ease}.faq[open] .faq-ico{transform:rotate(45deg)}
+@keyframes hnSlide{0%{opacity:1}16.67%{opacity:1}20%{opacity:0}96.67%{opacity:0}100%{opacity:1}}
+.slide{opacity:0;animation:hnSlide 30s linear infinite,hnZoom 18s ease-in-out infinite alternate}
+@media (prefers-reduced-motion:reduce){.slide{animation:none;opacity:0}.slide.first{opacity:1}}
+.pcard .pimg img{transition:transform .5s ease}.pcard:hover .pimg img{transform:scale(1.08)}
+.pbtn{opacity:0;transform:translateY(10px);transition:opacity .25s ease,transform .25s ease}
+.pcard:hover .pbtn,.pbtn:focus-visible{opacity:1;transform:none}
+@media (hover:none){.pbtn{opacity:1;transform:none}}
+.pline{pointer-events:none}
+@keyframes hnDraw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes hnLight{from{background:#DDE3F3}to{background:#F5B869}}
+@supports (animation-timeline:view()){.pfill{animation:hnDraw linear both;animation-timeline:view();animation-range:entry 80% cover 50%}.pnum{animation:hnLight linear both;animation-timeline:view();animation-range:entry 85% cover 50%}}
+@media (max-width:1080px){.pline{display:none}}
+@media (prefers-reduced-motion:reduce){.pfill,.pnum{animation:none}}
+.burger{display:none}
+@media (max-width:860px){.navlinks{display:none!important}.burger{display:inline-flex}}
+@keyframes hnIntroOut{to{transform:translateY(-100%)}}
+@keyframes hnLogoIn{0%{opacity:0;transform:scale(.82)}60%{opacity:1;transform:scale(1.03)}100%{opacity:1;transform:scale(1)}}
+.intro{animation:hnIntroOut .75s 1.4s cubic-bezier(.7,0,.3,1) forwards}
+.intro img{animation:hnLogoIn .9s .1s ease-out both}
+.intro .bar{transform-origin:left;animation:hnLine 1s .35s ease-out both}
+@media (prefers-reduced-motion:reduce){.intro{display:none}}
+.rise{animation:hnRise .8s cubic-bezier(.2,.7,.2,1) both}
+.line{transform-origin:left;animation:hnLine .9s 2.2s cubic-bezier(.2,.7,.2,1) both}
+.pulse{animation:hnPulse 1.8s ease-in-out infinite}
+.float{animation:hnFloat 7s ease-in-out infinite}
+.marquee{animation:hnMarquee 28s linear infinite}
+.marquee:hover{animation-play-state:paused}
+.lift svg{transition:transform .35s cubic-bezier(.3,1.6,.5,1)}
+.lift:hover svg{transform:rotate(-8deg) scale(1.12)}
+.lift{transition:transform .25s ease,box-shadow .25s ease;box-shadow:0 1px 2px rgba(20,31,69,.06),0 10px 28px rgba(20,31,69,.07)}
+.lift:hover{transform:translateY(-6px);box-shadow:0 18px 36px rgba(20,31,69,.14)}
+a[style*="999px"],button{transition:transform .2s ease,box-shadow .2s ease}
+a[style*="999px"]:hover,button:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(20,31,69,.2)}
+@supports (animation-timeline:view()){.reveal{animation:hnRise linear both;animation-timeline:view();animation-range:entry 0% entry 55%}}
+@media (prefers-reduced-motion:reduce){.rise,.line,.pulse,.float,.marquee,.reveal{animation:none}.lift:hover{transform:none}}
+input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible{outline:3px solid #E8912D;outline-offset:2px}
+</style>
+<style>[hidden]{display:none!important}</style>
+</head>
+<body>
+<div style="font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #141F45; background: #F5F6F2; font-size: 17px; line-height: 1.55">
+
+<div style="background: #141F45; color: #FFFFFF; font-size: 15px">
+<div style="max-width: 1200px; margin: 0 auto; padding: 10px 24px; display: flex; align-items: center; gap: 10px">
+<span aria-hidden="true" class="pulse" style="width: 8px; height: 8px; border-radius: 50%; background: #E8912D; flex: none"></span>
+<span>Better Packaging, Brighter Tomorrow · Printing, lamination, slitting and bags in Chaiba, Tipaza</span>
+</div>
+</div>
+
+<header style="position: sticky; top: 0; z-index: 40; background: rgba(245,246,242,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid #E1E4DC">
+<div style="max-width: 1200px; margin: 0 auto; padding: 18px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 32px">
+<a href="#top" style="display: flex; align-items: center; text-decoration: none; min-height: 44px">
+<img src="assets/img/logo.png" alt="H&amp;N Packaging" style="height: 64px; width: auto; display: block; mix-blend-mode: multiply">
+</a>
+<nav class="navlinks" aria-label="Main navigation" style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 28px; font-weight: 500; font-size: 16px">
+<a href="#produits" style="text-decoration: none; padding: 11px 0">Products</a>
+<a href="#gamme" style="text-decoration: none; padding: 11px 0">Expertise</a>
+<a href="#solutions" style="text-decoration: none; padding: 11px 0">Solutions</a>
+<a href="#processus" style="text-decoration: none; padding: 11px 0">Process</a>
+<a href="index.html" aria-label="Version française" style="text-decoration: none; padding: 9px 14px; border-radius: 999px; border: 1.5px solid #141F45; font-weight: 600; font-size: 15px">FR</a>
+<a href="ar.html" aria-label="النسخة العربية" style="text-decoration: none; padding: 9px 14px; border-radius: 999px; border: 1.5px solid #141F45; font-weight: 600; font-size: 15px">عربي</a>
+<a href="#devis" style="text-decoration: none; padding: 11px 22px; border-radius: 999px; background: #F5B869; color: #141F45; font-weight: 600">Request a quote</a>
+</nav>
+<button type="button" class="burger" aria-label="Menu" data-open-menu style="width: 48px; height: 48px; align-items: center; justify-content: center; border: 1.5px solid #141F45; border-radius: 12px; background: #FFFFFF; color: #141F45; cursor: pointer"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
+</div>
+</header>
+
+<section id="top" style="position: relative; overflow: hidden; background: #141F45; color: #FFFFFF">
+<img class="slide first" src="assets/img/gamme.jpg" alt="H&amp;N Packaging flexible packaging range: bags, film on reels and printed packs" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center right; animation-delay: 0s, 0s">
+<img class="slide" src="assets/img/films-imprimes.jpg" alt="" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; animation-delay: -25s, 0s">
+<img class="slide" src="assets/img/films-complexes.jpg" alt="" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; animation-delay: -20s, 0s">
+<img class="slide" src="assets/img/sleeves-pvc.jpg" alt="" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; animation-delay: -15s, 0s">
+<img class="slide" src="assets/img/sachets.jpg" alt="" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; animation-delay: -10s, 0s">
+<img class="slide" src="assets/img/etiquettes.jpg" alt="" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; animation-delay: -5s, 0s">
+<div aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(20,31,69,0.94) 0%, rgba(20,31,69,0.82) 38%, rgba(20,31,69,0.25) 72%, rgba(20,31,69,0.05) 100%)"></div>
+<div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 96px 24px 112px; min-height: 640px; box-sizing: border-box; display: flex; align-items: center">
+<div style="max-width: 620px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
+<span class="rise" style="animation-delay: 1.5s; align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px; background: #FFFFFF; color: #141F45; font-size: 15px; font-weight: 500">
+<span aria-hidden="true" style="width: 8px; height: 8px; border-radius: 50%; background: #2A4185"></span>
+100% made in Algeria
+</span>
+<h1 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: clamp(44px, 5.6vw, 82px); line-height: 0.98; letter-spacing: -0.03em">
+<span class="rise" style="display: block; animation-delay: 1.60s">Global</span>
+<span class="rise" style="display: block; animation-delay: 1.72s">solutions for</span>
+<span class="rise" style="display: block; animation-delay: 1.84s; color: #F5B869">Flexible</span>
+<span class="rise" style="display: block; animation-delay: 1.96s; color: #F5B869">Packaging</span>
+</h1>
+<span aria-hidden="true" class="line" style="display: block; width: 140px; height: 6px; border-radius: 3px; background: #E8912D"></span>
+<p class="rise" style="margin: 0; max-width: 640px; font-size: 22px; line-height: 1.45; color: #FFFFFF; animation-delay: 2.10s">Innovation, durability and quality, tailored to your needs.</p>
+<div class="rise" style="display: flex; flex-wrap: wrap; gap: 14px; animation-delay: 2.22s">
+<a href="#devis" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 28px; border-radius: 999px; background: #F5B869; color: #141F45; font-weight: 600; text-decoration: none">Request a quote</a>
+<a href="#produits" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 28px; border-radius: 999px; border: 1.5px solid #FFFFFF; color: #FFFFFF; font-weight: 600; text-decoration: none">See our products</a>
+</div>
+</div>
+</div>
+</section>
+
+<section id="solutions" style="background: #FFFFFF">
+<div style="max-width: 1200px; margin: 0 auto; padding: 88px 24px 28px">
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 680px">
+<span style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #A85A12"><span aria-hidden="true" style="width: 28px; height: 2px; background: #A85A12"></span>Markets</span>
+<h2 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: clamp(28px, 3.4vw, 42px); line-height: 1.1; letter-spacing: -0.02em">A solution for every market</h2>
+<p style="margin: 0; color: #3D4763">Every product has its own needs for shelf life, machinability and presentation. We adapt the film, the structure and the print to your sector.</p>
+</div>
+</div>
+<div style="overflow: hidden; max-width: 1150px; margin: 0 auto 40px; padding: 12px 0 48px;-webkit-mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%)">
+<div class="marquee" style="display: flex; width: max-content; animation-duration: 60s">
+<ul style="margin: 0; padding: 0 20px 0 0; list-style: none; display: flex; gap: 20px">
+<li class="lift" style="flex: none; width: 250px; box-sizing: border-box; background: #F5F6F2; border-radius: 14px; padding: 28px 24px; display: flex; flex-direction: column; gap: 10px">
+<svg width="72" height="72" viewBox="0 0 48 48" fill="none" stroke="#141F45" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="26" r="20" fill="#DDE3F3" stroke="none"></circle><path d="M17 14h14v6l4 6v16H13V26l4-6z" fill="#FFFFFF"></path><path d="M17 14l3-6h8l3 6z" fill="#FFFFFF"></path><path d="M13 26h22"></path><path d="M24 29c2.5 3 3.5 4.500 3.5 6a3.500 3.500 0 0 1-7 0c0-1.500 1-3 3.500-6z" fill="#E8912D" stroke="none"></path></svg>
+<h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 20px">Dairy products</h3>
+<p style="margin: 0; color: #3D4763; font-size: 16px">Protect and preserve, all the way to the chilled aisle.</p>
+</li>
+<li class="lift" style="flex: none; width: 250px; box-sizing: border-box; background: #F5F6F2; border-radius: 14px; padding: 28px 24px; display: flex; flex-direction: column; gap: 10px">
+<svg width="72" height="72" viewBox="0 0 48 48" fill="none" stroke="#141F45" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="26" r="20" fill="#DDE3F3" stroke="none"></circle><path d="M24 18c-4-3-12-2-12 8 0 8 5 15 9 15 1.500 0 2-1 3-1s1.500 1 3 1c4 0 9-7 9-15 0-10-8-11-12-8z" fill="#FFFFFF"></path><path d="M24 18c0-4 2-7 5-9"></path><path d="M25 13c3-4 8-4 10-3-1 4-5 6-10 3z" fill="#E8912D" stroke="none"></path></svg>
+<h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 20px">Fresh food</h3>
+<p style="margin: 0; color: #3D4763; font-size: 16px">Keep freshness visible and intact.</p>
+</li>
+<li class="lift" style="flex: none; width: 250px; box-sizing: border-box; background: #F5F6F2; border-radius: 14px; padding: 28px 24px; display: flex; flex-direction: column; gap: 10px">
+<svg width="72" height="72" viewBox="0 0 48 48" fill="none" stroke="#141F45" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="26" r="20" fill="#DDE3F3" stroke="none"></circle><path d="M9 27h30a15 15 0 0 1-30 0z" fill="#FFFFFF"></path><path d="M6 27h36"></path><path d="M18 20c0-3 3-3 3-6M27 20c0-3 3-3 3-6" stroke="#E8912D" stroke-width="2.500"></path></svg>
+<h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 20px">Processed food</h3>
+<p style="margin: 0; color: #3D4763; font-size: 16px">Practical and safe for ready meals and preparations.</p>
+</li>
+<li class="lift" style="flex: none; width: 250px; box-sizing: border-box; background: #F5F6F2; border-radius: 14px; padding: 28px 24px; display: flex; flex-direction: column; gap: 10px">
+<svg width="72" height="72" viewBox="0 0 48 48" fill="none" stroke="#141F45" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="26" r="20" fill="#DDE3F3" stroke="none"></circle><path d="M24 43V18"></path><ellipse cx="24" cy="11" rx="3.500" ry="6" fill="#E8912D" stroke="none"></ellipse><ellipse cx="17" cy="20" rx="3" ry="6" transform="rotate(-35 17 20)" fill="#FFFFFF"></ellipse><ellipse cx="31" cy="20" rx="3" ry="6" transform="rotate(35 31 20)" fill="#FFFFFF"></ellipse><ellipse cx="17" cy="30" rx="3" ry="6" transform="rotate(-35 17 30)" fill="#FFFFFF"></ellipse><ellipse cx="31" cy="30" rx="3" ry="6" transform="rotate(35 31 30)" fill="#FFFFFF"></ellipse></svg>
+<h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 20px">Dry food</h3>
+<p style="margin: 0; color: #3D4763; font-size: 16px">Pasta, rice, pulses: protection that lasts.</p>
+</li>
+<li class="lift" style="flex: none; width: 250px; box-sizing: border-box; background: #F5F6F2; border-radius: 14px; padding: 28px 24px; display: flex; flex-direction: column; gap: 10px">
+<svg width="72" height="72" viewBox="0 0 48 48" fill="none" stroke="#141F45" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="26" r="20" fill="#DDE3F3" stroke="none"></circle><path d="M16 26 5 19v14z" fill="#E8912D" stroke-linejoin="round"></path><path d="M32 26l11-7v14z" fill="#E8912D" stroke-linejoin="round"></path><circle cx="24" cy="26" r="9" fill="#FFFFFF"></circle><path d="M19 24c2-3 8-3 10 0M19 29c2 3 8 3 10 0"></path></svg>
+<h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 20px">Snacks, bakery and confectionery</h3>
+<p style="margin: 0; color: #3D4763; font-size: 16px">Crunch kept in, with a finish that catches the eye.</p>
+</li>
+<li class="lift" style="flex: none; width: 250px; box-sizing: border-box; background: #F5F6F2; border-radius: 14px; padding: 28px 24px; display: flex; flex-direction: column; gap: 10px">
+<svg width="72" height="72" viewBox="0 0 48 48" fill="none" stroke="#141F45" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="26" r="20" fill="#DDE3F3" stroke="none"></circle><path d="M12 23h20v7a8 8 0 0 1-8 8h-4a8 8 0 0 1-8-8z" fill="#FFFFFF"></path><path d="M32 25h3a4 4 0 0 1 0 8h-3"></path><path d="M9 43h26"></path><path d="M18 17c0-3 3-3 3-6M25 17c0-3 3-3 3-6" stroke="#E8912D" stroke-width="2.500"></path></svg>
+<h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 20px">Coffee and tea</h3>
+<p style="margin: 0; color: #3D4763; font-size: 16px">Barrier films that keep the aroma in.</p>
+</li>
+<li class="lift" style="flex: none; width: 250px; box-sizing: border-box; background: #F5F6F2; border-radius: 14px; padding: 28px 24px; display: flex; flex-direction: column; gap: 10px">
+<svg width="72" height="72" viewBox="0 0 48 48" fill="none" stroke="#141F45" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="26" r="20" fill="#DDE3F3" stroke="none"></circle><path d="M14 16h20l-3 27H17z" fill="#FFFFFF"></path><path d="M15.200 27h17.600L31 43H17z" fill="#E8912D" stroke="none"></path><path d="M14 16h20l-3 27H17z"></path><path d="M26 16l4-10h6"></path></svg>
+<h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 20px">Beverages</h3>
+<p style="margin: 0; color: #3D4763; font-size: 16px">Printed labels and multipack films.</p>
+</li>
+<li class="lift" style="flex: none; width: 250px; box-sizing: border-box; background: #F5F6F2; border-radius: 14px; padding: 28px 24px; display: flex; flex-direction: column; gap: 10px">
+<svg width="72" height="72" viewBox="0 0 48 48" fill="none" stroke="#141F45" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="26" r="20" fill="#DDE3F3" stroke="none"></circle><rect x="15" y="23" width="18" height="20" rx="4" fill="#FFFFFF"></rect><path d="M21 23v-5h6v5"></path><path d="M24 18v-6h9v4"></path><path d="M24 29c2 2.500 3 4 3 5.500a3 3 0 0 1-6 0c0-1.500 1-3 3-5.500z" fill="#E8912D" stroke="none"></path></svg>
+<h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 20px">Personal care</h3>
+<p style="margin: 0; color: #3D4763; font-size: 16px">Wipes, hygiene, cosmetics: practical and well finished.</p>
+</li>
+<li class="lift" style="flex: none; width: 250px; box-sizing: border-box; background: #F5F6F2; border-radius: 14px; padding: 28px 24px; display: flex; flex-direction: column; gap: 10px">
+<svg width="72" height="72" viewBox="0 0 48 48" fill="none" stroke="#141F45" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="26" r="20" fill="#DDE3F3" stroke="none"></circle><path d="M16 25h12l3 18H13z" fill="#FFFFFF"></path><path d="M18 25v-6h8v6"></path><path d="M18 19v-6h13l-2 6"></path><path d="M37 9h.01M41 13h.01M37 17h.01" stroke="#E8912D" stroke-width="3.500"></path></svg>
+<h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 20px">Home care</h3>
+<p style="margin: 0; color: #3D4763; font-size: 16px">Tough films for detergents and laundry products.</p>
+</li>
+<li class="lift" style="flex: none; width: 250px; box-sizing: border-box; background: #F5F6F2; border-radius: 14px; padding: 28px 24px; display: flex; flex-direction: column; gap: 10px">
+<svg width="72" height="72" viewBox="0 0 48 48" fill="none" stroke="#141F45" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="26" r="20" fill="#DDE3F3" stroke="none"></circle><path d="M8 43V25l10 6v-6l10 6V14h8v29z" fill="#FFFFFF"></path><path d="M5 43h38"></path><rect x="13" y="35" width="5" height="5" fill="#E8912D" stroke="none"></rect><rect x="22" y="35" width="5" height="5" fill="#E8912D" stroke="none"></rect><path d="M32 9c0-3 3-3 3-6" stroke="#E8912D" stroke-width="2.500"></path></svg>
+<h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 20px">Industry and agrochemicals</h3>
+<p style="margin: 0; color: #3D4763; font-size: 16px">Strength and reliability for demanding uses.</p>
+</li>
+</ul>
+<ul aria-hidden="true" style="margin: 0; padding: 0 20px 0 0; list-style: none; display: flex; gap: 20px">
+<li class="lift" style="flex: none; width: 250px; box-sizing: border-box; background: #F5F6F2; border-radius: 14px; padding: 28px 24px; display: flex; flex-direction: column; gap: 10px">
+<svg width="72" height="72" viewBox="0 0 48 48" fill="none" stroke="#141F45" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="26" r="20" fill="#DDE3F3" stroke="none"></circle><path d="M17 14h14v6l4 6v16H13V26l4-6z" fill="#FFFFFF"></path><path d="M17 14l3-6h8l3 6z" fill="#FFFFFF"></path><path d="M13 26h22"></path><path d="M24 29c2.5 3 3.5 4.500 3.5 6a3.500 3.500 0 0 1-7 0c0-1.500 1-3 3.500-6z" fill="#E8912D" stroke="none"></path></svg>
+<div style="font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 20px">Dairy products</div>
+<p style="margin: 0; color: #3D4763; font-size: 16px">Protect and preserve, all the way to the chilled aisle.</p>
+</li>
+<li class="lift" style="flex: none; width: 250px; box-sizing: border-box; background: #F5F6F2; border-radius: 14px; padding: 28px 24px; display: flex; flex-direction: column; gap: 10px">
+<svg width="72" height="72" viewBox="0 0 48 48" fill="none" stroke="#141F45" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="26" r="20" fill="#DDE3F3" stroke="none"></circle><path d="M24 18c-4-3-12-2-12 8 0 8 5 15 9 15 1.500 0 2-1 3-1s1.500 1 3 1c4 0 9-7 9-15 0-10-8-11-12-8z" fill="#FFFFFF"></path><path d="M24 18c0-4 2-7 5-9"></path><path d="M25 13c3-4 8-4 10-3-1 4-5 6-10 3z" fill="#E8912D" stroke="none"></path></svg>
+<div style="font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 20px">Fresh food</div>
+<p style="margin: 0; color: #3D4763; font-size: 16px">Keep freshness visible and intact.</p>
+</li>
+<li class="lift" style="flex: none; width: 250px; box-sizing: border-box; background: #F5F6F2; border-radius: 14px; padding: 28px 24px; display: flex; flex-direction: column; gap: 10px">
+<svg width="72" height="72" viewBox="0 0 48 48" fill="none" stroke="#141F45" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="26" r="20" fill="#DDE3F3" stroke="none"></circle><path d="M9 27h30a15 15 0 0 1-30 0z" fill="#FFFFFF"></path><path d="M6 27h36"></path><path d="M18 20c0-3 3-3 3-6M27 20c0-3 3-3 3-6" stroke="#E8912D" stroke-width="2.500"></path></svg>
+<div style="font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 20px">Processed food</div>
+<p style="margin: 0; color: #3D4763; font-size: 16px">Practical and safe for ready meals and preparations.</p>
+</li>
+<li class="lift" style="flex: none; width: 250px; box-sizing: border-box; background: #F5F6F2; border-radius: 14px; padding: 28px 24px; display: flex; flex-direction: column; gap: 10px">
+<svg width="72" height="72" viewBox="0 0 48 48" fill="none" stroke="#141F45" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="26" r="20" fill="#DDE3F3" stroke="none"></circle><path d="M24 43V18"></path><ellipse cx="24" cy="11" rx="3.500" ry="6" fill="#E8912D" stroke="none"></ellipse><ellipse cx="17" cy="20" rx="3" ry="6" transform="rotate(-35 17 20)" fill="#FFFFFF"></ellipse><ellipse cx="31" cy="20" rx="3" ry="6" transform="rotate(35 31 20)" fill="#FFFFFF"></ellipse><ellipse cx="17" cy="30" rx="3" ry="6" transform="rotate(-35 17 30)" fill="#FFFFFF"></ellipse><ellipse cx="31" cy="30" rx="3" ry="6" transform="rotate(35 31 30)" fill="#FFFFFF"></ellipse></svg>
+<div style="font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 20px">Dry food</div>
+<p style="margin: 0; color: #3D4763; font-size: 16px">Pasta, rice, pulses: protection that lasts.</p>
+</li>
+<li class="lift" style="flex: none; width: 250px; box-sizing: border-box; background: #F5F6F2; border-radius: 14px; padding: 28px 24px; display: flex; flex-direction: column; gap: 10px">
+<svg width="72" height="72" viewBox="0 0 48 48" fill="none" stroke="#141F45" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="26" r="20" fill="#DDE3F3" stroke="none"></circle><path d="M16 26 5 19v14z" fill="#E8912D" stroke-linejoin="round"></path><path d="M32 26l11-7v14z" fill="#E8912D" stroke-linejoin="round"></path><circle cx="24" cy="26" r="9" fill="#FFFFFF"></circle><path d="M19 24c2-3 8-3 10 0M19 29c2 3 8 3 10 0"></path></svg>
+<div style="font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 20px">Snacks, bakery and confectionery</div>
+<p style="margin: 0; color: #3D4763; font-size: 16px">Crunch kept in, with a finish that catches the eye.</p>
+</li>
+<li class="lift" style="flex: none; width: 250px; box-sizing: border-box; background: #F5F6F2; border-radius: 14px; padding: 28px 24px; display: flex; flex-direction: column; gap: 10px">
+<svg width="72" height="72" viewBox="0 0 48 48" fill="none" stroke="#141F45" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="26" r="20" fill="#DDE3F3" stroke="none"></circle><path d="M12 23h20v7a8 8 0 0 1-8 8h-4a8 8 0 0 1-8-8z" fill="#FFFFFF"></path><path d="M32 25h3a4 4 0 0 1 0 8h-3"></path><path d="M9 43h26"></path><path d="M18 17c0-3 3-3 3-6M25 17c0-3 3-3 3-6" stroke="#E8912D" stroke-width="2.500"></path></svg>
+<div style="font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 20px">Coffee and tea</div>
+<p style="margin: 0; color: #3D4763; font-size: 16px">Barrier films that keep the aroma in.</p>
+</li>
+<li class="lift" style="flex: none; width: 250px; box-sizing: border-box; background: #F5F6F2; border-radius: 14px; padding: 28px 24px; display: flex; flex-direction: column; gap: 10px">
+<svg width="72" height="72" viewBox="0 0 48 48" fill="none" stroke="#141F45" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="26" r="20" fill="#DDE3F3" stroke="none"></circle><path d="M14 16h20l-3 27H17z" fill="#FFFFFF"></path><path d="M15.200 27h17.600L31 43H17z" fill="#E8912D" stroke="none"></path><path d="M14 16h20l-3 27H17z"></path><path d="M26 16l4-10h6"></path></svg>
+<div style="font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 20px">Beverages</div>
+<p style="margin: 0; color: #3D4763; font-size: 16px">Printed labels and multipack films.</p>
+</li>
+<li class="lift" style="flex: none; width: 250px; box-sizing: border-box; background: #F5F6F2; border-radius: 14px; padding: 28px 24px; display: flex; flex-direction: column; gap: 10px">
+<svg width="72" height="72" viewBox="0 0 48 48" fill="none" stroke="#141F45" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="26" r="20" fill="#DDE3F3" stroke="none"></circle><rect x="15" y="23" width="18" height="20" rx="4" fill="#FFFFFF"></rect><path d="M21 23v-5h6v5"></path><path d="M24 18v-6h9v4"></path><path d="M24 29c2 2.500 3 4 3 5.500a3 3 0 0 1-6 0c0-1.500 1-3 3-5.500z" fill="#E8912D" stroke="none"></path></svg>
+<div style="font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 20px">Personal care</div>
+<p style="margin: 0; color: #3D4763; font-size: 16px">Wipes, hygiene, cosmetics: practical and well finished.</p>
+</li>
+<li class="lift" style="flex: none; width: 250px; box-sizing: border-box; background: #F5F6F2; border-radius: 14px; padding: 28px 24px; display: flex; flex-direction: column; gap: 10px">
+<svg width="72" height="72" viewBox="0 0 48 48" fill="none" stroke="#141F45" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="26" r="20" fill="#DDE3F3" stroke="none"></circle><path d="M16 25h12l3 18H13z" fill="#FFFFFF"></path><path d="M18 25v-6h8v6"></path><path d="M18 19v-6h13l-2 6"></path><path d="M37 9h.01M41 13h.01M37 17h.01" stroke="#E8912D" stroke-width="3.500"></path></svg>
+<div style="font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 20px">Home care</div>
+<p style="margin: 0; color: #3D4763; font-size: 16px">Tough films for detergents and laundry products.</p>
+</li>
+<li class="lift" style="flex: none; width: 250px; box-sizing: border-box; background: #F5F6F2; border-radius: 14px; padding: 28px 24px; display: flex; flex-direction: column; gap: 10px">
+<svg width="72" height="72" viewBox="0 0 48 48" fill="none" stroke="#141F45" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="26" r="20" fill="#DDE3F3" stroke="none"></circle><path d="M8 43V25l10 6v-6l10 6V14h8v29z" fill="#FFFFFF"></path><path d="M5 43h38"></path><rect x="13" y="35" width="5" height="5" fill="#E8912D" stroke="none"></rect><rect x="22" y="35" width="5" height="5" fill="#E8912D" stroke="none"></rect><path d="M32 9c0-3 3-3 3-6" stroke="#E8912D" stroke-width="2.500"></path></svg>
+<div style="font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 20px">Industry and agrochemicals</div>
+<p style="margin: 0; color: #3D4763; font-size: 16px">Strength and reliability for demanding uses.</p>
+</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section id="produits" style="background: #141F45; color: #FFFFFF; border-radius: 36px; margin: 48px max(16px, calc((100% - 1296px) / 2)) 0">
+<div style="max-width: 1200px; margin: 0 auto; padding: 88px 24px">
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 680px; margin-bottom: 40px">
+<span style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #F5B869"><span aria-hidden="true" style="width: 28px; height: 2px; background: #F5B869"></span>Products</span>
+<h2 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: clamp(28px, 3.4vw, 42px); line-height: 1.1; letter-spacing: -0.02em">Our products</h2>
+<p style="margin: 0; color: #CBD2E4">On the reel or as bags, printed in your colours or plain, made to your dimensions.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 20px">
+<article class="lift reveal pcard" style="flex: 1 1 320px; min-width: 0; background: #FFFFFF; color: #141F45; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
+<div class="pimg" style="position: relative; overflow: hidden"><img src="assets/img/films-imprimes.jpg" alt="H&amp;N Packaging printed film reels" style="display: block; width: 100%; height: 190px; object-fit: cover"><a class="pbtn" href="#devis" data-pick="film" style="position: absolute; inset-inline-start: 16px; bottom: 16px; display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 999px; background: #F5B869; color: #141F45; font-weight: 600; text-decoration: none; box-shadow: 0 8px 20px rgba(20,31,69,0.3)">Request a quote</a></div>
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 21px">Printed film on reels</h3>
+<p style="margin: 0; color: #3D4763; font-size: 16px">For your automatic packing lines: flow-pack, vertical and horizontal form-fill-seal machines.</p>
+</div>
+</article>
+<article class="lift reveal pcard" style="flex: 1 1 320px; min-width: 0; background: #FFFFFF; color: #141F45; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
+<div class="pimg" style="position: relative; overflow: hidden"><img src="assets/img/films-complexes.jpg" alt="H&amp;N Packaging laminated film reel" style="display: block; width: 100%; height: 190px; object-fit: cover"><a class="pbtn" href="#devis" data-pick="complexe" style="position: absolute; inset-inline-start: 16px; bottom: 16px; display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 999px; background: #F5B869; color: #141F45; font-weight: 600; text-decoration: none; box-shadow: 0 8px 20px rgba(20,31,69,0.3)">Request a quote</a></div>
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 21px">Laminated films</h3>
+<p style="margin: 0; color: #3D4763; font-size: 16px">Two- or three-layer structures for products that need a stronger barrier.</p>
+</div>
+</article>
+<article class="lift reveal pcard" style="flex: 1 1 320px; min-width: 0; background: #FFFFFF; color: #141F45; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
+<div class="pimg" style="position: relative; overflow: hidden"><img src="assets/img/sleeves-pvc.jpg" alt="H&amp;N Packaging printed PVC sleeves on bottles and on the reel" style="display: block; width: 100%; height: 190px; object-fit: cover"><a class="pbtn" href="#devis" data-pick="sleeve" style="position: absolute; inset-inline-start: 16px; bottom: 16px; display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 999px; background: #F5B869; color: #141F45; font-weight: 600; text-decoration: none; box-shadow: 0 8px 20px rgba(20,31,69,0.3)">Request a quote</a></div>
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 21px">PVC sleeves</h3>
+<p style="margin: 0; color: #3D4763; font-size: 16px">Printed shrink sleeves that follow the shape of your bottles and containers.</p>
+</div>
+</article>
+<article class="lift reveal pcard" style="flex: 1 1 320px; min-width: 0; background: #FFFFFF; color: #141F45; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
+<div class="pimg" style="position: relative; overflow: hidden"><img src="assets/img/sachets.jpg" alt="H&amp;N Packaging range of printed bags" style="display: block; width: 100%; height: 190px; object-fit: cover"><a class="pbtn" href="#devis" data-pick="sachet" style="position: absolute; inset-inline-start: 16px; bottom: 16px; display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 999px; background: #F5B869; color: #141F45; font-weight: 600; text-decoration: none; box-shadow: 0 8px 20px rgba(20,31,69,0.3)">Request a quote</a></div>
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 21px">Bags</h3>
+<p style="margin: 0; color: #3D4763; font-size: 16px">Preformed bags, ready to fill.</p>
+</div>
+</article>
+<article class="lift reveal pcard" style="flex: 1 1 320px; min-width: 0; background: #FFFFFF; color: #141F45; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
+<div class="pimg" style="position: relative; overflow: hidden"><img src="assets/img/etiquettes.jpg" alt="H&amp;N Packaging printed labels on the reel and as singles" style="display: block; width: 100%; height: 190px; object-fit: cover"><a class="pbtn" href="#devis" data-pick="etiquette" style="position: absolute; inset-inline-start: 16px; bottom: 16px; display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 999px; background: #F5B869; color: #141F45; font-weight: 600; text-decoration: none; box-shadow: 0 8px 20px rgba(20,31,69,0.3)">Request a quote</a></div>
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 21px">Labels</h3>
+<p style="margin: 0; color: #3D4763; font-size: 16px">Printed labels on reels for bottles, jars and containers.</p>
+</div>
+</article>
+</div>
+</div>
+</section>
+
+<section id="gamme">
+<div style="max-width: 1200px; margin: 0 auto; padding: 88px 24px">
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 680px; margin-bottom: 40px">
+<span style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #A85A12"><span aria-hidden="true" style="width: 28px; height: 2px; background: #A85A12"></span>Expertise</span>
+<h2 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: clamp(28px, 3.4vw, 42px); line-height: 1.1; letter-spacing: -0.02em">Four operations under one roof</h2>
+<p style="margin: 0; color: #3D4763">Printing, lamination, slitting and bag making are all done in the same plant: one point of contact, from your artwork to the reel or the ready-to-fill bag.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 20px">
+<article class="lift reveal" style="flex: 1 1 250px; min-width: 0; background: #FFFFFF; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
+<img src="assets/img/impression.jpg" alt="H&amp;N Packaging flexographic printing press" style="display: block; width: 100%; height: 240px; object-fit: contain; background: #FFFFFF; padding: 12px; box-sizing: border-box">
+<div style="padding: 28px; display: flex; flex-direction: column; gap: 12px">
+<h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 23px">Flexographic printing</h3>
+<p style="margin: 0; color: #3D4763; font-size: 16px">Dense solids, sharp text and colours true to your brand, run after run.</p>
+<ul style="margin: 4px 0 0; padding: 0 0 0 20px; display: flex; flex-direction: column; gap: 6px; font-size: 16px; color: #3D4763">
+<li>Up to 8 colours</li>
+<li>Maximum web width 1160 mm</li>
+<li>Proof approved before the print run</li>
+</ul>
+</div>
+</article>
+<article class="lift reveal" style="flex: 1 1 250px; min-width: 0; background: #FFFFFF; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
+<img src="assets/img/complexage.jpg" alt="H&amp;N Packaging film lamination" style="display: block; width: 100%; height: 240px; object-fit: contain; background: #FFFFFF; padding: 12px; box-sizing: border-box">
+<div style="padding: 28px; display: flex; flex-direction: column; gap: 12px">
+<h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 23px">Lamination</h3>
+<p style="margin: 0; color: #3D4763; font-size: 16px">Several films combined for the barrier, stiffness and sealability your product requires.</p>
+<ul style="margin: 4px 0 0; padding: 0 0 0 20px; display: flex; flex-direction: column; gap: 6px; font-size: 16px; color: #3D4763">
+<li>Structures: [DUPLEX / TRIPLEX]</li>
+<li>Solvent-free lamination</li>
+<li>Print protected between the layers</li>
+</ul>
+</div>
+</article>
+<article class="lift reveal" style="flex: 1 1 250px; min-width: 0; background: #FFFFFF; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
+<img src="assets/img/refente.jpg" alt="H&amp;N Packaging reel slitting" style="display: block; width: 100%; height: 240px; object-fit: contain; background: #FFFFFF; padding: 12px; box-sizing: border-box">
+<div style="padding: 28px; display: flex; flex-direction: column; gap: 12px">
+<h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 23px">Slitting</h3>
+<p style="margin: 0; color: #3D4763; font-size: 16px">Reels cut to the exact width of your machines, with even winding.</p>
+<ul style="margin: 4px 0 0; padding: 0 0 0 20px; display: flex; flex-direction: column; gap: 6px; font-size: 16px; color: #3D4763">
+<li>Maximum web width 1350 mm</li>
+<li>Cores [76 / 152] mm</li>
+<li>Maximum diameter 400 mm</li>
+</ul>
+</div>
+</article>
+<article class="lift reveal" style="flex: 1 1 250px; min-width: 0; background: #FFFFFF; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
+<img src="assets/img/sachets-machine.jpg" alt="H&amp;N Packaging bag making" style="display: block; width: 100%; height: 240px; object-fit: contain; background: #FFFFFF; padding: 12px; box-sizing: border-box">
+<div style="padding: 28px; display: flex; flex-direction: column; gap: 12px">
+<h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 23px">Bag making</h3>
+<p style="margin: 0; color: #3D4763; font-size: 16px">Your films converted into ready-to-fill bags, printed or plain, to your dimensions.</p>
+<ul style="margin: 4px 0 0; padding: 0 0 0 20px; display: flex; flex-direction: column; gap: 6px; font-size: 16px; color: #3D4763">
+<li>Types: [STAND-UP / 3-SIDE SEAL / FLAT BOTTOM…]</li>
+<li>Options: [ZIP / TEAR NOTCH / EURO HOLE]</li>
+</ul>
+</div>
+</article>
+</div>
+</div>
+</section>
+
+<section id="processus" style="padding: 56px 16px 0">
+<div style="max-width: 1296px; box-sizing: border-box; margin: 0 auto; padding: 64px clamp(20px, 4vw, 48px); background: #FFFFFF; border: 2px solid #2A4185; border-radius: 36px">
+<span style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #A85A12"><span aria-hidden="true" style="width: 28px; height: 2px; background: #A85A12"></span>Process</span>
+<h2 style="margin: 0 0 40px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: clamp(28px, 3.4vw, 42px); line-height: 1.1; letter-spacing: -0.02em">From your request to delivery</h2>
+<ol style="position: relative; margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 32px 24px">
+<li aria-hidden="true" class="pline" style="position: absolute; top: 21px; inset-inline-start: 22px; inset-inline-end: calc(25% - 40px); height: 3px; border-radius: 2px; background: #DDE3F3"><span class="pfill" style="display: block; height: 100%; border-radius: 2px; background: #F5B869; transform-origin: left"></span></li>
+<li class="reveal" style="flex: 1 1 230px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
+<span aria-hidden="true" class="pnum" style="position: relative; z-index: 1; width: 44px; height: 44px; border-radius: 50%; background: #F5B869; color: #141F45; display: inline-flex; align-items: center; justify-content: center; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 18px">1</span>
+<h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 21px">Your request</h3>
+<p style="margin: 0; color: #3D4763; font-size: 16px">You describe the product, the format you want and the quantity. One form is enough.</p>
+</li>
+<li class="reveal" style="flex: 1 1 230px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
+<span aria-hidden="true" class="pnum" style="position: relative; z-index: 1; width: 44px; height: 44px; border-radius: 50%; background: #F5B869; color: #141F45; display: inline-flex; align-items: center; justify-content: center; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 18px">2</span>
+<h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 21px">The quote</h3>
+<p style="margin: 0; color: #3D4763; font-size: 16px">An adviser replies within [LEAD TIME] with a price, a material and a delivery time. It is free.</p>
+</li>
+<li class="reveal" style="flex: 1 1 230px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
+<span aria-hidden="true" class="pnum" style="position: relative; z-index: 1; width: 44px; height: 44px; border-radius: 50%; background: #F5B869; color: #141F45; display: inline-flex; align-items: center; justify-content: center; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 18px">3</span>
+<h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 21px">The artwork</h3>
+<p style="margin: 0; color: #3D4763; font-size: 16px">You send your artwork, or our team designs it for you. You approve the proof before printing.</p>
+</li>
+<li class="reveal" style="flex: 1 1 230px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
+<span aria-hidden="true" class="pnum" style="position: relative; z-index: 1; width: 44px; height: 44px; border-radius: 50%; background: #F5B869; color: #141F45; display: inline-flex; align-items: center; justify-content: center; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 18px">4</span>
+<h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 21px">Production</h3>
+<p style="margin: 0; color: #3D4763; font-size: 16px">Printing, lamination, slitting or bag making, inspection, then delivery.</p>
+</li>
+</ol>
+</div>
+</section>
+
+<section aria-label="Our commitments">
+<div style="max-width: 1200px; margin: 0 auto; padding: 88px 24px; display: flex; flex-wrap: wrap; gap: 20px">
+<div class="lift reveal" style="flex: 1 1 300px; min-width: 0; background: #FFFFFF; border-radius: 14px; padding: 32px; display: flex; flex-direction: column; gap: 12px">
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#2A4185" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 28V13l8 5v-5l8 5V6h8v22z"></path><line x1="3" y1="28" x2="29" y2="28"></line></svg>
+<h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 22px">Made in Algeria</h3>
+<p style="margin: 0; color: #3D4763; font-size: 16px">Your films come out of our plant in Chaiba, Tipaza province.</p>
+</div>
+<div class="lift reveal" style="flex: 1 1 300px; min-width: 0; background: #FFFFFF; border-radius: 14px; padding: 32px; display: flex; flex-direction: column; gap: 12px">
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#2A4185" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11 16 5l12 6-12 6z"></path><path d="M4 16l12 6 12-6"></path><path d="M4 21l12 6 12-6"></path></svg>
+<h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 22px">One production chain</h3>
+<p style="margin: 0; color: #3D4763; font-size: 16px">Printing, lamination, slitting and bags in one place: fewer intermediaries and quality followed from start to finish.</p>
+</div>
+<div class="lift reveal" style="flex: 1 1 300px; min-width: 0; background: #FFFFFF; border-radius: 14px; padding: 32px; display: flex; flex-direction: column; gap: 12px">
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#2A4185" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="9" width="17" height="13"></rect><path d="M19 13h6l5 5v4H19z"></path><circle cx="9" cy="24" r="3"></circle><circle cx="24" cy="24" r="3"></circle></svg>
+<h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 22px">Fast delivery</h3>
+<p style="margin: 0; color: #3D4763; font-size: 16px">Local production: no transit or customs clearance to wait for.</p>
+</div>
+</div>
+</section>
+
+<section id="durabilite">
+<div style="max-width: 1200px; margin: 0 auto; padding: 24px 24px 88px">
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 680px; margin-bottom: 40px">
+<span style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #A85A12"><span aria-hidden="true" style="width: 28px; height: 2px; background: #A85A12"></span>Commitment</span>
+<h2 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: clamp(28px, 3.4vw, 42px); line-height: 1.1; letter-spacing: -0.02em">More responsible packaging</h2>
+<p style="margin: 0; color: #3D4763">Good packaging protects your product with just the right amount of material.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 20px">
+<div class="lift reveal" style="flex: 1 1 300px; min-width: 0; background: #FFFFFF; border-radius: 14px; border-top: 5px solid #F5B869; padding: 32px; display: flex; flex-direction: column; gap: 12px">
+<svg width="40" height="40" viewBox="0 0 32 32" fill="none" stroke="#2A4185" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 25C7 13 15 7 26 6c0 12-7 19-19 19z" fill="#DDE3F3"></path><path d="M7 25 18 14"></path></svg>
+<h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 22px">Solvent-free lamination</h3>
+<p style="margin: 0; color: #3D4763; font-size: 16px">Our films are laminated without solvents: fewer emissions in the plant and no solvent in your packaging.</p>
+</div>
+<div class="lift reveal" style="flex: 1 1 300px; min-width: 0; background: #FFFFFF; border-radius: 14px; border-top: 5px solid #F5B869; padding: 32px; display: flex; flex-direction: column; gap: 12px">
+<svg width="40" height="40" viewBox="0 0 32 32" fill="none" stroke="#2A4185" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h22M5 20h22"></path><path d="M16 4v6M16 22v6"></path><path d="M12 8l4 4 4-4M12 24l4-4 4 4"></path></svg>
+<h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 22px">Just the right thickness</h3>
+<p style="margin: 0; color: #3D4763; font-size: 16px">We recommend the thinnest structure that still protects your product properly, so less material is used.</p>
+</div>
+<div class="lift reveal" style="flex: 1 1 300px; min-width: 0; background: #FFFFFF; border-radius: 14px; border-top: 5px solid #F5B869; padding: 32px; display: flex; flex-direction: column; gap: 12px">
+<svg width="40" height="40" viewBox="0 0 32 32" fill="none" stroke="#2A4185" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 28s9-8.5 9-15a9 9 0 0 0-18 0c0 6.5 9 15 9 15z" fill="#DDE3F3"></path><circle cx="16" cy="13" r="3.5"></circle></svg>
+<h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 22px">Made close to you</h3>
+<p style="margin: 0; color: #3D4763; font-size: 16px">Local production in Tipaza means less transport between our plant and your lines.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="faq" style="background: #FFFFFF">
+<div style="max-width: 900px; margin: 0 auto; padding: 88px 24px">
+<div style="margin-bottom: 32px"><span style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #A85A12"><span aria-hidden="true" style="width: 28px; height: 2px; background: #A85A12"></span>FAQ</span>
+<h2 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: clamp(28px, 3.4vw, 42px); line-height: 1.1; letter-spacing: -0.02em">Frequently asked questions</h2></div>
+<div style="border-top: 1px solid #D5D9D0">
+<details class="faq" style="border-bottom: 1px solid #D5D9D0">
+<summary style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 44px; padding: 18px 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 19px">Can you design our packaging artwork?<span aria-hidden="true" class="faq-ico" style="flex: none; width: 32px; height: 32px; border-radius: 50%; background: #F5B869; color: #141F45; display: inline-flex; align-items: center; justify-content: center; font-size: 22px; line-height: 1">+</span></summary>
+<p style="margin: 0 0 20px; color: #3D4763">Yes. Our team can design your artwork or adapt your files for flexographic printing. You approve the proof before any print run.</p>
+</details>
+<details class="faq" style="border-bottom: 1px solid #D5D9D0">
+<summary style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 44px; padding: 18px 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 19px">How many colours can you print?<span aria-hidden="true" class="faq-ico" style="flex: none; width: 32px; height: 32px; border-radius: 50%; background: #F5B869; color: #141F45; display: inline-flex; align-items: center; justify-content: center; font-size: 22px; line-height: 1">+</span></summary>
+<p style="margin: 0 0 20px; color: #3D4763">Up to 8 colours, on a maximum web width of 1160 mm.</p>
+</details>
+<details class="faq" style="border-bottom: 1px solid #D5D9D0">
+<summary style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 44px; padding: 18px 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 19px">Which files should we send?<span aria-hidden="true" class="faq-ico" style="flex: none; width: 32px; height: 32px; border-radius: 50%; background: #F5B869; color: #141F45; display: inline-flex; align-items: center; justify-content: center; font-size: 22px; line-height: 1">+</span></summary>
+<p style="margin: 0 0 20px; color: #3D4763">Ideally a vector file (PDF, AI or EPS) with text converted to outlines. If you only have a photo or an old pack, we can work from that.</p>
+</details>
+<details class="faq" style="border-bottom: 1px solid #D5D9D0">
+<summary style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 44px; padding: 18px 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 19px">What is the minimum order quantity?<span aria-hidden="true" class="faq-ico" style="flex: none; width: 32px; height: 32px; border-radius: 50%; background: #F5B869; color: #141F45; display: inline-flex; align-items: center; justify-content: center; font-size: 22px; line-height: 1">+</span></summary>
+<p style="margin: 0 0 20px; color: #3D4763">It depends on the product, the structure and the number of colours. Tell us what you need and we will make you a suitable offer.</p>
+</details>
+<details class="faq" style="border-bottom: 1px solid #D5D9D0">
+<summary style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 44px; padding: 18px 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 19px">What is the production lead time?<span aria-hidden="true" class="faq-ico" style="flex: none; width: 32px; height: 32px; border-radius: 50%; background: #F5B869; color: #141F45; display: inline-flex; align-items: center; justify-content: center; font-size: 22px; line-height: 1">+</span></summary>
+<p style="margin: 0 0 20px; color: #3D4763">It depends on the quantity and how complex the pack is. We give it to you with the quote.</p>
+</details>
+</div>
+</div>
+</section>
+
+<section id="devis" style="border-top: 1px solid #D5D9D0; max-width: 1200px; margin: 0 auto; padding: 88px 24px; display: flex; flex-wrap: wrap; gap: 56px">
+<div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<span style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #A85A12"><span aria-hidden="true" style="width: 28px; height: 2px; background: #A85A12"></span>Free quote</span>
+<h2 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: clamp(28px, 3.4vw, 42px); line-height: 1.1; letter-spacing: -0.02em">Let's talk about your packaging</h2>
+<p style="margin: 0; color: #3D4763">Tell us the product, the format and the quantity. One of our advisers replies and prepares your quote free of charge.</p>
+<div style="display: flex; flex-direction: column; gap: 6px; margin-top: 12px">
+<span style="font-weight: 500; color: #3D4763">Or call us</span>
+<a href="tel:+213561703451" style="font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 24px; padding: 8px 0; text-decoration: none">+213 561 70 34 51</a>
+<a href="tel:+213540050536" style="font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 24px; padding: 8px 0; text-decoration: none">+213 540 05 05 36</a>
+<a href="mailto:haitham.naime@gmail.com" style="font-weight: 500; padding: 10px 0">haitham.naime@gmail.com</a>
+<a href="https://wa.me/213561703451?text=Hello%20H%26N%20Packaging%2C%20I%20would%20like%20a%20quote." target="_blank" rel="noopener" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; min-height: 48px; margin-top: 6px; padding: 0 20px; border-radius: 999px; background: #128C4A; color: #FFFFFF; font-weight: 600; text-decoration: none"><svg width="22" height="22" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4a12 12 0 0 0-10.4 18L4 28l6.2-1.6A12 12 0 1 0 16 4z"></path><path d="M12 12c0 4.5 3.5 8 8 8l1.5-2.5-3-1.5-1.5 1.5c-1.5-.5-2.5-1.5-3-3l1.5-1.5-1.5-3z"></path></svg>Message us on WhatsApp</a>
+<span style="color: #3D4763; margin-top: 10px">Cité Chaig, route de Fouka, commune de Chaiba, W. Tipaza</span>
+<a href="https://maps.app.goo.gl/NBDXT7T5S2sNAC857" target="_blank" rel="noopener" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; padding: 10px 0"><svg width="20" height="20" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 28s9-8.5 9-15a9 9 0 0 0-18 0c0 6.5 9 15 9 15z"></path><circle cx="16" cy="13" r="3.5"></circle></svg>View on Google Maps</a>
+</div>
+</div>
+<div style="flex: 1 1 480px; min-width: 0; background: #FFFFFF; color: #141F45; border-radius: 14px; padding: 32px">
+<div id="quote-form-wrap">
+<form id="quote-form" data-wa-title="New quote request (website)" style="display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; flex-wrap: wrap; gap: 20px">
+<div style="flex: 1 1 200px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
+<label for="f-nom" style="font-weight: 600; font-size: 15px">Full name</label>
+<input id="f-nom" name="nom" type="text" required="" autocomplete="name" style="height: 48px; padding: 0 14px; border: 1.5px solid #8A93A6; border-radius: 8px; font: inherit; box-sizing: border-box; width: 100%">
+</div>
+<div style="flex: 1 1 200px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
+<label for="f-societe" style="font-weight: 600; font-size: 15px">Company</label>
+<input id="f-societe" name="societe" type="text" required="" autocomplete="organization" style="height: 48px; padding: 0 14px; border: 1.5px solid #8A93A6; border-radius: 8px; font: inherit; box-sizing: border-box; width: 100%">
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 20px">
+<div style="flex: 1 1 200px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
+<label for="f-tel" style="font-weight: 600; font-size: 15px">Phone</label>
+<input id="f-tel" name="tel" type="tel" required="" autocomplete="tel" style="height: 48px; padding: 0 14px; border: 1.5px solid #8A93A6; border-radius: 8px; font: inherit; box-sizing: border-box; width: 100%">
+</div>
+<div style="flex: 1 1 200px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
+<label for="f-email" style="font-weight: 600; font-size: 15px">Email</label>
+<input id="f-email" name="email" type="email" autocomplete="email" style="height: 48px; padding: 0 14px; border: 1.5px solid #8A93A6; border-radius: 8px; font: inherit; box-sizing: border-box; width: 100%">
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 20px">
+<div style="flex: 1 1 200px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
+<label for="f-besoin" style="font-weight: 600; font-size: 15px">What you need</label>
+<select id="f-besoin" name="besoin" style="height: 48px; padding: 0 10px; border: 1.5px solid #8A93A6; border-radius: 8px; font: inherit; background: #FFFFFF; box-sizing: border-box; width: 100%">
+<option value="film">Printed film on reels</option>
+<option value="complexe">Printed laminated film</option>
+<option value="sleeve">PVC sleeves</option>
+<option value="sachet">Printed or plain bags</option>
+<option value="etiquette">Labels</option>
+<option value="refente">Contract slitting</option>
+<option value="autre">Other request</option>
+</select>
+</div>
+<div style="flex: 1 1 200px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
+<label for="f-qte" style="font-weight: 600; font-size: 15px">Estimated quantity (kg)</label>
+<input id="f-qte" name="quantite" type="number" min="0" style="height: 48px; padding: 0 14px; border: 1.5px solid #8A93A6; border-radius: 8px; font: inherit; box-sizing: border-box; width: 100%">
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="f-msg" style="font-weight: 600; font-size: 15px">Product to pack, dimensions, number of colours</label>
+<textarea id="f-msg" name="message" rows="4" style="padding: 12px 14px; border: 1.5px solid #8A93A6; border-radius: 8px; font: inherit; box-sizing: border-box; width: 100%; resize: vertical"></textarea>
+</div>
+<button type="submit" style="min-height: 52px; padding: 0 28px; border: 0; border-radius: 999px; background: #F5B869; color: #141F45; font: inherit; font-weight: 600; cursor: pointer; align-self: flex-start">Request a quote</button>
+</form>
+</div>
+<div id="quote-sent" hidden>
+<div role="status" style="display: flex; flex-direction: column; gap: 16px; padding: 24px 0">
+<h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 26px">Request received.</h3>
+<p style="margin: 0; color: #3D4763">Thank you. Your request has opened in WhatsApp: send the message and an adviser will contact you shortly.</p>
+<button type="button" id="quote-reset" style="min-height: 48px; padding: 0 22px; border: 1.5px solid #141F45; border-radius: 999px; background: #FFFFFF; color: #141F45; font: inherit; font-weight: 600; cursor: pointer; align-self: flex-start">Send another request</button>
+</div>
+</div>
+</div>
+</section>
+
+<footer style="background: #2A4185; color: #E3E8F5; border-top: 6px solid #F5B869">
+<div style="max-width: 1200px; margin: 0 auto; padding: 56px 24px 32px; display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; flex-wrap: wrap; gap: 40px 56px; justify-content: space-between">
+<div style="flex: 1 1 280px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<img src="assets/img/logo.png" alt="H&amp;N Packaging" style="height: 72px; width: auto; align-self: flex-start; display: block; background: #FFFFFF; padding: 12px; border-radius: 12px">
+<span style="max-width: 320px">Flexographic printing on plastic films, lamination, slitting and bag making.</span>
+<span style="font-family: 'Archivo', sans-serif; font-weight: 700; color: #F5B869">Better Packaging, Brighter Tomorrow</span>
+</div>
+<nav aria-label="Footer" style="flex: 0 1 200px; display: flex; flex-direction: column; font-size: 16px">
+<a href="#produits" style="padding: 10px 0; color: #FFFFFF">Products</a>
+<a href="#gamme" style="padding: 10px 0; color: #FFFFFF">Expertise</a>
+<a href="#solutions" style="padding: 10px 0; color: #FFFFFF">Solutions</a>
+<a href="#processus" style="padding: 10px 0; color: #FFFFFF">Process</a>
+</nav>
+<div style="flex: 0 1 280px; display: flex; flex-direction: column; gap: 10px; font-size: 16px">
+<span style="color: #FFFFFF; font-weight: 600">Contact</span>
+<span>Cité Chaig, route de Fouka, commune de Chaiba, W. Tipaza</span>
+<span>+213 561 70 34 51</span>
+<span>haitham.naime@gmail.com</span>
+<a href="https://maps.app.goo.gl/NBDXT7T5S2sNAC857" target="_blank" rel="noopener" style="color: #FFFFFF; display: inline-flex; align-items: center; gap: 8px; padding: 10px 0"><svg width="20" height="20" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 28s9-8.5 9-15a9 9 0 0 0-18 0c0 6.5 9 15 9 15z"></path><circle cx="16" cy="13" r="3.5"></circle></svg>View on Google Maps</a>
+</div>
+</div>
+<div style="border-top: 1px solid #6F82BC; padding-top: 24px; font-size: 14px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px">
+<button type="button" id="install-app" hidden style="min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1.5px solid #F5B869; background: transparent; color: #FFFFFF; font: inherit; font-weight: 600; cursor: pointer">Install the app</button>
+<span>© 2026 H&amp;N Packaging. All rights reserved.</span>
+</div>
+</div>
+</footer>
+
+<a href="https://wa.me/213561703451?text=Hello%20H%26N%20Packaging%2C%20I%20would%20like%20a%20quote." target="_blank" rel="noopener" aria-label="Message us on WhatsApp" style="position: fixed; right: 20px; bottom: 20px; z-index: 50; display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 20px; border-radius: 999px; background: #128C4A; color: #FFFFFF; font-weight: 600; text-decoration: none; box-shadow: 0 10px 24px rgba(0,0,0,0.25)"><svg width="22" height="22" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4a12 12 0 0 0-10.4 18L4 28l6.2-1.6A12 12 0 1 0 16 4z"></path><path d="M12 12c0 4.5 3.5 8 8 8l1.5-2.5-3-1.5-1.5 1.5c-1.5-.5-2.5-1.5-3-3l1.5-1.5-1.5-3z"></path></svg><span>WhatsApp</span></a>
+<div id="mobile-menu" hidden>
+<div role="dialog" aria-modal="true" aria-label="Menu" style="position: fixed; inset: 0; z-index: 90; background: #141F45; color: #FFFFFF; overflow-y: auto; padding: 20px 24px 40px; box-sizing: border-box; display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 16px">
+<span style="display: inline-flex; background: #FFFFFF; padding: 8px; border-radius: 12px"><img src="assets/img/logo.png" alt="H&amp;N Packaging" style="height: 48px; width: auto; display: block"></span>
+<button type="button" aria-label="Close menu" data-close-menu style="width: 48px; height: 48px; display: inline-flex; align-items: center; justify-content: center; border: 1.5px solid #FFFFFF; border-radius: 12px; background: transparent; color: #FFFFFF; cursor: pointer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
+</div>
+<nav aria-label="Menu" style="display: flex; flex-direction: column">
+<a href="#produits" data-close-menu style="color: #FFFFFF; text-decoration: none; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 30px; padding: 14px 0; border-bottom: 1px solid #33456F">Products</a>
+<a href="#gamme" data-close-menu style="color: #FFFFFF; text-decoration: none; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 30px; padding: 14px 0; border-bottom: 1px solid #33456F">Expertise</a>
+<a href="#solutions" data-close-menu style="color: #FFFFFF; text-decoration: none; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 30px; padding: 14px 0; border-bottom: 1px solid #33456F">Solutions</a>
+<a href="#processus" data-close-menu style="color: #FFFFFF; text-decoration: none; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 30px; padding: 14px 0; border-bottom: 1px solid #33456F">Process</a>
+</nav>
+<a href="#devis" data-close-menu style="align-self: flex-start; display: inline-flex; align-items: center; min-height: 52px; padding: 0 28px; border-radius: 999px; background: #F5B869; color: #141F45; font-weight: 600; text-decoration: none">Request a quote</a>
+<div style="display: flex; gap: 10px">
+<a href="index.html" aria-label="Version française" style="text-decoration: none; color: #FFFFFF; padding: 9px 16px; border-radius: 999px; border: 1.5px solid #FFFFFF; font-weight: 600">FR</a>
+<a href="ar.html" aria-label="النسخة العربية" style="text-decoration: none; color: #FFFFFF; padding: 9px 16px; border-radius: 999px; border: 1.5px solid #FFFFFF; font-weight: 600">عربي</a>
+</div>
+</div>
+</div>
+<div aria-hidden="true" class="intro" style="position: fixed; inset: 0; z-index: 100; pointer-events: none; background: #FFFFFF; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px">
+<img src="assets/img/logo.png" alt="" style="width: min(260px, 60vw); height: auto; display: block">
+<span class="bar" style="display: block; width: 120px; height: 5px; border-radius: 3px; background: #F5B869"></span>
+</div>
+</div>
+<script src="app.js" defer></script>
+</body>
+</html>
