@@ -1,5 +1,5 @@
 // H&N Packaging - service worker (offline support)
-const VERSION = 'hn-v1';
+const VERSION = 'hn-v14';
 const PRECACHE = [
   "./",
   "index.html",
@@ -22,7 +22,10 @@ const PRECACHE = [
   "assets/icons/favicon-48.png",
   "assets/icons/icon-192.png",
   "assets/icons/icon-512.png",
-  "assets/icons/icon-maskable-512.png"
+  "assets/icons/icon-maskable-512.png",
+  "assets/js/hn3d.js",
+  "assets/js/pdf.min.js",
+  "assets/js/pdf.worker.min.js"
 ];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(VERSION).then(c => c.addAll(PRECACHE)).then(() => self.skipWaiting()));
@@ -34,6 +37,7 @@ self.addEventListener('fetch', e => {
   const req = e.request;
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
+  if (url.pathname.endsWith('.mp4')) return;   // videos stream straight from the network (range requests)
   // pages: network first, fall back to the cached copy when offline
   if (req.mode === 'navigate') {
     e.respondWith(fetch(req).then(r => { const c = r.clone(); caches.open(VERSION).then(x => x.put(req, c)); return r; })
