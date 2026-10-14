@@ -54,6 +54,32 @@ h2::after{content:"";display:block;width:72px;height:5px;border-radius:3px;backg
 .intro img{animation:hnLogoIn .9s .1s ease-out both}
 .intro .bar{transform-origin:left;animation:hnLine 1s .35s ease-out both}
 @media (prefers-reduced-motion:reduce){.intro{display:none}}
+/*mobile*/
+@media (max-width: 720px){
+[style*="padding: 88px 24px"]{padding-top:52px!important;padding-bottom:52px!important;padding-left:18px!important;padding-right:18px!important}
+[style*="padding: 24px 24px 88px"]{padding-bottom:52px!important;padding-left:18px!important;padding-right:18px!important}
+[style*="margin-bottom: 40px"]{margin-bottom:24px!important}
+[style*="min-height: 640px"]{min-height:0!important;padding-top:56px!important;padding-bottom:64px!important}
+#produits{margin-top:28px!important;border-radius:24px!important}
+.mscroll{flex-wrap:nowrap!important;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin-left:-18px;margin-right:-18px;padding:0 18px 10px!important;scroll-padding:0 18px}
+.mscroll::-webkit-scrollbar{display:none}
+.mscroll>*{flex:0 0 80%!important;scroll-snap-align:start}
+.mscroll>.pline{display:none}
+#gamme .mscroll img{height:170px!important}
+#processus>div{padding:40px 18px!important}
+#processus .mscroll>li{background:#FFFFFF;border:1px solid #D5D9D0;border-radius:14px;padding:20px}
+#devis{gap:28px!important}
+#devis a[style*="font-size: 24px"]{font-size:19px!important;padding:4px 0!important}
+footer nav{flex-direction:row!important;flex-wrap:wrap;gap:0 18px;flex-basis:100%!important}
+footer [style*="padding: 56px 24px 32px"]{padding:40px 18px 24px!important;gap:28px!important}
+.mhint{display:flex!important}
+section[aria-label] > .mscroll{margin:0!important;padding:36px 18px!important}
+#apercu:not(.pv-open) .pvpanel{display:none!important}
+.pvopen{display:inline-flex!important}
+#apercu.pv-open .pvopen{display:none!important}
+}
+.mhint{display:none;align-items:center;gap:8px;margin:-12px 0 14px;font-size:13px;font-weight:600;opacity:.75}
+/*/mobile*/
 .usgrid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
 .ustile{position:relative;margin:0;border-radius:18px;overflow:hidden;aspect-ratio:3/4;background:#0E1633}
 .ustile video,.ustile img{display:block;width:100%;height:100%;object-fit:cover}
@@ -89,6 +115,7 @@ h2::after{content:"";display:block;width:72px;height:5px;border-radius:3px;backg
 .pvtool:hover{border-color:#141F45}
 .pvtool.del{color:#A3261B}
 .pvtool.pv-on{background:#141F45;border-color:#141F45;color:#FFFFFF}
+.pvopen{display:none;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:0 26px;border:0;border-radius:999px;background:#F5B869;color:#141F45;font:inherit;font-weight:700;cursor:pointer}
 .pvnote{margin:0;padding:10px 12px;border-radius:12px;font-size:14px;line-height:1.45;background:#EAF0FB;color:#1C2E66}
 .pvnote.warn{background:#FFF4E6;color:#5C3A0E}
 .pvnote.err{background:#FBEAEA;color:#7A1C14}
@@ -119,14 +146,14 @@ input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible{out
 <div style="background: #141F45; color: #FFFFFF; font-size: 15px">
 <div style="max-width: 1200px; margin: 0 auto; padding: 10px 24px; display: flex; align-items: center; gap: 10px">
 <span aria-hidden="true" class="pulse" style="width: 8px; height: 8px; border-radius: 50%; background: #E8912D; flex: none"></span>
-<span>Better Packaging, Brighter Tomorrow · Impression, complexage, refente et sachets à Chaiba, Tipaza</span>
+<span>Better Packaging, Brighter Tomorrow · Impression, complexage, refente et sachets</span>
 </div>
 </div>
 
 <header style="position: sticky; top: 0; z-index: 40; background: rgba(245,246,242,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid #E1E4DC">
 <div style="max-width: 1200px; margin: 0 auto; padding: 18px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 32px">
 <a href="#top" style="display: flex; align-items: center; text-decoration: none; min-height: 44px">
-<img src="assets/img/logo.png" alt="H&amp;N Packaging" style="height: 64px; width: auto; display: block; mix-blend-mode: multiply">
+<img src="assets/img/logo-transparent.png" alt="H&amp;N Packaging" style="height: 64px; width: auto; display: block">
 </a>
 <nav class="navlinks" aria-label="Navigation principale" style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 28px; font-weight: 500; font-size: 16px">
 <a href="#produits" style="text-decoration: none; padding: 11px 0">Produits</a>
@@ -300,7 +327,7 @@ input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible{out
 <h2 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: clamp(28px, 3.4vw, 42px); line-height: 1.1; letter-spacing: -0.02em">Nos produits</h2>
 <p style="margin: 0; color: #CBD2E4">En bobine ou en sachet, imprimés à vos couleurs ou neutres, fabriqués à vos dimensions.</p>
 </div>
-<div style="display: flex; flex-wrap: wrap; gap: 20px">
+<div class="mhint" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M15 8l4 4-4 4"></path></svg>Faites glisser pour voir la suite</div><div class="mscroll" style="display: flex; flex-wrap: wrap; gap: 20px">
 <article class="lift reveal pcard" style="flex: 1 1 320px; min-width: 0; background: #FFFFFF; color: #141F45; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
 <div class="pimg" style="position: relative; overflow: hidden"><img src="assets/img/films-imprimes.jpg" alt="Bobines de film imprimé H&amp;N Packaging" style="display: block; width: 100%; height: 190px; object-fit: cover"><a class="pbtn" href="#devis" data-pick="film" style="position: absolute; inset-inline-start: 16px; bottom: 16px; display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 999px; background: #F5B869; color: #141F45; font-weight: 600; text-decoration: none; box-shadow: 0 8px 20px rgba(20,31,69,0.3)">Demander un devis</a></div>
 <div style="padding: 24px; display: flex; flex-direction: column; gap: 8px">
@@ -340,7 +367,7 @@ input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible{out
 </div>
 </section>
 
-<section id="apercu">
+<section id="apercu" >
 <div style="max-width: 1200px; margin: 0 auto; padding: 88px 24px">
 <div style="display: flex; flex-direction: column; gap: 14px; max-width: 760px; margin-bottom: 40px">
 <span style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #A85A12"><span aria-hidden="true" style="width: 28px; height: 2px; background: #A85A12"></span>Studio 3D</span>
@@ -353,8 +380,9 @@ input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible{out
 <span style="display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: #3D4763"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"></path><path d="M21 4v5h-5"></path></svg>Faites glisser pour faire tourner le sachet</span>
 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px"><button type="button" class="pvview" data-view="front">Face</button><button type="button" class="pvview" data-view="back">Dos</button><button type="button" class="pvview" data-view="top">Dessus</button><button type="button" class="pvview" data-view="bottom">Dessous</button><button type="button" class="pvview" data-view="spin">Rotation</button></div>
 <button type="button" id="pv-download" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 20px; border-radius: 999px; border: 1.5px solid #141F45; background: #FFFFFF; color: #141F45; font: inherit; font-weight: 600; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M7 11l5 5 5-5"></path><path d="M4 20h16"></path></svg>Télécharger l'image</button>
+<button type="button" class="pvopen" id="pv-open">Personnaliser mon sachet</button>
 </div>
-<div style="flex: 1 1 420px; min-width: 0; background: #FFFFFF; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 26px">
+<div class="pvpanel" style="flex: 1 1 420px; min-width: 0; background: #FFFFFF; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 26px">
 <div style="display: flex; flex-direction: column; gap: 12px">
 <span style="font-weight: 700; font-size: 15px">1. Choisissez un modèle</span>
 <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px"><button type="button" class="pvmodel pv-on" data-shape="pouch" aria-pressed="true"><span style="display: block; line-height: 0"><svg width="44" height="44" viewBox="0 0 56 56" fill="none" stroke="#141F45" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 8h28v34a6 6 0 0 1-6 6H20a6 6 0 0 1-6-6z" fill="#FFFFFF"></path><path d="M14 13h28M18 17h20" stroke-dasharray="3 2"></path><path d="M14 43q14-5 28 0"></path></svg></span>Doypack</button><button type="button" class="pvmodel" data-shape="gusset" aria-pressed="false"><span style="display: block; line-height: 0"><svg width="44" height="44" viewBox="0 0 56 56" fill="none" stroke="#141F45" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6h20l4 6v38H14V12z" fill="#FFFFFF"></path><path d="M14 12h28M22 12v38M34 12v38"></path></svg></span>Sachet à soufflets, soudure centrale</button><button type="button" class="pvmodel" data-shape="flat" aria-pressed="false"><span style="display: block; line-height: 0"><svg width="44" height="44" viewBox="0 0 56 56" fill="none" stroke="#141F45" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="12" y="8" width="32" height="40" rx="2" fill="#FFFFFF"></rect><rect x="16" y="12" width="24" height="32" rx="1"></rect></svg></span>Sachet plat</button></div>
@@ -394,7 +422,7 @@ input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible{out
 <h2 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: clamp(28px, 3.4vw, 42px); line-height: 1.1; letter-spacing: -0.02em">Quatre métiers sous un même toit</h2>
 <p style="margin: 0; color: #3D4763">L'impression, le complexage, la refente et la fabrication de sachets sont réalisés dans le même atelier : un seul interlocuteur, de votre fichier à la bobine ou au sachet prêt à remplir.</p>
 </div>
-<div style="display: flex; flex-wrap: wrap; gap: 20px">
+<div class="mhint" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M15 8l4 4-4 4"></path></svg>Faites glisser pour voir la suite</div><div class="mscroll" style="display: flex; flex-wrap: wrap; gap: 20px">
 <article class="lift reveal" style="flex: 1 1 250px; min-width: 0; background: #FFFFFF; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
 <img src="assets/img/impression.jpg" alt="Presse d'impression flexographique H&amp;N Packaging" style="display: block; width: 100%; height: 240px; object-fit: contain; background: #FFFFFF; padding: 12px; box-sizing: border-box">
 <div style="padding: 28px; display: flex; flex-direction: column; gap: 12px">
@@ -452,7 +480,7 @@ input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible{out
 <div style="display: flex; flex-direction: column; gap: 14px; max-width: 680px">
 <span style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #F5B869"><span aria-hidden="true" style="width: 28px; height: 2px; background: #F5B869"></span>Notre usine</span>
 <h2 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: clamp(28px, 3.4vw, 42px); line-height: 1.1; letter-spacing: -0.02em; color: #FFFFFF">L'usine en action</h2>
-<p style="margin: 0; color: #C9D1E6">Images tournées dans notre atelier de Chaiba : l'impression, le complexage et la refente de vos films, sur nos propres machines.</p>
+<p style="margin: 0; color: #C9D1E6">Images tournées dans notre atelier : l'impression, le complexage et la refente de vos films, sur nos propres machines.</p>
 </div>
 <button type="button" class="usbtn" id="usine-toggle" aria-pressed="false" data-pause="Mettre les vidéos en pause" data-play="Lire les vidéos"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></svg><span>Mettre les vidéos en pause</span></button>
 </div>
@@ -464,7 +492,7 @@ input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible{out
 <div style="max-width: 1296px; box-sizing: border-box; margin: 0 auto; padding: 64px clamp(20px, 4vw, 48px); background: #FFFFFF; border: 2px solid #2A4185; border-radius: 36px">
 <span style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #A85A12"><span aria-hidden="true" style="width: 28px; height: 2px; background: #A85A12"></span>Processus</span>
 <h2 style="margin: 0 0 40px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: clamp(28px, 3.4vw, 42px); line-height: 1.1; letter-spacing: -0.02em">De votre demande à la livraison</h2>
-<ol style="position: relative; margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 32px 24px">
+<div class="mhint" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M15 8l4 4-4 4"></path></svg>Faites glisser pour voir la suite</div><ol class="mscroll" style="position: relative; margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 32px 24px">
 <li aria-hidden="true" class="pline" style="position: absolute; top: 21px; inset-inline-start: 22px; inset-inline-end: calc(25% - 40px); height: 3px; border-radius: 2px; background: #DDE3F3"><span class="pfill" style="display: block; height: 100%; border-radius: 2px; background: #F5B869; transform-origin: left"></span></li>
 <li class="reveal" style="flex: 1 1 230px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
 <span aria-hidden="true" class="pnum" style="position: relative; z-index: 1; width: 44px; height: 44px; border-radius: 50%; background: #F5B869; color: #141F45; display: inline-flex; align-items: center; justify-content: center; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 18px">1</span>
@@ -491,7 +519,7 @@ input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible{out
 </section>
 
 <section aria-label="Nos engagements">
-<div style="max-width: 1200px; margin: 0 auto; padding: 88px 24px; display: flex; flex-wrap: wrap; gap: 20px">
+<div class="mscroll" style="max-width: 1200px; margin: 0 auto; padding: 88px 24px; display: flex; flex-wrap: wrap; gap: 20px">
 <div class="lift reveal" style="flex: 1 1 300px; min-width: 0; background: #FFFFFF; border-radius: 14px; padding: 32px; display: flex; flex-direction: column; gap: 12px">
 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#2A4185" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 28V13l8 5v-5l8 5V6h8v22z"></path><line x1="3" y1="28" x2="29" y2="28"></line></svg>
 <h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 22px">Fabriqué en Algérie</h3>
@@ -517,7 +545,7 @@ input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible{out
 <h2 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: clamp(28px, 3.4vw, 42px); line-height: 1.1; letter-spacing: -0.02em">Un emballage plus responsable</h2>
 <p style="margin: 0; color: #3D4763">Bien emballer, c'est protéger votre produit avec juste ce qu'il faut de matière.</p>
 </div>
-<div style="display: flex; flex-wrap: wrap; gap: 20px">
+<div class="mhint" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M15 8l4 4-4 4"></path></svg>Faites glisser pour voir la suite</div><div class="mscroll" style="display: flex; flex-wrap: wrap; gap: 20px">
 <div class="lift reveal" style="flex: 1 1 300px; min-width: 0; background: #FFFFFF; border-radius: 14px; border-top: 5px solid #F5B869; padding: 32px; display: flex; flex-direction: column; gap: 12px">
 <svg width="40" height="40" viewBox="0 0 32 32" fill="none" stroke="#2A4185" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 25C7 13 15 7 26 6c0 12-7 19-19 19z" fill="#DDE3F3"></path><path d="M7 25 18 14"></path></svg>
 <h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 22px">Complexage sans solvant</h3>
@@ -575,7 +603,7 @@ input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible{out
 <span style="font-weight: 500; color: #3D4763">Ou appelez-nous</span>
 <a href="tel:+213561703451" style="font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 24px; padding: 8px 0; text-decoration: none">+213 561 70 34 51</a>
 <a href="tel:+213540050536" style="font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 24px; padding: 8px 0; text-decoration: none">+213 540 05 05 36</a>
-<a href="mailto:haitham.naime@gmail.com" style="font-weight: 500; padding: 10px 0">haitham.naime@gmail.com</a>
+<a href="mailto:commercial@hn-packaging.com" style="font-weight: 500; padding: 10px 0">commercial@hn-packaging.com</a>
 <a href="https://wa.me/213561703451?text=Bonjour%20H%26N%20Packaging%2C%20je%20souhaite%20un%20devis." target="_blank" rel="noopener" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; min-height: 48px; margin-top: 6px; padding: 0 20px; border-radius: 999px; background: #128C4A; color: #FFFFFF; font-weight: 600; text-decoration: none"><svg width="22" height="22" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4a12 12 0 0 0-10.4 18L4 28l6.2-1.6A12 12 0 1 0 16 4z"></path><path d="M12 12c0 4.5 3.5 8 8 8l1.5-2.5-3-1.5-1.5 1.5c-1.5-.5-2.5-1.5-3-3l1.5-1.5-1.5-3z"></path></svg>Écrire sur WhatsApp</a>
 <span style="color: #3D4763; margin-top: 10px">Cité Chaig, route de Fouka, commune de Chaiba, W. Tipaza</span>
 <a href="https://maps.app.goo.gl/NBDXT7T5S2sNAC857" target="_blank" rel="noopener" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; padding: 10px 0"><svg width="20" height="20" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 28s9-8.5 9-15a9 9 0 0 0-18 0c0 6.5 9 15 9 15z"></path><circle cx="16" cy="13" r="3.5"></circle></svg>Voir sur Google Maps</a>
@@ -583,7 +611,7 @@ input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible{out
 </div>
 <div style="flex: 1 1 480px; min-width: 0; background: #FFFFFF; color: #141F45; border-radius: 14px; padding: 32px">
 <div id="quote-form-wrap">
-<form id="quote-form" data-wa-title="Nouvelle demande de devis (site web)" style="display: flex; flex-direction: column; gap: 20px">
+<form id="quote-form" data-wa-title="Nouvelle demande de devis (site web)" data-sending="Envoi en cours…" data-err="L'envoi n'a pas abouti (connexion ou service indisponible). Envoyez-nous la même demande en un clic :" data-mail="Envoyer par e-mail" data-wapp="Envoyer par WhatsApp" style="display: flex; flex-direction: column; gap: 20px"><input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0">
 <div style="display: flex; flex-wrap: wrap; gap: 20px">
 <div style="flex: 1 1 200px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
 <label for="f-nom" style="font-weight: 600; font-size: 15px">Nom et prénom</label>
@@ -627,12 +655,12 @@ input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible{out
 <textarea id="f-msg" name="message" rows="4" style="padding: 12px 14px; border: 1.5px solid #8A93A6; border-radius: 8px; font: inherit; box-sizing: border-box; width: 100%; resize: vertical"></textarea>
 </div>
 <button type="submit" style="min-height: 52px; padding: 0 28px; border: 0; border-radius: 999px; background: #F5B869; color: #141F45; font: inherit; font-weight: 600; cursor: pointer; align-self: flex-start">Demander un devis</button>
-</form>
+</form><div id="quote-error" role="alert" hidden style="margin-top: 16px; padding: 16px; border-radius: 12px; background: #FBEAEA; color: #7A1C14; display: flex; flex-direction: column; gap: 12px"><p style="margin: 0"></p><div style="display: flex; flex-wrap: wrap; gap: 10px"><a id="quote-mail" href="#" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 999px; background: #141F45; color: #FFFFFF; font-weight: 600; text-decoration: none"></a><a id="quote-wa" href="#" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 999px; background: #1E8E4E; color: #FFFFFF; font-weight: 600; text-decoration: none"></a></div></div>
 </div>
 <div id="quote-sent" hidden>
 <div role="status" style="display: flex; flex-direction: column; gap: 16px; padding: 24px 0">
 <h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 26px">Demande bien reçue.</h3>
-<p style="margin: 0; color: #3D4763">Merci. Votre demande s'est ouverte dans WhatsApp : envoyez le message et un conseiller vous recontacte rapidement.</p>
+<p style="margin: 0; color: #3D4763">Merci. Votre demande a bien été envoyée à notre service commercial : un conseiller vous recontacte rapidement.</p>
 <button type="button" id="quote-reset" style="min-height: 48px; padding: 0 22px; border: 1.5px solid #141F45; border-radius: 999px; background: #FFFFFF; color: #141F45; font: inherit; font-weight: 600; cursor: pointer; align-self: flex-start">Envoyer une autre demande</button>
 </div>
 </div>
@@ -657,7 +685,7 @@ input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible{out
 <span style="color: #FFFFFF; font-weight: 600">Contact</span>
 <span>Cité Chaig, route de Fouka, commune de Chaiba, W. Tipaza</span>
 <span>+213 561 70 34 51</span>
-<span>haitham.naime@gmail.com</span>
+<span>commercial@hn-packaging.com</span>
 <a href="https://maps.app.goo.gl/NBDXT7T5S2sNAC857" target="_blank" rel="noopener" style="color: #FFFFFF; display: inline-flex; align-items: center; gap: 8px; padding: 10px 0"><svg width="20" height="20" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 28s9-8.5 9-15a9 9 0 0 0-18 0c0 6.5 9 15 9 15z"></path><circle cx="16" cy="13" r="3.5"></circle></svg>Voir sur Google Maps</a>
 </div>
 </div>
@@ -689,7 +717,7 @@ input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible{out
 </div>
 </div>
 <div aria-hidden="true" class="intro" style="position: fixed; inset: 0; z-index: 100; pointer-events: none; background: #FFFFFF; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px">
-<img src="assets/img/logo.png" alt="" style="width: min(260px, 60vw); height: auto; display: block">
+<img src="assets/img/logo-transparent.png" alt="" style="width: min(260px, 60vw); height: auto; display: block">
 <span class="bar" style="display: block; width: 120px; height: 5px; border-radius: 3px; background: #F5B869"></span>
 </div>
 </div>

@@ -75,18 +75,31 @@
       for (i = 0; i < n; i++) { var a = 2 * i; I.push(a, a + 2, a + 1, a + 1, a + 2, a + 3); }
       return [{ m: f, tex: 'front' }, { m: b, tex: 'back' }, { m: mesh(P, U, I), tex: 'front' }];
     } },
-    flat: { sw: 1.4, sh: 1.9, box: [.14, .86, .24, .76], tex: [1024, 1024], cam: 7.2, build: function () {   // flat 3-side-seal bag: crimped seals, tear notches
-      var B = .075, NU = 128, NV = 150;
-      function win(t) { return t < B || t > 1 - B ? 0 : spow(Math.sin(Math.PI * (t - B) / (1 - 2 * B)), .45); }
+    flat: { sw: 1.4, sh: 1.9, box: [.14, .86, .24, .76], tex: [1024, 1024], cam: 7.2, build: function () {   // flat pillow bag: top + bottom crimp seals only, folded sides, central seal on the back
+      var B = .07, NU = 128, NV = 150;
+      function win(v) { return v < B || v > 1 - B ? 0 : spow(Math.sin(Math.PI * (v - B) / (1 - 2 * B)), .42); }
+      function puff(s, v) { return .2 * spow(Math.sin(Math.PI * s), .55) * win(v); }
       function z(s, v, seed) {
-        var w = win(s) * win(v);
-        if (w === 0) return .0022 * (1 + Math.sin((s < B || s > 1 - B ? v * 1.9 : s * 1.4) * Math.PI * 2 * 26)) + .0012;
-        var p = .2 * w; return p + clamp(p / .04, 0, 1) * wrinkle(s, v, seed, .62, .84) * .8 + .0012;
+        if (v < B || v > 1 - B) return .0022 * (1 + Math.sin(s * 1.4 * Math.PI * 2 * 26)) + .0012;            // crimped seal bands
+        var p = puff(s, v), k = clamp(p / .04, 0, 1);
+        return p + k * (wrinkle(s, v, seed, .6, .86) * .75 + wrinkle(s, 1 - v, seed + 5.1, .6, .86) * .55) + .0012;
       }
-      function nx(s, v) { var d = (v > .84 && v < .87) ? .028 * (1 - Math.abs(v - .855) / .015) : 0, x = -.7 + 1.4 * s; return clamp(x, -.7 + d, .7 - d); }
-      var f = grid(NU, NV, function (s, v) { return [nx(s, v), -.95 + 1.9 * v, z(s, v, 2.4), s, 1 - v]; }, false);
-      var b = grid(NU, NV, function (s, v) { return [nx(s, v), -.95 + 1.9 * v, -z(1 - s, v, 7.1), 1 - s, 1 - v]; }, true);
-      return [{ m: f, tex: 'front' }, { m: b, tex: 'back' }];
+      function y(s, v, i) { var e = (v === 0 || v === 1) ? ((i % 2) ? 0 : (v === 0 ? .018 : -.018)) : 0; return -.95 + 1.9 * v + e; }   // serrated cut edges
+      function nx(s, v) { var d = (v > .945 && v < .975) ? .026 * (1 - Math.abs(v - .96) / .015) : 0, x = -.7 + 1.4 * s; return clamp(x, -.7 + d, .7 - d); }  // tear notches in the top seal
+      var f = grid(NU, NV, function (s, v, i) { return [nx(s, v), y(s, v, i), z(s, v, 2.4), s, 1 - v]; }, false);
+      var b = grid(NU, NV, function (s, v, i) { return [nx(s, v), y(s, v, i), -z(1 - s, v, 7.1), 1 - s, 1 - v]; }, true);
+      // central (fin) seal along the back, folded flat to one side
+      var wF = .085, nu = 6, FP = [], FU = [], FI = [];
+      for (var j = 0; j <= NV; j++) {
+        var v = j / NV;
+        for (var i = 0; i <= nu; i++) {
+          var t = i / nu, x = -t * wF, sb = (x + .7) / 1.4;
+          FP.push(x, y(sb, v, j === NV || j === 0 ? i : 1), -z(1 - sb, v, 7.1) - .004 - .003 * Math.sin(Math.PI * t));
+          FU.push(.5 + .06 * t, 1 - v);
+        }
+      }
+      for (j = 0; j < NV; j++) for (i = 0; i < nu; i++) { var a = j * (nu + 1) + i, c = a + nu + 1; FI.push(a, a + 1, c, a + 1, c + 1, c); }
+      return [{ m: f, tex: 'front' }, { m: b, tex: 'back' }, { m: mesh(FP, FU, FI), tex: 'back' }];
     } },
     chips: { sw: 1.5, sh: 2, box: [.12, .88, .27, .73], tex: [1024, 1024], cam: 7.4, build: function () {
       function body(v) { return clamp((v - .1) / .8, 0, 1); }
@@ -177,7 +190,7 @@
     else if (which === 'front' && lg) drawFit(x, lg, cw, ch, sa, S.box);
     else if (which === 'back') backPanel(x, lg, cw, ch, sa, .1, .9, col);
     if (art && shape === 'pouch') { x.fillStyle = 'rgba(0,0,0,.18)'; x.fillRect(.03 * cw, .118 * ch, .94 * cw, 3); x.fillStyle = 'rgba(255,255,255,.3)'; x.fillRect(.03 * cw, .118 * ch + 4, .94 * cw, 2); }
-    if (shape === 'flat') { x.fillStyle = 'rgba(255,255,255,.16)'; [[0, 0, .075, 1], [.925, 0, .075, 1], [0, 0, 1, .075], [0, .925, 1, .075]].forEach(function (r) { x.fillRect(r[0] * cw, r[1] * ch, r[2] * cw, r[3] * ch); }); }
+    if (shape === 'flat') { x.fillStyle = 'rgba(255,255,255,.14)'; [[0, 0, 1, .07], [0, .93, 1, .07]].forEach(function (r) { x.fillRect(r[0] * cw, r[1] * ch, r[2] * cw, r[3] * ch); }); }
     if (which === 'wrap') { if (lg) drawFit(x, lg, cw, ch, S.sw / S.sh, S.box); backPanel(x, lg, cw, ch, S.sw / S.sh, -.13, .13, col); backPanel(x, lg, cw, ch, S.sw / S.sh, .87, 1.13, col); }
     if (shape === 'label') { x.fillStyle = 'rgba(0,0,0,.18)'; x.fillRect(0, 0, cw, 3); x.fillRect(0, ch - 3, cw, 3); }
     return c;
@@ -528,7 +541,7 @@
       x.save(); x.setLineDash([6, 5]); x.strokeStyle = ln; x.lineWidth = 1.2;
       panels().forEach(function (p, i) { if (i) { x.beginPath(); x.moveTo(p.x0 * k, 0); x.lineTo(p.x0 * k, cssH); x.stroke(); } });
       x.setLineDash([3, 4]); x.strokeStyle = 'rgba(163,38,27,.55)';
-      var sy = E.shape === 'pouch' ? [.118] : E.shape === 'chips' ? [.1, .9] : E.shape === 'flat' ? [.075, .925] : [.07, .95];
+      var sy = E.shape === 'pouch' ? [.118] : E.shape === 'chips' ? [.1, .9] : E.shape === 'flat' ? [.07, .93] : [.07, .95];
       sy.forEach(function (v) { x.beginPath(); x.moveTo(0, v * cssH); x.lineTo(cssW, v * cssH); x.stroke(); });
       x.restore();
       x.font = '700 11px system-ui, sans-serif'; x.textAlign = 'center'; x.textBaseline = 'top';

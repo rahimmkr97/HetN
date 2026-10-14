@@ -14,22 +14,50 @@
   var sel = $('#f-besoin');
   $$('[data-pick]').forEach(function (a) { a.addEventListener('click', function () { if (sel) sel.value = a.getAttribute('data-pick'); }); });
 
-  // quote form -> WhatsApp message
-  var form = $('#quote-form'), wrap = $('#quote-form-wrap'), sent = $('#quote-sent');
+  // quote form -> e-mail to the sales team (commercial@hn-packaging.com)
+  //   QUOTE_ENDPOINT: FormSubmit (works on any hosting; the first request sends an activation e-mail to the address)
+  //   or 'send.php' on hosting with PHP (file included, sends from your own server).
+  var QUOTE_TO = 'commercial@hn-packaging.com';
+  var QUOTE_ENDPOINT = 'https://formsubmit.co/ajax/' + QUOTE_TO;
+  var form = $('#quote-form'), wrap = $('#quote-form-wrap'), sent = $('#quote-sent'), qerr = $('#quote-error');
   if (form) form.addEventListener('submit', function (e) {
     e.preventDefault();
-    var lines = [form.getAttribute('data-wa-title'), ''];
+    var title = form.getAttribute('data-wa-title'), data = {}, lines = [title, ''], name = '', mail = '';
     Array.prototype.forEach.call(form.elements, function (el) {
       if (!el.id || !el.value) return;
       var lab = form.querySelector('label[for="' + el.id + '"]');
-      var val = el.tagName === 'SELECT' ? el.options[el.selectedIndex].text : el.value;
-      lines.push((lab ? lab.textContent.trim() : el.name) + ' : ' + val);
+      var key = lab ? lab.textContent.trim() : el.name, val = el.tagName === 'SELECT' ? el.options[el.selectedIndex].text : el.value;
+      data[key] = val; lines.push(key + ' : ' + val);
+      if (el.name === 'nom') name = el.value; if (el.name === 'email') mail = el.value;
     });
-    window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(lines.join('\n')), '_blank', 'noopener');
-    wrap.hidden = true; sent.hidden = false;
+    var hp = form.querySelector('[name="_honey"]');
+    if (hp && hp.value) return;   // filled by a robot
+    var btn = form.querySelector('[type="submit"]'), btxt = btn ? btn.textContent : '';
+    if (btn) { btn.disabled = true; btn.textContent = form.getAttribute('data-sending'); }
+    if (qerr) qerr.hidden = true;
+    var payload = Object.assign({ _subject: title + (name ? ' - ' + name : ''), _template: 'table', _captcha: 'false', _honey: '', _language: document.documentElement.lang || 'fr' }, data);
+    if (mail) payload._replyto = mail;
+    function done() { if (btn) { btn.disabled = false; btn.textContent = btxt; } }
+    function fail() {
+      done(); if (!qerr) return;
+      var text = lines.join('\n');
+      qerr.querySelector('p').textContent = form.getAttribute('data-err');
+      var ml = document.getElementById('quote-mail'); ml.textContent = form.getAttribute('data-mail');
+      ml.href = 'mailto:' + QUOTE_TO + '?subject=' + encodeURIComponent(payload._subject) + '&body=' + encodeURIComponent(text);
+      var wl = document.getElementById('quote-wa'); wl.textContent = form.getAttribute('data-wapp');
+      wl.href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(text);
+      qerr.hidden = false;
+    }
+    fetch(QUOTE_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(payload) })
+      .then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { return { ok: r.ok, d: d }; }); })
+      .then(function (res) {
+        var okd = res.ok && !(res.d && (res.d.success === false || res.d.success === 'false'));
+        if (!okd) { fail(); return; }
+        done(); wrap.hidden = true; sent.hidden = false;
+      }, fail);
   });
   var reset = $('#quote-reset');
-  if (reset) reset.addEventListener('click', function () { form.reset(); sent.hidden = true; wrap.hidden = false; });
+  if (reset) reset.addEventListener('click', function () { form.reset(); sent.hidden = true; wrap.hidden = false; if (qerr) qerr.hidden = true; });
 
   // install button (Android / desktop Chrome & Edge)
   var deferred = null, ib = $('#install-app');
@@ -114,6 +142,8 @@
     function save(href, name) { var a = document.createElement('a'); a.href = href; a.download = name; document.body.appendChild(a); a.click(); a.remove(); }
     $('pv-tpl').addEventListener('click', function () { if (ed) save(ed.template(), 'gabarit-sachet-' + st.shape + '.png'); });
     $('pv-download').addEventListener('click', function () { if (api) save(api.snapshot(), 'hn-packaging-maquette-3d.png'); });
+    var ob = $('pv-open'); if (ob) ob.addEventListener('click', function () { pv.classList.add('pv-open'); setTimeout(function () { ed && ed.setColor(st.color); }, 50); });
+    $('pv-canvas').addEventListener('drop', function () { pv.classList.add('pv-open'); });
     apply();
   }
 

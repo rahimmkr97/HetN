@@ -1,23 +1,31 @@
-H&N Packaging — site web installable (PWA)
-==========================================
+H&N Packaging - site web (application installable / PWA)
+=========================================================
 
-Contenu
-- index.html (français), en.html (anglais), ar.html (arabe)
-- app.js : menu mobile, formulaire de devis (envoi via WhatsApp), bouton d'installation
-- sw.js : fonctionnement hors ligne
-- manifest.webmanifest + assets/icons : nom, couleurs et icônes de l'application
-- assets/img : logo et photos
+Mise en ligne
+-------------
+Copiez tout le contenu de ce dossier à la racine de votre hébergement (en HTTPS).
+Pages : index.html (français), en.html (anglais), ar.html (arabe).
 
-Mettre en ligne (HTTPS obligatoire pour l'installation)
-1. GitHub Pages : créez un dépôt, déposez TOUT le contenu de ce dossier à la racine,
-   puis Settings > Pages > Deploy from branch (main / root).
-2. Ou Netlify : glissez-déposez ce dossier sur app.netlify.com/drop.
-3. Ou votre hébergeur : copiez le dossier dans le répertoire public du domaine.
+Demandes de devis -> commercial@hn-packaging.com
+-------------------------------------------------
+Le formulaire « Demander un devis » envoie chaque demande par e-mail à
+commercial@hn-packaging.com (l'adresse du client est mise en « Répondre à »).
 
-Installer l'application
-- Android / ordinateur (Chrome, Edge) : bouton « Installer l'application » en bas de page,
-  ou menu du navigateur > Installer.
-- iPhone (Safari) : bouton Partager > « Sur l'écran d'accueil ».
+Option A - fonctionne sur n'importe quel hébergement (réglage par défaut)
+  Le site utilise le service gratuit FormSubmit (formsubmit.co).
+  1. Une fois le site en ligne, envoyez une première demande de test depuis le formulaire.
+  2. FormSubmit envoie un e-mail « Activate Form » à commercial@hn-packaging.com :
+     cliquez sur le lien d'activation (une seule fois).
+  3. Toutes les demandes suivantes arrivent directement dans la boîte commercial@hn-packaging.com.
+  Avant l'activation, le client voit des boutons pour envoyer la même demande par e-mail ou WhatsApp :
+  aucune demande n'est perdue.
 
-Après une modification du site
-- Ouvrez sw.js et changez VERSION (ex. 'hn-v2') pour que les visiteurs reçoivent la nouvelle version.
+Option B - hébergement avec PHP (envoi par votre propre serveur, sans service externe)
+  1. Ouvrez app.js et remplacez la ligne
+        var QUOTE_ENDPOINT = 'https://formsubmit.co/ajax/' + QUOTE_TO;
+     par
+        var QUOTE_ENDPOINT = 'send.php';
+  2. Dans send.php, vérifiez l'adresse d'expédition ($FROM), par exemple site@hn-packaging.com.
+  3. Envoyez une demande de test et vérifiez la réception (et le dossier spam).
+
+Important : la boîte commercial@hn-packaging.com doit exister chez votre hébergeur / fournisseur de messagerie.
