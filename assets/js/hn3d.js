@@ -496,12 +496,16 @@
   function editor(cv, api, o) {
     o = o || {}; var Lb = o.labels || {}, E = { shape: 'pouch', size: { W: 160, H: 230, G: 0 }, color: '#FFFFFF', layers: [], sel: -1 };
     var flat = document.createElement('canvas'), ptrs = {}, drag = null, pinch = null, guides = [], pend = 0, last = 0, dead = false;
-    function dims() { var z = E.size; return { FW: E.shape === 'gusset' ? 2 * z.W + 2 * z.G + (z.O || 0) + (z.R || 0) : 2 * z.W, FH: z.H }; }
+    function vert() { return E.shape === 'pouch'; }
+    function baseD() { return vert() ? (E.size.G || 40) : 0; }
+    function dims() { var z = E.size; if (vert()) return { FW: z.W, FH: 2 * z.H + 2 * baseD() }; return { FW: E.shape === 'gusset' ? 2 * z.W + 2 * z.G + (z.O || 0) + (z.R || 0) : 2 * z.W, FH: z.H }; }
     function seal() { return E.shape === 'gusset' ? (E.size.O || 0) : 0; }
     function sealR() { return E.shape === 'gusset' ? (E.size.R || 0) : 0; }
     function period() { return dims().FW - seal() - sealR(); }
-    function panels() {
+    function panels() { return panelsRaw().map(function (p) { if (p.y0 === undefined) { p.y0 = 0; p.y1 = dims().FH; } return p; }); }
+    function panelsRaw() {
       var z = E.size, d = dims();
+      if (vert()) { var B = baseD(); return [{ k: 'front', x0: 0, x1: z.W, y0: 0, y1: z.H }, { k: 'base', x0: 0, x1: z.W, y0: z.H, y1: z.H + 2 * B }, { k: 'back', x0: 0, x1: z.W, y0: z.H + 2 * B, y1: d.FH, inv: true }]; }
       if (E.shape !== 'gusset') return [{ k: 'front', x0: 0, x1: z.W }, { k: 'back', x0: z.W, x1: 2 * z.W }];
       var h = z.W / 2, O = seal(), ps = O > 0 ? [{ k: 'seal', x0: 0, x1: O }] : [];
       var e = d.FW - sealR(), pr = sealR() > 0 ? [{ k: 'seal', x0: e, x1: d.FW }] : [];
@@ -524,13 +528,23 @@
       if (!E.layers.length) { api.setArt(null); return; }
       var now = Date.now();
       if (!full && now - last < 70) { if (!pend) pend = setTimeout(function () { pend = 0; push(false); }, 75); return; }
-      last = now; api.setArt(compose(full ? 2048 : 1024));
+      last = now; var f = compose(full ? 2048 : 1024);
+      if (vert()) {
+        var z = E.size, kk = f.width / z.W, ph = Math.round(z.H * kk), pr = document.createElement('canvas'); pr.width = 2 * f.width; pr.height = ph;
+        var px = pr.getContext('2d'); px.drawImage(f, 0, 0, f.width, ph, 0, 0, f.width, ph);
+        px.save(); px.translate(2 * f.width, ph); px.rotate(Math.PI); px.drawImage(f, 0, f.height - ph, f.width, ph, 0, 0, f.width, ph); px.restore();
+        f = pr;
+      }
+      api.setArt(f);
     }
     var k = 1, cssW = 0, cssH = 0;
     function render() {
       if (dead) return;
       var d = dims(), dpr = Math.min(window.devicePixelRatio || 1, 2);
-      cssW = cv.clientWidth || 400; cssH = cssW * d.FH / d.FW; cv.style.height = cssH + 'px';
+      var pw = (cv.parentNode && cv.parentNode.clientWidth) || cv.clientWidth || 400;
+      if (vert()) { var kv = Math.min(pw / d.FW, 680 / d.FH); cssW = d.FW * kv; cssH = d.FH * kv; cv.style.width = cssW + 'px'; cv.style.marginLeft = cv.style.marginRight = 'auto'; }
+      else { cssW = pw; cssH = cssW * d.FH / d.FW; cv.style.width = '100%'; }
+      cv.style.height = cssH + 'px';
       var w = Math.round(cssW * dpr), h = Math.round(cssH * dpr); if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; }
       k = cssW / d.FW; var x = cv.getContext('2d'); x.setTransform(dpr, 0, 0, dpr, 0, 0);
       x.fillStyle = E.color; x.fillRect(0, 0, cssW, cssH);
@@ -539,21 +553,25 @@
       // print zones
       var dark = lum(E.color) < .4 && !E.layers.length, ln = dark ? 'rgba(255,255,255,.55)' : 'rgba(42,65,133,.75)';
       x.save(); x.setLineDash([6, 5]); x.strokeStyle = ln; x.lineWidth = 1.2;
-      panels().forEach(function (p, i) { if (i) { x.beginPath(); x.moveTo(p.x0 * k, 0); x.lineTo(p.x0 * k, cssH); x.stroke(); } });
+      panels().forEach(function (p, i) { if (!i) return; x.beginPath(); if (vert()) { x.moveTo(0, p.y0 * k); x.lineTo(cssW, p.y0 * k); } else { x.moveTo(p.x0 * k, 0); x.lineTo(p.x0 * k, cssH); } x.stroke(); });
+      if (vert()) { x.setLineDash([2, 4]); x.beginPath(); x.moveTo(0, (E.size.H + baseD()) * k); x.lineTo(cssW, (E.size.H + baseD()) * k); x.stroke(); }   // base fold
       x.setLineDash([3, 4]); x.strokeStyle = 'rgba(163,38,27,.55)';
-      var sy = E.shape === 'pouch' ? [.118] : E.shape === 'chips' ? [.1, .9] : E.shape === 'flat' ? [.07, .93] : [.07, .95];
+      var sy = vert() ? [.118 * E.size.H / dims().FH, 1 - .118 * E.size.H / dims().FH] : E.shape === 'pouch' ? [.118] : E.shape === 'chips' ? [.1, .9] : E.shape === 'flat' ? [.07, .93] : [.07, .95];
       sy.forEach(function (v) { x.beginPath(); x.moveTo(0, v * cssH); x.lineTo(cssW, v * cssH); x.stroke(); });
       x.restore();
       x.font = '700 11px system-ui, sans-serif'; x.textAlign = 'center'; x.textBaseline = 'top';
       panels().forEach(function (p) {
-        var t = Lb[p.k] || p.k, cx = (p.x0 + p.x1) / 2 * k, tw = x.measureText(t).width + 12; if ((p.x1 - p.x0) * k < tw) return;
-        x.fillStyle = 'rgba(20,31,69,.78)'; x.beginPath(); if (x.roundRect) x.roundRect(cx - tw / 2, 6, tw, 18, 9); else x.rect(cx - tw / 2, 6, tw, 18); x.fill();
-        x.fillStyle = '#FFFFFF'; x.fillText(t, cx, 10);
+        var t = Lb[p.k] || p.k, cx = (p.x0 + p.x1) / 2 * k, tw = x.measureText(t).width + 12; if ((p.x1 - p.x0) * k < tw || (p.y1 - p.y0) * k < 22) return;
+        x.save();
+        if (p.inv) { x.translate(cx * 2, (p.y1 + p.y0) * k); x.rotate(Math.PI); }      // the back is printed upside down: label it the same way
+        var ty = p.y0 * k + (p.k === 'base' ? ((p.y1 - p.y0) * k - 18) / 2 : 6);
+        x.fillStyle = 'rgba(20,31,69,.78)'; x.beginPath(); if (x.roundRect) x.roundRect(cx - tw / 2, ty, tw, 18, 9); else x.rect(cx - tw / 2, ty, tw, 18); x.fill();
+        x.fillStyle = '#FFFFFF'; x.fillText(t, cx, ty + 4); x.restore();
       });
       if (!E.layers.length && Lb.empty) {
         var fp = panels().filter(function (p) { return p.k === 'front'; })[0], fx = (fp.x0 + fp.x1) / 2 * k;
         x.fillStyle = dark ? 'rgba(255,255,255,.8)' : 'rgba(20,31,69,.6)'; x.font = '600 13px system-ui, sans-serif'; x.textBaseline = 'middle';
-        wrapText(x, Lb.empty, fx, cssH / 2, (fp.x1 - fp.x0) * k - 20, 18);
+        wrapText(x, Lb.empty, fx, (fp.y0 + fp.y1) / 2 * k, (fp.x1 - fp.x0) * k - 20, 18);
       }
       x.strokeStyle = 'rgba(20,31,69,.35)'; x.lineWidth = 1; x.setLineDash([]); x.strokeRect(.5, .5, cssW - 1, cssH - 1);
       guides.forEach(function (g) { x.strokeStyle = '#E8912D'; x.lineWidth = 1; x.beginPath(); if (g.x !== undefined) { x.moveTo(g.x * k, 0); x.lineTo(g.x * k, cssH); } else { x.moveTo(0, g.y * k); x.lineTo(cssW, g.y * k); } x.stroke(); });
@@ -578,22 +596,30 @@
       if (o.onChange) o.onChange({ layers: E.layers.map(function (m, i) { return { thumb: m.src, sel: i === E.sel }; }), sel: E.sel,
         size: b ? { w: Math.round(b.w), h: Math.round(b.h), pct: l.real ? Math.round(100 * b.w / ((l.rot % 180) ? l.real.h : l.real.w)) : null } : null });
     }
-    function centres() { var d = dims(), z = E.size, O = seal(); return wrap() ? { front: [O + period() / 2], back: [O, d.FW - sealR()] } : { front: [z.W / 2], back: [z.W * 1.5] }; }
+    function centres() {
+      var d = dims(), z = E.size, O = seal(), my = d.FH / 2;
+      if (vert()) return { front: [{ x: z.W / 2, y: z.H / 2 }], back: [{ x: z.W / 2, y: d.FH - z.H / 2 }] };
+      return wrap() ? { front: [{ x: O + period() / 2, y: my }], back: [{ x: O, y: my }, { x: d.FW - sealR(), y: my }] } : { front: [{ x: z.W / 2, y: my }], back: [{ x: z.W * 1.5, y: my }] };
+    }
     function anchor(l) {   // where a layer sits, relative to its panel, so it follows the panel when the model or size changes
       var d = dims(), z = E.size;
-      if (l.w >= d.FW * .9) return { k: 'all', fx: l.cx / d.FW, fy: l.cy / d.FH, fw: l.w / d.FW };
+      if (l.w >= d.FW * .9 && (!vert() || box(l).h >= d.FH * .9)) return { k: 'all', fx: l.cx / d.FW, fy: l.cy / d.FH, fw: l.w / d.FW };
       var c = centres(), best = null;
-      ['front', 'back'].forEach(function (k) { c[k].forEach(function (x) { var dd = Math.abs(l.cx - x); if (!best || dd < best.dd) best = { k: k, x: x, dd: dd }; }); });
-      return { k: best.k, dx: (l.cx - best.x) / z.W, fy: l.cy / d.FH, fw: l.w / z.W };
+      ['front', 'back'].forEach(function (k) { c[k].forEach(function (p) { var dd = Math.hypot(l.cx - p.x, l.cy - p.y); if (!best || dd < best.dd) best = { k: k, p: p, dd: dd }; }); });
+      return { k: best.k, dx: (l.cx - best.p.x) / z.W, dy: (l.cy - best.p.y) / z.H, fw: l.w / z.W };
     }
     function unanchor(l, a) {
       var d = dims(), z = E.size;
       if (a.k === 'all') { l.cx = a.fx * d.FW; l.cy = a.fy * d.FH; l.w = a.fw * d.FW; return; }
-      var x = centres()[a.k][0]; l.cx = x + a.dx * z.W; l.cy = a.fy * d.FH; l.w = a.fw * z.W;
+      var p = centres()[a.k][0]; l.cx = p.x + a.dx * z.W; l.cy = p.y + (a.dy || 0) * z.H; l.w = a.fw * z.W;
     }
     function fitTo(l, where, how) {
-      var d = dims(), z = E.size, b0 = { w: 1, h: box(l).h / box(l).w }, rx, rw, ry = d.FH / 2, rh = d.FH;
+      var d = dims(), z = E.size, rx, rw, ry = d.FH / 2, rh = d.FH;
+      if (where === 'back' && vert() && l.rot % 360 !== 180) l.rot = 180;          // the doypack back is printed upside down
+      if (where === 'front' && vert() && l.rot % 360 === 180) l.rot = 0;
+      var b0 = { w: 1, h: box(l).h / box(l).w };
       if (where === 'all') { rx = d.FW / 2; rw = d.FW; }
+      else if (vert()) { var c = centres()[where === 'back' ? 'back' : 'front'][0]; rx = c.x; ry = c.y; rw = z.W; rh = z.H; }
       else if (where === 'front') { var f = panels().filter(function (p) { return p.k === 'front'; })[0]; rx = (f.x0 + f.x1) / 2; rw = z.W; }
       else { if (wrap()) { rx = seal(); rw = z.W; } else { rx = z.W * 1.5; rw = z.W; } }
       var ra = rw / rh, ia = b0.w / b0.h, close = Math.abs(Math.log(ra / ia)) < .15;
@@ -605,7 +631,8 @@
       panels().forEach(function (p) { if (p.k !== 'gusset' && p.k !== 'seal') xs.push((p.x0 + p.x1) / 2); });
       if (wrap()) xs.push(seal(), d.FW - sealR());
       for (var i = 0; i < xs.length; i++) if (Math.abs(l.cx - xs[i]) < th) { l.cx = xs[i]; guides.push({ x: xs[i] }); break; }
-      if (Math.abs(l.cy - d.FH / 2) < th) { l.cy = d.FH / 2; guides.push({ y: d.FH / 2 }); }
+      var ys = [d.FH / 2]; if (vert()) ys = [E.size.H / 2, d.FH - E.size.H / 2, d.FH / 2];
+      for (var j = 0; j < ys.length; j++) if (Math.abs(l.cy - ys[j]) < th) { l.cy = ys[j]; guides.push({ y: ys[j] }); break; }
     }
     function down(e) {
       e.preventDefault(); cv.focus && cv.focus({ preventScroll: true });
@@ -650,6 +677,15 @@
     }
     function thumbOf(c) { var t = document.createElement('canvas'), s = 120 / Math.max(c.width, c.height); t.width = Math.max(1, Math.round(c.width * s)); t.height = Math.max(1, Math.round(c.height * s)); t.getContext('2d').drawImage(c, 0, 0, t.width, t.height); return t.toDataURL('image/png'); }
     function note(n) { if (o.onNote) o.onNote(n); }
+    function halfOf(img, right) {
+      var w = iw({ img: img }), h = ih({ img: img }), c = document.createElement('canvas'); c.width = Math.round(w / 2); c.height = h;
+      c.getContext('2d').drawImage(img, right ? w - c.width : 0, 0, c.width, h, 0, 0, c.width, h); return c;
+    }
+    function addPair(img, real) {   // doypack: a [front | back] file becomes two layers on the vertical dieline
+      var fL = { img: halfOf(img, false), src: thumbOf(halfOf(img, false)), cx: 0, cy: 0, w: 10, rot: 0, real: real ? { w: real.w / 2, h: real.h } : null };
+      var bL = { img: halfOf(img, true), src: thumbOf(halfOf(img, true)), cx: 0, cy: 0, w: 10, rot: 0, real: real ? { w: real.w / 2, h: real.h } : null };
+      fitTo(fL, 'front', 'cover'); fitTo(bL, 'back', 'cover'); E.layers.push(fL, bL); E.sel = E.layers.length - 1; notify(); render(); push(true);
+    }
     function addLayer(img, src, real) {
       var l = { img: img, src: src, cx: 0, cy: 0, w: 10, rot: 0, real: real || null }, d = dims(), a = iw(l) / ih(l), z = E.size;
       var fp = panels().filter(function (p) { return p.k === 'front'; })[0], fcx = (fp.x0 + fp.x1) / 2;
@@ -672,17 +708,26 @@
             if (real.w >= base - 3 && real.w <= base + 60) nz = { W: z.W, H: cl('H', real.h), G: G, O: Math.max(0, Math.round(real.w - base)) };   // extra = seal strip
             else { if (real.w - 2 * G < 60) G = cl('G', real.w * .15); nz = { W: cl('W', (real.w - 2 * G) / 2), H: cl('H', real.h), G: G, O: 0 }; }
           }
+        } else if (E.shape === 'pouch') {   // doypack: full dieline (face / base / back), face only, or face + back side by side
+          var B = z.G || 40;
+          if (real.h >= real.w * 1.6) { nz = { W: cl('W', real.w), H: cl('H', (real.h - 2 * B) / 2), G: B }; where = 'all'; }
+          else if (portrait) { nz = { W: cl('W', real.w), H: cl('H', real.h), G: B }; where = 'front'; }
+          else { nz = { W: cl('W', real.w / 2), H: cl('H', real.h), G: B }; where = 'pair'; }
         } else if (portrait) { nz = { W: cl('W', real.w), H: cl('H', real.h), G: 0 }; where = 'front'; }
         else { nz = { W: cl('W', real.w / 2), H: cl('H', real.h), G: 0 }; where = 'all'; }
         var onK = function (k) { return E.layers.some(function (m) { return anchor(m).k === k; }); };
         if (where === 'front' && onK('front') && !onK('back') && Math.abs(real.w - z.W) <= 3 && Math.abs(real.h - z.H) <= 3) { where = 'back'; nz = { W: z.W, H: z.H, G: z.G || nz.G, O: z.O || 0 }; }
-        E.layers = E.layers.filter(function (m) { var k = anchor(m).k; return where !== 'all' && k !== where && k !== 'all'; });
-        var clamped = where === 'all' ? Math.abs((E.shape === 'gusset' ? 2 * nz.W + 2 * nz.G + (nz.O || 0) : 2 * nz.W) - real.w) > 2 || Math.abs(nz.H - real.h) > 2
-                                      : Math.abs(nz.W - real.w) > 2 || Math.abs(nz.H - real.h) > 2;
+        E.layers = E.layers.filter(function (m) { var k = anchor(m).k; return where !== 'all' && where !== 'pair' && k !== where && k !== 'all'; });
+        var clamped = where === 'pair' ? Math.abs(2 * nz.W - real.w) > 2 || Math.abs(nz.H - real.h) > 2
+                    : where === 'all' && E.shape === 'pouch' ? Math.abs(nz.W - real.w) > 2 || Math.abs(2 * nz.H + 2 * nz.G - real.h) > 2
+                    : where === 'all' ? Math.abs((E.shape === 'gusset' ? 2 * nz.W + 2 * nz.G + (nz.O || 0) : 2 * nz.W) - real.w) > 2 || Math.abs(nz.H - real.h) > 2
+                    : Math.abs(nz.W - real.w) > 2 || Math.abs(nz.H - real.h) > 2;
         ctl.setModel(E.shape, nz); if (o.onSize) o.onSize(nz);
+        if (where === 'pair') { note({ k: 'pdf', w: Math.round(real.w), h: Math.round(real.h), W: nz.W, H: nz.H, G: nz.G, O: 0, gusset: false, where: 'all', clamped: clamped }); addPair(img, real); return; }
         fitTo(l, where, 'cover');
         note({ k: 'pdf', w: Math.round(real.w), h: Math.round(real.h), W: nz.W, H: nz.H, G: nz.G, O: nz.O || 0, gusset: E.shape === 'gusset', where: where, clamped: clamped });
       } else {
+        if (vert() && Math.abs(Math.log(a / (2 * z.W / z.H))) < .15) { note(null); addPair(img, null); return; }
         if (Math.abs(Math.log(a / (d.FW / d.FH))) < .15) fitTo(l, 'all', 'cover');
         else fitTo(l, onFront && E.layers.length === 1 ? 'back' : 'front', 'cover');
         note(null);
@@ -707,10 +752,10 @@
     cv.addEventListener('wheel', wheel, { passive: false }); cv.addEventListener('keydown', key);
     cv.style.touchAction = 'none'; cv.style.cursor = 'move'; if (!cv.hasAttribute('tabindex')) cv.setAttribute('tabindex', '0');
     dropOn(cv); if (o.dropTarget) dropOn(o.dropTarget);
-    var ro = window.ResizeObserver ? new ResizeObserver(function () { render(); }) : null; if (ro) ro.observe(cv); else window.addEventListener('resize', render);
+    var ro = window.ResizeObserver ? new ResizeObserver(function () { render(); }) : null; if (ro) ro.observe(cv.parentNode || cv); else window.addEventListener('resize', render);
     var ctl = {
       setModel: function (shape, size) {
-        var od = dims(), anc = E.layers.map(anchor); E.shape = shape; E.size = { W: +size.W, H: +size.H, G: shape === 'gusset' ? +size.G : 0, O: shape === 'gusset' ? (+size.O || 0) : 0, R: shape === 'gusset' ? (+size.R || 0) : 0 };
+        var od = dims(), anc = E.layers.map(anchor); E.shape = shape; E.size = { W: +size.W, H: +size.H, G: (shape === 'gusset' || shape === 'pouch') ? (+size.G || (shape === 'pouch' ? 40 : 0)) : 0, O: shape === 'gusset' ? (+size.O || 0) : 0, R: shape === 'gusset' ? (+size.R || 0) : 0 };
         E.layers.forEach(function (l, i) { unanchor(l, anc[i]); });
         if (api) api.setModel(shape, E.size); render(); notify(); push(true);
       },
@@ -736,14 +781,19 @@
       setColor: function (c) { E.color = c; if (api) api.setColor(c); render(); },
       setLabels: function (lb) { Lb = lb || {}; render(); },
       template: function () {   // blank flat template with fold lines, for the client's designer
-        var d = dims(), res = 2400, c = document.createElement('canvas'), kk = res / d.FW; c.width = res; c.height = Math.round(res * d.FH / d.FW);
+        var d = dims(), res = vert() ? 1400 : 2400, c = document.createElement('canvas'), kk = res / d.FW; c.width = res; c.height = Math.round(res * d.FH / d.FW);
         var x = c.getContext('2d'); x.fillStyle = '#FFFFFF'; x.fillRect(0, 0, c.width, c.height);
         x.strokeStyle = '#2A4185'; x.lineWidth = 3; x.setLineDash([18, 12]);
-        panels().forEach(function (p, i) { if (i) { x.beginPath(); x.moveTo(p.x0 * kk, 0); x.lineTo(p.x0 * kk, c.height); x.stroke(); } });
+        panels().forEach(function (p, i) { if (!i) return; x.beginPath(); if (vert()) { x.moveTo(0, p.y0 * kk); x.lineTo(c.width, p.y0 * kk); } else { x.moveTo(p.x0 * kk, 0); x.lineTo(p.x0 * kk, c.height); } x.stroke(); });
+        if (vert()) { x.setLineDash([6, 10]); x.beginPath(); x.moveTo(0, (E.size.H + baseD()) * kk); x.lineTo(c.width, (E.size.H + baseD()) * kk); x.stroke(); }
         x.setLineDash([]); x.strokeRect(1.5, 1.5, c.width - 3, c.height - 3);
         x.fillStyle = '#2A4185'; x.font = '700 34px sans-serif'; x.textAlign = 'center';
-        panels().forEach(function (p) { x.fillText((Lb[p.k] || p.k) + '  ' + Math.round(p.x1 - p.x0) + ' mm', (p.x0 + p.x1) / 2 * kk, 60); });
-        x.fillText(Math.round(d.FW) + ' × ' + Math.round(d.FH) + ' mm', c.width / 2, c.height - 40);
+        panels().forEach(function (p) {
+          var t = (Lb[p.k] || p.k) + '  ' + Math.round(p.x1 - p.x0) + (vert() ? ' × ' + Math.round(p.y1 - p.y0) : '') + ' mm', cx = (p.x0 + p.x1) / 2 * kk;
+          x.save(); if (p.inv) { x.translate(cx * 2, (p.y0 + p.y1) * kk); x.rotate(Math.PI); }
+          x.fillText(t, cx, p.k === 'base' ? (p.y0 + p.y1) / 2 * kk + 12 : p.y0 * kk + 60); x.restore();
+        });
+        x.fillText(Math.round(d.FW) + ' × ' + Math.round(d.FH) + ' mm', c.width / 2, vert() ? (E.size.H - 20) * kk : c.height - 40);
         return c.toDataURL('image/png');
       },
       count: function () { return E.layers.length; },
@@ -751,5 +801,84 @@
     };
     render(); return ctl;
   }
+
+  // ---------- "which structure?" explorer + film weight estimator ----------
+  function HNStruct(root) {
+    if (!root || root.__stx) return; root.__stx = true;
+    var D = JSON.parse(root.getAttribute('data-hn')), T = D.t, U = D.units, cur = D.prods[0];
+    var q = function (s) { return root.querySelector(s); }, qa = function (s) { return Array.prototype.slice.call(root.querySelectorAll(s)); };
+    var inp = {}; qa('[data-in]').forEach(function (el) { inp[el.getAttribute('data-in')] = el; });
+    var nf = function (v, d) { try { return v.toLocaleString(D.lang === 'ar' ? 'ar-DZ' : D.lang === 'en' ? 'en-GB' : 'fr-FR', { maximumFractionDigits: d, minimumFractionDigits: d }); } catch (e) { return v.toFixed(d); } };
+    function stack(p) {   // print side first: film 1, reverse ink, adhesive, film 2 (, adhesive, film 3)
+      var s = [];
+      p.layers.forEach(function (l, i) { if (i === 1) s.push(['INK', 0]); if (i > 0) s.push(['ADH', 0]); s.push(l); });
+      return s;
+    }
+    function gsm(p) { var g = D.ink + D.adh * (p.layers.length - 1); p.layers.forEach(function (l) { g += l[1] * D.dens[l[0]]; }); return g; }
+    function setBag(b) { var d = D.bagdef[b]; inp.bag.value = b; inp.W.value = d[0]; inp.H.value = d[1]; inp.G.value = d[2]; q('[data-glab]').textContent = b === 'pouch' ? T.B : T.G; inp.G.parentNode.style.opacity = b === 'flat' ? .45 : 1; inp.G.disabled = b === 'flat'; }
+    function area() {   // film area per bag in m2 (incl. seals for the central-seal bags)
+      var W = +inp.W.value / 1000, H = +inp.H.value / 1000, G = +inp.G.value / 1000, b = inp.bag.value;
+      if (!(W > 0 && H > 0)) return 0;
+      if (b === 'pouch') return 2 * W * H + 2 * W * G;
+      if (b === 'gusset') return (2 * W + 2 * G + .02) * H;
+      return (2 * W + .02) * H;
+    }
+    function render() {
+      root.querySelector('[data-sname]').textContent = cur.layers.map(function (l) { return l[0].replace('MBOPP', 'BOPP met.').replace('PBOPP', 'BOPP perl.') + ' ' + l[1]; }).join(' / ');
+      var g = gsm(cur); q('[data-gsm]').textContent = nf(g, 0) + ' ' + U.gsm;
+      var L = q('[data-layers]'); L.innerHTML = '';
+      stack(cur).forEach(function (l, i) {
+        var h = l[1] ? Math.max(12, Math.min(46, 6 + l[1] * .55)) : 6, row = document.createElement('div');
+        row.className = 'stx-layer'; row.style.animationDelay = (i * .06) + 's';
+        var bar = document.createElement('span'); bar.className = 'stx-bar'; bar.style.height = h + 'px'; bar.style.background = D.col[l[0]];
+        if (l[0] === 'ADH') bar.style.backgroundImage = 'repeating-linear-gradient(90deg,#E8C98A 0 8px,transparent 8px 14px)';
+        var tx = document.createElement('span'); tx.style.cssText = 'font-size:14px;color:#141F45;font-weight:' + (l[1] ? 600 : 500);
+        tx.textContent = T.mats[l[0]] + (l[1] ? ' · ' + l[1] + ' ' + U.um : '');
+        row.appendChild(bar); row.appendChild(tx); L.appendChild(row);
+      });
+      q('[data-snote]').textContent = T.notes[cur.k];
+      var B = q('[data-bars]'); B.innerHTML = '';
+      T.bars.forEach(function (n, i) {
+        var c = document.createElement('div'); c.style.cssText = 'display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#3D4763';
+        var dots = '<span style="display:flex;gap:4px" aria-hidden="true">' + [1, 2, 3].map(function (k) { return '<span class="stx-dot' + (k <= cur.bars[i] ? ' on' : '') + '"></span>'; }).join('') + '</span>';
+        c.innerHTML = '<span></span>' + dots; c.firstChild.textContent = n; c.setAttribute('aria-label', n + ' ' + cur.bars[i] + '/3'); B.appendChild(c);
+      });
+      calc();
+    }
+    var last = null, qmin = 0;
+    function minBags(w) { return w > 0 ? Math.ceil(D.mr / w / 1000) * 1000 : 0; }
+    function calc(raise) {
+      var a = area(), g = gsm(cur), w = a * g, r = qa('[data-r]'), qm = q('[data-qmin]');
+      if (!(a > 0)) { r.forEach(function (x) { x.textContent = '–'; }); qm.textContent = ''; return; }
+      qmin = minBags(w); inp.Q.min = qmin;
+      if (raise || !(+inp.Q.value)) inp.Q.value = qmin;
+      var typed = Math.max(0, +inp.Q.value || 0), Q = Math.max(typed, qmin);
+      qm.textContent = (typed < qmin ? T.qlow : T.qmin).replace('{n}', nf(qmin, 0));
+      qm.style.color = typed < qmin ? '#A85A12' : '#3D4763'; qm.style.fontWeight = typed < qmin ? '600' : '500';
+      r[0].textContent = nf(w, 1) + ' ' + U.g; r[1].textContent = nf(Math.floor(1000 / w), 0);
+      r[2].textContent = nf(a * 10000, 0) + ' ' + U.m2;
+      last = { s: q('[data-sname]').textContent, g: nf(g, 0), b: T.bags[inp.bag.value], W: inp.W.value, H: inp.H.value, G: inp.bag.value === 'flat' ? '' : ' (' + (inp.bag.value === 'pouch' ? T.B : T.G).replace(/ ?\(.*\)/, '') + ' ' + inp.G.value + ')', Q: nf(Q, 0), kg: nf(Q * w / 1000, 0) };
+    }
+    qa('[data-prod]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        D.prods.forEach(function (p) { if (p.k === b.getAttribute('data-prod')) cur = p; });
+        qa('[data-prod]').forEach(function (o) { var on = o === b; o.classList.toggle('on', on); o.setAttribute('aria-pressed', on); });
+        setBag(cur.bag); render(); calc(true);
+      });
+    });
+    inp.bag.addEventListener('change', function () { setBag(inp.bag.value); calc(true); });
+    ['W', 'H', 'G'].forEach(function (k) { inp[k].addEventListener('input', function () { calc(false); if (+inp.Q.value < qmin) calc(true); }); });
+    inp.Q.addEventListener('input', function () { calc(false); });
+    inp.Q.addEventListener('change', function () { if (+inp.Q.value < qmin) calc(true); });
+    q('[data-scta]').addEventListener('click', function () {
+      if (!last) return;
+      var m = document.getElementById('f-msg'), s = document.getElementById('f-besoin');
+      var txt = T.msg.replace('{s}', last.s).replace('{g}', last.g).replace('{b}', last.b).replace('{W}', last.W).replace('{H}', last.H).replace('{G}', last.G).replace('{Q}', last.Q).replace('{kg}', last.kg);
+      if (m) { m.value = txt; m.dispatchEvent(new Event('input', { bubbles: true })); }
+      if (s) { var opt = Array.prototype.slice.call(s.options).filter(function (o) { return o.value === 'sachet'; })[0]; if (opt) { s.value = 'sachet'; s.dispatchEvent(new Event('change', { bubbles: true })); } }
+    });
+    setBag(cur.bag); render(); calc(true);
+  }
+  window.HNStruct = HNStruct;
   window.HN3D = { mount: mount, editor: editor, detectGusset: detectGusset };
 })();

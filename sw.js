@@ -1,5 +1,5 @@
 // H&N Packaging - service worker (offline support)
-const VERSION = 'hn-v18';
+const VERSION = 'hn-v28';
 const PRECACHE = [
   "./",
   "index.html",

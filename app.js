@@ -71,7 +71,7 @@
   // 3D bag mockup studio: size + drag-and-place editor
   var pv = document.getElementById('apercu');
   if (pv && window.HN3D) {
-    var BES = {"pouch": "sachet", "chips": "sachet", "flat": "sachet", "gusset": "sachet"}, DEF = {"pouch": {"W": 160, "H": 230, "G": 0}, "chips": {"W": 180, "H": 250, "G": 0}, "flat": {"W": 120, "H": 170, "G": 0}, "gusset": {"W": 80, "H": 230, "G": 45}}, LIM = {"W": [30, 600], "H": [30, 800], "G": [10, 200]}, TXA = {"fr": {"tipG": "Gabarit à plat : {T} × {H} mm (dos, soufflet, face, soufflet, dos)", "tipP": "Gabarit à plat : {T} × {H} mm (face {W} mm + dos {W} mm)", "bad": "Valeur entre {a} et {b} mm", "img": "Image", "reading": "Lecture du PDF…", "perr": "Impossible de lire ce PDF. Exportez-le à nouveau depuis Illustrator (PDF standard) ou importez un JPG/PNG.", "pdfAll": "PDF {w} × {h} mm : le sachet s'est adapté automatiquement ({sz}) et le visuel le couvre entièrement.", "pdfFront": "PDF {w} × {h} mm (face seule) : le sachet s'est adapté automatiquement ({sz}). Importez un 2e fichier pour le dos si besoin.", "pdfBig": "PDF {w} × {h} mm : hors des dimensions possibles, le sachet a été réglé au plus proche ({sz}).", "szP": "{W} × {H} mm", "szG": "face {W} mm, soufflet {G} mm, hauteur {H} mm", "pdfBack": "PDF {w} × {h} mm : placé automatiquement sur le dos du sachet.", "szO": ", bande de soudure {O} mm", "fold": "Lignes de pliage détectées : face {W} mm, soufflets {G} mm, dos {B} mm, hauteur {H} mm{S}. Le sachet s'est adapté automatiquement.", "foldS": ", bandes de soudure {O} mm + {R} mm", "foldSw": "Développé de sachet à soufflets reconnu. "}, "en": {"tipG": "Flat template: {T} × {H} mm (back, gusset, front, gusset, back)", "tipP": "Flat template: {T} × {H} mm (front {W} mm + back {W} mm)", "bad": "Value between {a} and {b} mm", "img": "Image", "reading": "Reading the PDF…", "perr": "This PDF could not be read. Export it again from Illustrator (standard PDF) or upload a JPG/PNG.", "pdfAll": "PDF {w} × {h} mm: the bag adapted automatically ({sz}) and the artwork covers it fully.", "pdfFront": "PDF {w} × {h} mm (front only): the bag adapted automatically ({sz}). Upload a 2nd file for the back if needed.", "pdfBig": "PDF {w} × {h} mm: outside the possible sizes, the bag was set to the closest size ({sz}).", "szP": "{W} × {H} mm", "szG": "front {W} mm, gusset {G} mm, height {H} mm", "pdfBack": "PDF {w} × {h} mm: placed automatically on the back of the bag.", "szO": ", seal strip {O} mm", "fold": "Fold lines detected: front {W} mm, gussets {G} mm, back {B} mm, height {H} mm{S}. The bag adapted automatically.", "foldS": ", seal strips {O} mm + {R} mm", "foldSw": "Side-gusset dieline recognised. "}, "ar": {"tipG": "القالب المسطّح: {T} × {H} مم (خلف، جانب، واجهة، جانب، خلف)", "tipP": "القالب المسطّح: {T} × {H} مم (واجهة {W} مم + خلف {W} مم)", "bad": "قيمة بين {a} و {b} مم", "img": "صورة", "reading": "جارٍ قراءة ملف PDF…", "perr": "تعذّرت قراءة ملف PDF هذا. صدّروه مجدداً من Illustrator (PDF عادي) أو حمّلوا صورة JPG/PNG.", "pdfAll": "ملف PDF ‏{w} × {h} مم: تكيّف الكيس تلقائياً ({sz}) ويغطيه التصميم بالكامل.", "pdfFront": "ملف PDF ‏{w} × {h} مم (الواجهة فقط): تكيّف الكيس تلقائياً ({sz}). حمّلوا ملفاً ثانياً للخلف عند الحاجة.", "pdfBig": "ملف PDF ‏{w} × {h} مم: خارج المقاسات الممكنة، تم ضبط الكيس على أقرب مقاس ({sz}).", "szP": "{W} × {H} مم", "szG": "الواجهة {W} مم، الجانب {G} مم، الارتفاع {H} مم", "pdfBack": "ملف PDF ‏{w} × {h} مم: وُضع تلقائياً على خلف الكيس.", "szO": "، شريط اللحام {O} مم", "fold": "تم اكتشاف خطوط الطي: الواجهة {W} مم، الجوانب {G} مم، الخلف {B} مم، الارتفاع {H} مم{S}. تكيّف الكيس تلقائياً.", "foldS": "، أشرطة اللحام {O} مم + {R} مم", "foldSw": "تم التعرّف على مخطط كيس بجوانب. "}}, LABA = {"fr": {"front": "FACE", "back": "DOS", "gusset": "SOUFFLET", "empty": "Importez votre visuel ou déposez-le ici", "seal": "SOUDURE"}, "en": {"front": "FRONT", "back": "BACK", "gusset": "GUSSET", "empty": "Upload your artwork or drop it here", "seal": "SEAL"}, "ar": {"front": "الواجهة", "back": "الخلف", "gusset": "الجانب", "empty": "حمّلوا تصميمكم أو أفلتوه هنا", "seal": "اللحام"}};
+    var BES = {"pouch": "sachet", "chips": "sachet", "flat": "sachet", "gusset": "sachet"}, DEF = {"pouch": {"W": 160, "H": 230, "G": 40}, "chips": {"W": 180, "H": 250, "G": 0}, "flat": {"W": 120, "H": 170, "G": 0}, "gusset": {"W": 80, "H": 230, "G": 45}}, LIM = {"W": [30, 600], "H": [30, 800], "G": [10, 200]}, TXA = {"fr": {"tipG": "Gabarit à plat : {T} × {H} mm (dos, soufflet, face, soufflet, dos)", "tipP": "Gabarit à plat : {T} × {H} mm (face {W} mm + dos {W} mm)", "bad": "Valeur entre {a} et {b} mm", "img": "Image", "reading": "Lecture du PDF…", "perr": "Impossible de lire ce PDF. Exportez-le à nouveau depuis Illustrator (PDF standard) ou importez un JPG/PNG.", "pdfAll": "PDF {w} × {h} mm : le sachet s'est adapté automatiquement ({sz}) et le visuel le couvre entièrement.", "pdfFront": "PDF {w} × {h} mm (face seule) : le sachet s'est adapté automatiquement ({sz}). Importez un 2e fichier pour le dos si besoin.", "pdfBig": "PDF {w} × {h} mm : hors des dimensions possibles, le sachet a été réglé au plus proche ({sz}).", "szP": "{W} × {H} mm", "szG": "face {W} mm, soufflet {G} mm, hauteur {H} mm", "pdfBack": "PDF {w} × {h} mm : placé automatiquement sur le dos du sachet.", "szO": ", bande de soudure {O} mm", "fold": "Lignes de pliage détectées : face {W} mm, soufflets {G} mm, dos {B} mm, hauteur {H} mm{S}. Le sachet s'est adapté automatiquement.", "foldS": ", bandes de soudure {O} mm + {R} mm", "foldSw": "Développé de sachet à soufflets reconnu. ", "tipD": "Gabarit à plat : {W} × {T} mm (face {H} + fond {B2} + dos {H}, dos tête-bêche)", "dimB": "Fond (mm)", "dimG": "Soufflet (mm)"}, "en": {"tipG": "Flat template: {T} × {H} mm (back, gusset, front, gusset, back)", "tipP": "Flat template: {T} × {H} mm (front {W} mm + back {W} mm)", "bad": "Value between {a} and {b} mm", "img": "Image", "reading": "Reading the PDF…", "perr": "This PDF could not be read. Export it again from Illustrator (standard PDF) or upload a JPG/PNG.", "pdfAll": "PDF {w} × {h} mm: the bag adapted automatically ({sz}) and the artwork covers it fully.", "pdfFront": "PDF {w} × {h} mm (front only): the bag adapted automatically ({sz}). Upload a 2nd file for the back if needed.", "pdfBig": "PDF {w} × {h} mm: outside the possible sizes, the bag was set to the closest size ({sz}).", "szP": "{W} × {H} mm", "szG": "front {W} mm, gusset {G} mm, height {H} mm", "pdfBack": "PDF {w} × {h} mm: placed automatically on the back of the bag.", "szO": ", seal strip {O} mm", "fold": "Fold lines detected: front {W} mm, gussets {G} mm, back {B} mm, height {H} mm{S}. The bag adapted automatically.", "foldS": ", seal strips {O} mm + {R} mm", "foldSw": "Side-gusset dieline recognised. ", "tipD": "Flat template: {W} × {T} mm (front {H} + base {B2} + back {H}, back upside down)", "dimB": "Base (mm)", "dimG": "Gusset (mm)"}, "ar": {"tipG": "القالب المسطّح: {T} × {H} مم (خلف، جانب، واجهة، جانب، خلف)", "tipP": "القالب المسطّح: {T} × {H} مم (واجهة {W} مم + خلف {W} مم)", "bad": "قيمة بين {a} و {b} مم", "img": "صورة", "reading": "جارٍ قراءة ملف PDF…", "perr": "تعذّرت قراءة ملف PDF هذا. صدّروه مجدداً من Illustrator (PDF عادي) أو حمّلوا صورة JPG/PNG.", "pdfAll": "ملف PDF ‏{w} × {h} مم: تكيّف الكيس تلقائياً ({sz}) ويغطيه التصميم بالكامل.", "pdfFront": "ملف PDF ‏{w} × {h} مم (الواجهة فقط): تكيّف الكيس تلقائياً ({sz}). حمّلوا ملفاً ثانياً للخلف عند الحاجة.", "pdfBig": "ملف PDF ‏{w} × {h} مم: خارج المقاسات الممكنة، تم ضبط الكيس على أقرب مقاس ({sz}).", "szP": "{W} × {H} مم", "szG": "الواجهة {W} مم، الجانب {G} مم، الارتفاع {H} مم", "pdfBack": "ملف PDF ‏{w} × {h} مم: وُضع تلقائياً على خلف الكيس.", "szO": "، شريط اللحام {O} مم", "fold": "تم اكتشاف خطوط الطي: الواجهة {W} مم، الجوانب {G} مم، الخلف {B} مم، الارتفاع {H} مم{S}. تكيّف الكيس تلقائياً.", "foldS": "، أشرطة اللحام {O} مم + {R} مم", "foldSw": "تم التعرّف على مخطط كيس بجوانب. ", "tipD": "القالب المسطّح: {W} × {T} مم (واجهة {H} + قاعدة {B2} + خلف {H}، الخلف مقلوب)", "dimB": "القاعدة (مم)", "dimG": "الجانب (مم)"}}, LABA = {"fr": {"front": "FACE", "back": "DOS", "base": "FOND", "gusset": "SOUFFLET", "empty": "Importez votre visuel ou déposez-le ici", "seal": "SOUDURE"}, "en": {"front": "FRONT", "back": "BACK", "base": "BASE", "gusset": "GUSSET", "empty": "Upload your artwork or drop it here", "seal": "SEAL"}, "ar": {"front": "الواجهة", "back": "الخلف", "base": "القاعدة", "gusset": "الجانب", "empty": "حمّلوا تصميمكم أو أفلتوه هنا", "seal": "اللحام"}};
     var lg = (document.documentElement.lang || 'fr').slice(0, 2), TX = TXA[lg] || TXA.fr;
     var st = { shape: 'pouch', color: '#FFFFFF', layers: [], sel: -1 };
     var $ = function (id) { return document.getElementById(id); };
@@ -83,20 +83,22 @@
     function ok(k, v) { var n = Number(v); return v !== '' && isFinite(n) && n >= LIM[k][0] && n <= LIM[k][1]; }
     function val(k) { return $('pv-' + k).value; }
     function num(k) { return ok(k, val(k)) ? Number(val(k)) : DEF[st.shape][k] || DEF.gusset[k]; }
-    function dims() { return st.shape === 'gusset' ? ['W', 'H', 'G'] : ['W', 'H']; }
+    function dims() { return st.shape === 'gusset' || st.shape === 'pouch' ? ['W', 'H', 'G'] : ['W', 'H']; }
     function apply() {
       var bad = dims().filter(function (k) { return !ok(k, val(k)); });
       ['W', 'H', 'G'].forEach(function (k) { $('pv-' + k).classList.toggle('bad', bad.indexOf(k) >= 0); });
       var b = $('pv-bad');
       if (bad.length) { b.textContent = TX.bad.replace('{a}', LIM[bad[0]][0]).replace('{b}', LIM[bad[0]][1]); b.removeAttribute('hidden'); } else b.setAttribute('hidden', '');
-      if (!bad.length && ed) ed.setModel(st.shape, { W: num('W'), H: num('H'), G: st.shape === 'gusset' ? num('G') : 0, O: st.shape === 'gusset' ? (st.O || 0) : 0, R: st.shape === 'gusset' ? (st.R || 0) : 0 });
+      if (!bad.length && ed) ed.setModel(st.shape, { W: num('W'), H: num('H'), G: (st.shape === 'gusset' || st.shape === 'pouch') ? num('G') : 0, O: st.shape === 'gusset' ? (st.O || 0) : 0, R: st.shape === 'gusset' ? (st.R || 0) : 0 });
       ui();
     }
     function ui() {
       pv.querySelectorAll('[data-shape]').forEach(function (b) { var on = b.getAttribute('data-shape') === st.shape; b.classList.toggle('pv-on', on); b.setAttribute('aria-pressed', on); });
       pv.querySelectorAll('[data-color]').forEach(function (b) { var on = b.getAttribute('data-color') === st.color; b.classList.toggle('pv-on', on); b.setAttribute('aria-pressed', on); });
-      var g = pv.querySelector('[data-g]'); if (st.shape === 'gusset') g.removeAttribute('hidden'); else g.setAttribute('hidden', '');
-      $('pv-tip').textContent = st.shape === 'gusset' ? TX.tipG.replace('{T}', Math.round(2 * num('W') + 2 * num('G') + (st.O || 0) + (st.R || 0))).replace('{H}', num('H'))
+      var g = pv.querySelector('[data-g]'); if (st.shape === 'gusset' || st.shape === 'pouch') g.removeAttribute('hidden'); else g.setAttribute('hidden', '');
+      pv.querySelector('[data-pvglab]').textContent = st.shape === 'pouch' ? TX.dimB : TX.dimG;
+      $('pv-tip').textContent = st.shape === 'pouch' ? TX.tipD.split('{W}').join(num('W')).replace('{T}', Math.round(2 * num('H') + 2 * num('G'))).split('{H}').join(num('H')).replace('{B2}', Math.round(2 * num('G')))
+        : st.shape === 'gusset' ? TX.tipG.replace('{T}', Math.round(2 * num('W') + 2 * num('G') + (st.O || 0) + (st.R || 0))).replace('{H}', num('H'))
         : TX.tipP.replace('{T}', 2 * num('W')).split('{W}').join(num('W')).replace('{H}', num('H'));
       var box = $('pv-layers'); box.innerHTML = '';
       st.layers.forEach(function (l, i) {
@@ -151,12 +153,12 @@
   var ug = document.getElementById('usine-grid'), ub = document.getElementById('usine-toggle');
   if (ug && ub) {
     var uvs = Array.prototype.slice.call(ug.querySelectorAll('video')), upaused = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches, uvis = false;
-    uvs.forEach(function (v) { v.muted = true; v.playsInline = true; });
+    uvs.forEach(function (v) { v.muted = true; v.playsInline = true; v.addEventListener('playing', function () { v.classList.add('on'); }); });
     function usync() {
       uvs.forEach(function (v) { if (uvis && !upaused) { var p = v.play(); if (p && p.catch) p.catch(function () {}); } else v.pause(); });
       ub.setAttribute('aria-pressed', upaused); ub.querySelector('span').textContent = upaused ? ub.getAttribute('data-play') : ub.getAttribute('data-pause');
     }
-    if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { uvis = es.some(function (e) { return e.isIntersecting; }); usync(); }, { threshold: 0.15 }).observe(ug);
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { uvis = es.some(function (e) { return e.isIntersecting; }); usync(); }, { threshold: 0.05, rootMargin: '300px 0px' }).observe(ug);
     else { uvis = true; }
     ub.addEventListener('click', function () { upaused = !upaused; usync(); });
     usync();
@@ -188,6 +190,30 @@
     prep(1); t = setTimeout(function () { show(1); }, 5000);
     return function () { dead = true; clearTimeout(t); sl.forEach(function (s) { if (s.tagName === 'VIDEO') s.pause(); }); };
   })(heroEl);
+
+  // structure explorer (folded until opened)
+  if (window.HNStruct) window.HNStruct(document.getElementById('stx-root'));
+  var stxB = document.getElementById('stx-open');
+  if (stxB) stxB.addEventListener('click', function () { document.getElementById('structures').classList.add('stx-open'); stxB.setAttribute('aria-expanded', 'true'); var f = document.querySelector('#structures [data-prod]'); if (f) f.focus(); });
+
+  // key figures (years of experience computed from the date) with a count-up
+  var kfr = document.getElementById('kfig-row');
+  if (kfr) (function (row) {
+    var bs = Array.prototype.slice.call(row.querySelectorAll('[data-count]'));
+    bs.forEach(function (b) { var y = b.getAttribute('data-years'); if (y) { b.setAttribute('data-count', String(new Date().getFullYear() - (+y))); b.textContent = b.getAttribute('data-count'); } });
+    if (row.__kfig || (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) || !window.IntersectionObserver) return; row.__kfig = true;
+    var run = function () {
+      var t0 = null;
+      var step = function (t) {
+        if (!t0) t0 = t; var p = Math.min(1, (t - t0) / 1400), e = 1 - Math.pow(1 - p, 3);
+        bs.forEach(function (b) { var n = +b.getAttribute('data-count') || 0, pre = b.getAttribute('data-pre') || ''; b.textContent = pre + Math.round(n * e); });
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+    var io = new IntersectionObserver(function (es) { if (es.some(function (e) { return e.isIntersecting; })) { io.disconnect(); run(); } }, { threshold: .35 });
+    io.observe(row);
+  })(kfr);
 
   // offline support
   if ('serviceWorker' in navigator) window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js'); });
