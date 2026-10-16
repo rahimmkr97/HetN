@@ -1,9 +1,26 @@
 H&N Packaging - site web (application installable / PWA)
 =========================================================
 
-Mise en ligne
--------------
-Copiez tout le contenu de ce dossier à la racine de votre hébergement (en HTTPS).
+Mise en ligne sur https://hnpackaging.com (Cloudflare)
+------------------------------------------------------
+1. Compte : https://dash.cloudflare.com/sign-up (gratuit).
+2. Domaine : Cloudflare > Enregistrement de domaines > Enregistrer des domaines > « hnpackaging.com » > acheter
+   (environ 10 $/an, carte bancaire internationale).
+3. Site : Workers & Pages > Créer > Pages > « Importer des ressources ». Nom du projet : hn-packaging.
+   Décompressez le .zip et glissez le DOSSIER « hn-packaging-pwa » (pas le .zip) > Déployer.
+   Test : https://hn-packaging.pages.dev
+4. Relier le domaine : projet hn-packaging > Domaines personnalisés > Configurer un domaine >
+   hnpackaging.com > Activer. Recommencez avec www.hnpackaging.com. Le HTTPS s'active seul (quelques minutes).
+5. E-mail des devis (gratuit) : Cloudflare > hnpackaging.com > E-mail > Routage des e-mails > Activer.
+   Ajoutez votre Gmail comme « adresse de destination » (confirmez le lien reçu sur Gmail), puis créez
+   l'adresse personnalisée commercial@hn-packaging.com > envoyer vers votre Gmail.
+6. Activer le formulaire : sur le site, envoyez une demande de devis test. FormSubmit envoie un e-mail
+   « Activate Form » (il arrive sur votre Gmail) : cliquez le lien une fois. Les devis suivants arrivent directement.
+7. Google : https://search.google.com/search-console > ajoutez hnpackaging.com > envoyez
+   https://hnpackaging.com/sitemap.xml
+
+Mises à jour : Workers & Pages > hn-packaging > Créer un déploiement > glissez le nouveau dossier.
+
 Pages : index.html (français), en.html (anglais), ar.html (arabe).
 
 Demandes de devis -> commercial@hn-packaging.com

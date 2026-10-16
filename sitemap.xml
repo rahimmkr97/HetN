@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://hnpackaging.com/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://hnpackaging.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hnpackaging.com/en"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://hnpackaging.com/ar"/>
+  </url>
+  <url>
+    <loc>https://hnpackaging.com/en</loc>
+    <lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://hnpackaging.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hnpackaging.com/en"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://hnpackaging.com/ar"/>
+  </url>
+  <url>
+    <loc>https://hnpackaging.com/ar</loc>
+    <lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://hnpackaging.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hnpackaging.com/en"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://hnpackaging.com/ar"/>
+  </url>
+</urlset>
